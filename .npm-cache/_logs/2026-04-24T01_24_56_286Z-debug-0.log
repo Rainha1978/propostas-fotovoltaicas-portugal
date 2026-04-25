@@ -1,0 +1,424 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.15.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npmrc
+5 silly config load:file:C:\Users\Rainha\.npmrc
+6 silly config load:file:C:\Users\Rainha\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install pdf-parse mammoth
+8 verbose argv "install" "--save-dev" "pdf-parse" "mammoth" "--cache" ".\\.npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T01_24_56_286Z-
+10 verbose logfile C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T01_24_56_286Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest pdf-parse@*
+15 silly packumentCache full:https://registry.npmjs.org/pdf-parse cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/pdf-parse 312ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/pdf-parse set size:undefined disposed:false
+18 silly fetch manifest mammoth@*
+19 silly packumentCache full:https://registry.npmjs.org/mammoth cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/mammoth 47ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/mammoth set size:undefined disposed:false
+22 silly placeDep ROOT mammoth@1.12.0 OK for: propostas-fotovoltaicas-portugal@0.1.0 want: *
+23 silly placeDep ROOT pdf-parse@2.4.5 OK for: propostas-fotovoltaicas-portugal@0.1.0 want: *
+24 silly fetch manifest @xmldom/xmldom@^0.8.6
+25 silly packumentCache full:https://registry.npmjs.org/@xmldom%2fxmldom cache-miss
+26 silly fetch manifest argparse@~1.0.3
+27 silly packumentCache full:https://registry.npmjs.org/argparse cache-miss
+28 silly fetch manifest base64-js@^1.5.1
+29 silly packumentCache full:https://registry.npmjs.org/base64-js cache-miss
+30 silly fetch manifest bluebird@~3.4.0
+31 silly packumentCache full:https://registry.npmjs.org/bluebird cache-miss
+32 silly fetch manifest dingbat-to-unicode@^1.0.1
+33 silly packumentCache full:https://registry.npmjs.org/dingbat-to-unicode cache-miss
+34 silly fetch manifest jszip@^3.7.1
+35 silly packumentCache full:https://registry.npmjs.org/jszip cache-miss
+36 silly fetch manifest lop@^0.4.2
+37 silly packumentCache full:https://registry.npmjs.org/lop cache-miss
+38 silly fetch manifest path-is-absolute@^1.0.0
+39 silly packumentCache full:https://registry.npmjs.org/path-is-absolute cache-miss
+40 silly fetch manifest underscore@^1.13.1
+41 silly packumentCache full:https://registry.npmjs.org/underscore cache-miss
+42 silly fetch manifest xmlbuilder@^10.0.0
+43 silly packumentCache full:https://registry.npmjs.org/xmlbuilder cache-miss
+44 silly fetch manifest pdfjs-dist@5.4.296
+45 silly packumentCache full:https://registry.npmjs.org/pdfjs-dist cache-miss
+46 silly fetch manifest @napi-rs/canvas@0.1.80
+47 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas cache-miss
+48 http fetch GET 200 https://registry.npmjs.org/argparse 106ms (cache miss)
+49 silly packumentCache full:https://registry.npmjs.org/argparse set size:undefined disposed:false
+50 http fetch GET 200 https://registry.npmjs.org/path-is-absolute 120ms (cache miss)
+51 silly packumentCache full:https://registry.npmjs.org/path-is-absolute set size:undefined disposed:false
+52 http fetch GET 200 https://registry.npmjs.org/base64-js 123ms (cache revalidated)
+53 silly packumentCache full:https://registry.npmjs.org/base64-js set size:41270 disposed:false
+54 http fetch GET 200 https://registry.npmjs.org/underscore 132ms (cache miss)
+55 silly packumentCache full:https://registry.npmjs.org/underscore set size:undefined disposed:false
+56 http fetch GET 200 https://registry.npmjs.org/bluebird 138ms (cache miss)
+57 silly packumentCache full:https://registry.npmjs.org/bluebird set size:undefined disposed:false
+58 http fetch GET 200 https://registry.npmjs.org/xmlbuilder 141ms (cache miss)
+59 silly packumentCache full:https://registry.npmjs.org/xmlbuilder set size:undefined disposed:false
+60 http fetch GET 200 https://registry.npmjs.org/pdfjs-dist 254ms (cache miss)
+61 silly packumentCache full:https://registry.npmjs.org/pdfjs-dist set size:undefined disposed:false
+62 http fetch GET 200 https://registry.npmjs.org/lop 274ms (cache miss)
+63 silly packumentCache full:https://registry.npmjs.org/lop set size:undefined disposed:false
+64 http fetch GET 200 https://registry.npmjs.org/jszip 284ms (cache miss)
+65 silly packumentCache full:https://registry.npmjs.org/jszip set size:undefined disposed:false
+66 http fetch GET 200 https://registry.npmjs.org/dingbat-to-unicode 285ms (cache miss)
+67 silly packumentCache full:https://registry.npmjs.org/dingbat-to-unicode set size:undefined disposed:false
+68 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas 366ms (cache miss)
+69 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas set size:undefined disposed:false
+70 http fetch GET 200 https://registry.npmjs.org/@xmldom%2fxmldom 422ms (cache miss)
+71 silly packumentCache full:https://registry.npmjs.org/@xmldom%2fxmldom set size:undefined disposed:false
+72 silly placeDep ROOT @xmldom/xmldom@0.8.13 OK for: mammoth@1.12.0 want: ^0.8.6
+73 silly placeDep ROOT argparse@1.0.10 OK for: mammoth@1.12.0 want: ~1.0.3
+74 silly placeDep ROOT base64-js@1.5.1 OK for: mammoth@1.12.0 want: ^1.5.1
+75 silly placeDep ROOT bluebird@3.4.7 OK for: mammoth@1.12.0 want: ~3.4.0
+76 silly placeDep ROOT dingbat-to-unicode@1.0.1 OK for: mammoth@1.12.0 want: ^1.0.1
+77 silly placeDep ROOT jszip@3.10.1 OK for: mammoth@1.12.0 want: ^3.7.1
+78 silly placeDep ROOT lop@0.4.2 OK for: mammoth@1.12.0 want: ^0.4.2
+79 silly placeDep ROOT path-is-absolute@1.0.1 OK for: mammoth@1.12.0 want: ^1.0.0
+80 silly placeDep ROOT underscore@1.13.8 OK for: mammoth@1.12.0 want: ^1.13.1
+81 silly placeDep ROOT xmlbuilder@10.1.1 OK for: mammoth@1.12.0 want: ^10.0.0
+82 silly fetch manifest sprintf-js@~1.0.2
+83 silly packumentCache full:https://registry.npmjs.org/sprintf-js cache-miss
+84 silly fetch manifest lie@~3.3.0
+85 silly packumentCache full:https://registry.npmjs.org/lie cache-miss
+86 silly fetch manifest pako@~1.0.2
+87 silly packumentCache full:https://registry.npmjs.org/pako cache-miss
+88 silly fetch manifest setimmediate@^1.0.5
+89 silly packumentCache full:https://registry.npmjs.org/setimmediate cache-miss
+90 silly fetch manifest readable-stream@~2.3.6
+91 silly packumentCache full:https://registry.npmjs.org/readable-stream cache-miss
+92 silly fetch manifest duck@^0.1.12
+93 silly packumentCache full:https://registry.npmjs.org/duck cache-miss
+94 silly fetch manifest option@~0.2.1
+95 silly packumentCache full:https://registry.npmjs.org/option cache-miss
+96 http fetch GET 200 https://registry.npmjs.org/setimmediate 40ms (cache miss)
+97 silly packumentCache full:https://registry.npmjs.org/setimmediate set size:undefined disposed:false
+98 http fetch GET 200 https://registry.npmjs.org/pako 46ms (cache miss)
+99 silly packumentCache full:https://registry.npmjs.org/pako set size:undefined disposed:false
+100 http fetch GET 200 https://registry.npmjs.org/readable-stream 48ms (cache revalidated)
+101 silly packumentCache full:https://registry.npmjs.org/readable-stream set size:261096 disposed:false
+102 http fetch GET 200 https://registry.npmjs.org/sprintf-js 52ms (cache miss)
+103 silly packumentCache full:https://registry.npmjs.org/sprintf-js set size:undefined disposed:false
+104 http fetch GET 200 https://registry.npmjs.org/lie 54ms (cache miss)
+105 silly packumentCache full:https://registry.npmjs.org/lie set size:undefined disposed:false
+106 http fetch GET 200 https://registry.npmjs.org/option 235ms (cache miss)
+107 silly packumentCache full:https://registry.npmjs.org/option set size:undefined disposed:false
+108 http fetch GET 200 https://registry.npmjs.org/duck 587ms (cache miss)
+109 silly packumentCache full:https://registry.npmjs.org/duck set size:undefined disposed:false
+110 silly placeDep ROOT sprintf-js@1.0.3 OK for: argparse@1.0.10 want: ~1.0.2
+111 silly placeDep ROOT lie@3.3.0 OK for: jszip@3.10.1 want: ~3.3.0
+112 silly placeDep ROOT pako@1.0.11 OK for: jszip@3.10.1 want: ~1.0.2
+113 silly placeDep ROOT readable-stream@2.3.8 OK for: jszip@3.10.1 want: ~2.3.6
+114 silly placeDep ROOT setimmediate@1.0.5 OK for: jszip@3.10.1 want: ^1.0.5
+115 silly fetch manifest immediate@~3.0.5
+116 silly packumentCache full:https://registry.npmjs.org/immediate cache-miss
+117 silly fetch manifest isarray@~1.0.0
+118 silly packumentCache full:https://registry.npmjs.org/isarray cache-miss
+119 silly fetch manifest inherits@~2.0.3
+120 silly packumentCache full:https://registry.npmjs.org/inherits cache-miss
+121 silly fetch manifest safe-buffer@~5.1.1
+122 silly packumentCache full:https://registry.npmjs.org/safe-buffer cache-miss
+123 silly fetch manifest core-util-is@~1.0.0
+124 silly packumentCache full:https://registry.npmjs.org/core-util-is cache-miss
+125 silly fetch manifest string_decoder@~1.1.1
+126 silly packumentCache full:https://registry.npmjs.org/string_decoder cache-miss
+127 silly fetch manifest util-deprecate@~1.0.1
+128 silly packumentCache full:https://registry.npmjs.org/util-deprecate cache-miss
+129 silly fetch manifest process-nextick-args@~2.0.0
+130 silly packumentCache full:https://registry.npmjs.org/process-nextick-args cache-miss
+131 http fetch GET 200 https://registry.npmjs.org/process-nextick-args 34ms (cache miss)
+132 silly packumentCache full:https://registry.npmjs.org/process-nextick-args set size:undefined disposed:false
+133 http fetch GET 200 https://registry.npmjs.org/core-util-is 38ms (cache miss)
+134 silly packumentCache full:https://registry.npmjs.org/core-util-is set size:undefined disposed:false
+135 http fetch GET 200 https://registry.npmjs.org/util-deprecate 41ms (cache revalidated)
+136 silly packumentCache full:https://registry.npmjs.org/util-deprecate set size:6674 disposed:false
+137 http fetch GET 200 https://registry.npmjs.org/string_decoder 43ms (cache revalidated)
+138 silly packumentCache full:https://registry.npmjs.org/string_decoder set size:28441 disposed:false
+139 http fetch GET 200 https://registry.npmjs.org/safe-buffer 45ms (cache revalidated)
+140 silly packumentCache full:https://registry.npmjs.org/safe-buffer set size:41183 disposed:false
+141 http fetch GET 200 https://registry.npmjs.org/inherits 46ms (cache revalidated)
+142 silly packumentCache full:https://registry.npmjs.org/inherits set size:12925 disposed:false
+143 http fetch GET 200 https://registry.npmjs.org/immediate 200ms (cache miss)
+144 silly packumentCache full:https://registry.npmjs.org/immediate set size:undefined disposed:false
+145 http fetch GET 200 https://registry.npmjs.org/isarray 202ms (cache miss)
+146 silly packumentCache full:https://registry.npmjs.org/isarray set size:undefined disposed:false
+147 silly placeDep ROOT immediate@3.0.6 OK for: lie@3.3.0 want: ~3.0.5
+148 silly placeDep ROOT duck@0.1.12 OK for: lop@0.4.2 want: ^0.1.12
+149 silly placeDep ROOT option@0.2.4 OK for: lop@0.4.2 want: ~0.2.1
+150 silly placeDep ROOT @napi-rs/canvas@0.1.80 OK for: pdf-parse@2.4.5 want: 0.1.80
+151 silly placeDep ROOT pdfjs-dist@5.4.296 OK for: pdf-parse@2.4.5 want: 5.4.296
+152 silly fetch manifest @napi-rs/canvas-darwin-x64@0.1.80
+153 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-x64 cache-miss
+154 silly fetch manifest @napi-rs/canvas-darwin-arm64@0.1.80
+155 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-arm64 cache-miss
+156 silly fetch manifest @napi-rs/canvas-android-arm64@0.1.80
+157 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-android-arm64 cache-miss
+158 silly fetch manifest @napi-rs/canvas-linux-x64-gnu@0.1.80
+159 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-gnu cache-miss
+160 silly fetch manifest @napi-rs/canvas-linux-x64-musl@0.1.80
+161 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-musl cache-miss
+162 silly fetch manifest @napi-rs/canvas-win32-x64-msvc@0.1.80
+163 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-win32-x64-msvc cache-miss
+164 silly fetch manifest @napi-rs/canvas-linux-arm64-gnu@0.1.80
+165 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-gnu cache-miss
+166 silly fetch manifest @napi-rs/canvas-linux-arm64-musl@0.1.80
+167 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-musl cache-miss
+168 silly fetch manifest @napi-rs/canvas-linux-riscv64-gnu@0.1.80
+169 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-riscv64-gnu cache-miss
+170 silly fetch manifest @napi-rs/canvas-linux-arm-gnueabihf@0.1.80
+171 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm-gnueabihf cache-miss
+172 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-riscv64-gnu 90ms (cache miss)
+173 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-riscv64-gnu set size:undefined disposed:false
+174 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-win32-x64-msvc 119ms (cache miss)
+175 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-win32-x64-msvc set size:undefined disposed:false
+176 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-musl 128ms (cache miss)
+177 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-musl set size:undefined disposed:false
+178 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-gnu 134ms (cache miss)
+179 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-gnu set size:undefined disposed:false
+180 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-gnu 136ms (cache miss)
+181 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-x64-gnu set size:undefined disposed:false
+182 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-arm64 263ms (cache miss)
+183 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-arm64 set size:undefined disposed:false
+184 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm-gnueabihf 278ms (cache miss)
+185 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm-gnueabihf set size:undefined disposed:false
+186 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-musl 300ms (cache miss)
+187 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-linux-arm64-musl set size:undefined disposed:false
+188 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-x64 307ms (cache miss)
+189 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-darwin-x64 set size:undefined disposed:false
+190 http fetch GET 200 https://registry.npmjs.org/@napi-rs%2fcanvas-android-arm64 309ms (cache miss)
+191 silly packumentCache full:https://registry.npmjs.org/@napi-rs%2fcanvas-android-arm64 set size:undefined disposed:false
+192 silly placeDep ROOT @napi-rs/canvas-android-arm64@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+193 silly placeDep ROOT @napi-rs/canvas-darwin-arm64@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+194 silly placeDep ROOT @napi-rs/canvas-darwin-x64@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+195 silly placeDep ROOT @napi-rs/canvas-linux-arm-gnueabihf@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+196 silly placeDep ROOT @napi-rs/canvas-linux-arm64-gnu@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+197 silly placeDep ROOT @napi-rs/canvas-linux-arm64-musl@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+198 silly placeDep ROOT @napi-rs/canvas-linux-riscv64-gnu@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+199 silly placeDep ROOT @napi-rs/canvas-linux-x64-gnu@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+200 silly placeDep ROOT @napi-rs/canvas-linux-x64-musl@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+201 silly placeDep ROOT @napi-rs/canvas-win32-x64-msvc@0.1.80 OK for: @napi-rs/canvas@0.1.80 want: 0.1.80
+202 silly placeDep ROOT core-util-is@1.0.3 OK for: readable-stream@2.3.8 want: ~1.0.0
+203 silly placeDep ROOT inherits@2.0.4 OK for: readable-stream@2.3.8 want: ~2.0.3
+204 silly placeDep ROOT isarray@1.0.0 OK for: readable-stream@2.3.8 want: ~1.0.0
+205 silly placeDep ROOT process-nextick-args@2.0.1 OK for: readable-stream@2.3.8 want: ~2.0.0
+206 silly placeDep ROOT safe-buffer@5.1.2 OK for: readable-stream@2.3.8 want: ~5.1.1
+207 silly placeDep ROOT string_decoder@1.1.1 OK for: readable-stream@2.3.8 want: ~1.1.1
+208 silly placeDep ROOT util-deprecate@1.0.2 OK for: readable-stream@2.3.8 want: ~1.0.1
+209 silly reify moves {}
+210 silly audit bulk request {
+210 silly audit   '@emnapi/runtime': [ '1.10.0' ],
+210 silly audit   '@img/colour': [ '1.1.0' ],
+210 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+210 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+210 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+210 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+210 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+210 silly audit   '@next/env': [ '15.5.15' ],
+210 silly audit   '@next/swc-darwin-arm64': [ '15.5.15' ],
+210 silly audit   '@next/swc-darwin-x64': [ '15.5.15' ],
+210 silly audit   '@next/swc-linux-arm64-gnu': [ '15.5.15' ],
+210 silly audit   '@next/swc-linux-arm64-musl': [ '15.5.15' ],
+210 silly audit   '@next/swc-linux-x64-gnu': [ '15.5.15' ],
+210 silly audit   '@next/swc-linux-x64-musl': [ '15.5.15' ],
+210 silly audit   '@next/swc-win32-arm64-msvc': [ '15.5.15' ],
+210 silly audit   '@next/swc-win32-x64-msvc': [ '15.5.15' ],
+210 silly audit   '@swc/helpers': [ '0.5.15' ],
+210 silly audit   'caniuse-lite': [ '1.0.30001790' ],
+210 silly audit   'client-only': [ '0.0.1' ],
+210 silly audit   'detect-libc': [ '2.1.2' ],
+210 silly audit   nanoid: [ '3.3.11' ],
+210 silly audit   next: [ '15.5.15' ],
+210 silly audit   picocolors: [ '1.1.1' ],
+210 silly audit   postcss: [ '8.4.31' ],
+210 silly audit   react: [ '19.2.5' ],
+210 silly audit   'react-dom': [ '19.2.5' ],
+210 silly audit   scheduler: [ '0.27.0' ],
+210 silly audit   semver: [ '7.7.4' ],
+210 silly audit   sharp: [ '0.34.5' ],
+210 silly audit   'source-map-js': [ '1.2.1' ],
+210 silly audit   'styled-jsx': [ '5.1.6' ],
+210 silly audit   tslib: [ '2.8.1' ],
+210 silly audit   mammoth: [ '1.12.0' ],
+210 silly audit   'pdf-parse': [ '2.4.5' ],
+210 silly audit   '@xmldom/xmldom': [ '0.8.13' ],
+210 silly audit   argparse: [ '1.0.10' ],
+210 silly audit   'base64-js': [ '1.5.1' ],
+210 silly audit   bluebird: [ '3.4.7' ],
+210 silly audit   'dingbat-to-unicode': [ '1.0.1' ],
+210 silly audit   jszip: [ '3.10.1' ],
+210 silly audit   lop: [ '0.4.2' ],
+210 silly audit   'path-is-absolute': [ '1.0.1' ],
+210 silly audit   underscore: [ '1.13.8' ],
+210 silly audit   xmlbuilder: [ '10.1.1' ],
+210 silly audit   'sprintf-js': [ '1.0.3' ],
+210 silly audit   lie: [ '3.3.0' ],
+210 silly audit   pako: [ '1.0.11' ],
+210 silly audit   'readable-stream': [ '2.3.8' ],
+210 silly audit   setimmediate: [ '1.0.5' ],
+210 silly audit   immediate: [ '3.0.6' ],
+210 silly audit   duck: [ '0.1.12' ],
+210 silly audit   option: [ '0.2.4' ],
+210 silly audit   '@napi-rs/canvas': [ '0.1.80' ],
+210 silly audit   'pdfjs-dist': [ '5.4.296' ],
+210 silly audit   '@napi-rs/canvas-android-arm64': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-darwin-arm64': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-darwin-x64': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-arm-gnueabihf': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-arm64-gnu': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-arm64-musl': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-riscv64-gnu': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-x64-gnu': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-linux-x64-musl': [ '0.1.80' ],
+210 silly audit   '@napi-rs/canvas-win32-x64-msvc': [ '0.1.80' ],
+210 silly audit   'core-util-is': [ '1.0.3' ],
+210 silly audit   inherits: [ '2.0.4' ],
+210 silly audit   isarray: [ '1.0.0' ],
+210 silly audit   'process-nextick-args': [ '2.0.1' ],
+210 silly audit   'safe-buffer': [ '5.1.2' ],
+210 silly audit   string_decoder: [ '1.1.1' ],
+210 silly audit   'util-deprecate': [ '1.0.2' ]
+210 silly audit }
+211 http cache util-deprecate@https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz 0ms (cache hit)
+212 http cache safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 0ms (cache hit)
+213 http cache string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz 0ms (cache hit)
+214 http cache process-nextick-args@https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz 0ms (cache hit)
+215 http cache isarray@https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz 0ms (cache hit)
+216 http cache @napi-rs/canvas-win32-x64-msvc@https://registry.npmjs.org/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.80.tgz 0ms (cache hit)
+217 http cache inherits@https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz 0ms (cache hit)
+218 http cache pdfjs-dist@https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-5.4.296.tgz 0ms (cache hit)
+219 http cache core-util-is@https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz 0ms (cache hit)
+220 http cache @napi-rs/canvas@https://registry.npmjs.org/@napi-rs/canvas/-/canvas-0.1.80.tgz 0ms (cache hit)
+221 http cache option@https://registry.npmjs.org/option/-/option-0.2.4.tgz 0ms (cache hit)
+222 http cache immediate@https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz 0ms (cache hit)
+223 http cache duck@https://registry.npmjs.org/duck/-/duck-0.1.12.tgz 0ms (cache hit)
+224 http cache setimmediate@https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz 0ms (cache hit)
+225 http cache readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz 0ms (cache hit)
+226 http cache pako@https://registry.npmjs.org/pako/-/pako-1.0.11.tgz 0ms (cache hit)
+227 http cache sprintf-js@https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz 0ms (cache hit)
+228 http cache lie@https://registry.npmjs.org/lie/-/lie-3.3.0.tgz 0ms (cache hit)
+229 http cache xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-10.1.1.tgz 0ms (cache hit)
+230 http cache path-is-absolute@https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz 0ms (cache hit)
+231 http cache underscore@https://registry.npmjs.org/underscore/-/underscore-1.13.8.tgz 0ms (cache hit)
+232 http cache jszip@https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz 0ms (cache hit)
+233 http cache dingbat-to-unicode@https://registry.npmjs.org/dingbat-to-unicode/-/dingbat-to-unicode-1.0.1.tgz 0ms (cache hit)
+234 http cache bluebird@https://registry.npmjs.org/bluebird/-/bluebird-3.4.7.tgz 0ms (cache hit)
+235 http cache base64-js@https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz 0ms (cache hit)
+236 http cache lop@https://registry.npmjs.org/lop/-/lop-0.4.2.tgz 0ms (cache hit)
+237 http cache argparse@https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz 0ms (cache hit)
+238 http cache pdf-parse@https://registry.npmjs.org/pdf-parse/-/pdf-parse-2.4.5.tgz 0ms (cache hit)
+239 http cache @xmldom/xmldom@https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.8.13.tgz 0ms (cache hit)
+240 http cache mammoth@https://registry.npmjs.org/mammoth/-/mammoth-1.12.0.tgz 0ms (cache hit)
+241 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz. Extracting by manifest.
+242 silly tarball no local data for string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz. Extracting by manifest.
+243 silly tarball no local data for process-nextick-args@https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz. Extracting by manifest.
+244 silly tarball no local data for isarray@https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz. Extracting by manifest.
+245 silly tarball no local data for @napi-rs/canvas-win32-x64-msvc@https://registry.npmjs.org/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.80.tgz. Extracting by manifest.
+246 silly tarball no local data for pdfjs-dist@https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-5.4.296.tgz. Extracting by manifest.
+247 silly tarball no local data for core-util-is@https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz. Extracting by manifest.
+248 silly tarball no local data for @napi-rs/canvas@https://registry.npmjs.org/@napi-rs/canvas/-/canvas-0.1.80.tgz. Extracting by manifest.
+249 silly tarball no local data for option@https://registry.npmjs.org/option/-/option-0.2.4.tgz. Extracting by manifest.
+250 silly tarball no local data for immediate@https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz. Extracting by manifest.
+251 silly tarball no local data for duck@https://registry.npmjs.org/duck/-/duck-0.1.12.tgz. Extracting by manifest.
+252 silly tarball no local data for setimmediate@https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz. Extracting by manifest.
+253 silly tarball no local data for readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz. Extracting by manifest.
+254 silly tarball no local data for pako@https://registry.npmjs.org/pako/-/pako-1.0.11.tgz. Extracting by manifest.
+255 silly tarball no local data for sprintf-js@https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz. Extracting by manifest.
+256 silly tarball no local data for lie@https://registry.npmjs.org/lie/-/lie-3.3.0.tgz. Extracting by manifest.
+257 silly tarball no local data for xmlbuilder@https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-10.1.1.tgz. Extracting by manifest.
+258 silly tarball no local data for path-is-absolute@https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz. Extracting by manifest.
+259 silly tarball no local data for underscore@https://registry.npmjs.org/underscore/-/underscore-1.13.8.tgz. Extracting by manifest.
+260 silly tarball no local data for jszip@https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz. Extracting by manifest.
+261 silly tarball no local data for dingbat-to-unicode@https://registry.npmjs.org/dingbat-to-unicode/-/dingbat-to-unicode-1.0.1.tgz. Extracting by manifest.
+262 silly tarball no local data for bluebird@https://registry.npmjs.org/bluebird/-/bluebird-3.4.7.tgz. Extracting by manifest.
+263 silly tarball no local data for lop@https://registry.npmjs.org/lop/-/lop-0.4.2.tgz. Extracting by manifest.
+264 silly tarball no local data for argparse@https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz. Extracting by manifest.
+265 silly tarball no local data for pdf-parse@https://registry.npmjs.org/pdf-parse/-/pdf-parse-2.4.5.tgz. Extracting by manifest.
+266 silly tarball no local data for @xmldom/xmldom@https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.8.13.tgz. Extracting by manifest.
+267 silly tarball no local data for mammoth@https://registry.npmjs.org/mammoth/-/mammoth-1.12.0.tgz. Extracting by manifest.
+268 http fetch GET 200 https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz 50ms (cache miss)
+269 http fetch GET 200 https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz 54ms (cache miss)
+270 http fetch GET 200 https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz 53ms (cache miss)
+271 http fetch GET 200 https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz 54ms (cache miss)
+272 http fetch GET 200 https://registry.npmjs.org/option/-/option-0.2.4.tgz 64ms (cache miss)
+273 http fetch GET 200 https://registry.npmjs.org/duck/-/duck-0.1.12.tgz 69ms (cache miss)
+274 http fetch GET 200 https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz 72ms (cache miss)
+275 http fetch GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 76ms (cache miss)
+276 http fetch GET 200 https://registry.npmjs.org/lie/-/lie-3.3.0.tgz 83ms (cache miss)
+277 http fetch GET 200 https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz 95ms (cache miss)
+278 http fetch GET 200 https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz 100ms (cache miss)
+279 http fetch GET 200 https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-10.1.1.tgz 122ms (cache miss)
+280 http fetch GET 200 https://registry.npmjs.org/dingbat-to-unicode/-/dingbat-to-unicode-1.0.1.tgz 170ms (cache miss)
+281 http fetch GET 200 https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz 259ms (cache miss)
+282 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 278ms
+283 silly audit report {}
+284 http fetch GET 200 https://registry.npmjs.org/lop/-/lop-0.4.2.tgz 296ms (cache miss)
+285 http fetch GET 200 https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz 303ms (cache miss)
+286 http fetch GET 200 https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz 313ms (cache miss)
+287 http fetch GET 200 https://registry.npmjs.org/jszip/-/jszip-3.10.1.tgz 411ms (cache miss)
+288 http fetch GET 200 https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.8.13.tgz 413ms (cache miss)
+289 http fetch GET 200 https://registry.npmjs.org/pako/-/pako-1.0.11.tgz 563ms (cache miss)
+290 http fetch GET 200 https://registry.npmjs.org/underscore/-/underscore-1.13.8.tgz 614ms (cache miss)
+291 http fetch GET 200 https://registry.npmjs.org/bluebird/-/bluebird-3.4.7.tgz 671ms (cache miss)
+292 http fetch GET 200 https://registry.npmjs.org/mammoth/-/mammoth-1.12.0.tgz 813ms (cache miss)
+293 http fetch GET 200 https://registry.npmjs.org/@napi-rs/canvas/-/canvas-0.1.80.tgz 871ms (cache miss)
+294 http fetch GET 200 https://registry.npmjs.org/pdf-parse/-/pdf-parse-2.4.5.tgz 3856ms (cache miss)
+295 http fetch GET 200 https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-5.4.296.tgz 4650ms (cache miss)
+296 http fetch GET 200 https://registry.npmjs.org/@napi-rs/canvas-win32-x64-msvc/-/canvas-win32-x64-msvc-0.1.80.tgz 6498ms (cache miss)
+297 silly ADD node_modules/util-deprecate
+298 silly ADD node_modules/string_decoder
+299 silly ADD node_modules/safe-buffer
+300 silly ADD node_modules/process-nextick-args
+301 silly ADD node_modules/isarray
+302 silly ADD node_modules/inherits
+303 silly ADD node_modules/core-util-is
+304 silly ADD node_modules/@napi-rs/canvas-win32-x64-msvc
+305 silly ADD node_modules/pdfjs-dist
+306 silly ADD node_modules/@napi-rs/canvas
+307 silly ADD node_modules/option
+308 silly ADD node_modules/duck
+309 silly ADD node_modules/immediate
+310 silly ADD node_modules/setimmediate
+311 silly ADD node_modules/readable-stream
+312 silly ADD node_modules/pako
+313 silly ADD node_modules/lie
+314 silly ADD node_modules/sprintf-js
+315 silly ADD node_modules/xmlbuilder
+316 silly ADD node_modules/underscore
+317 silly ADD node_modules/path-is-absolute
+318 silly ADD node_modules/lop
+319 silly ADD node_modules/jszip
+320 silly ADD node_modules/dingbat-to-unicode
+321 silly ADD node_modules/bluebird
+322 silly ADD node_modules/base64-js
+323 silly ADD node_modules/argparse
+324 silly ADD node_modules/@xmldom/xmldom
+325 silly ADD node_modules/pdf-parse
+326 silly ADD node_modules/mammoth
+327 verbose cwd C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico
+328 verbose os Windows_NT 10.0.19045
+329 verbose node v24.15.0
+330 verbose npm  v11.12.1
+331 verbose exit 0
+332 info ok

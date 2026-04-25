@@ -1,0 +1,56 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.15.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npmrc
+5 silly config load:file:C:\Users\Rainha\.npmrc
+6 silly config load:file:C:\Users\Rainha\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install pg
+8 verbose argv "install" "pg" "--cache" ".\\.npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T18_18_11_545Z-
+10 verbose logfile C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T18_18_11_545Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest pg@*
+15 silly packumentCache full:https://registry.npmjs.org/pg cache-miss
+16 http fetch GET https://registry.npmjs.org/pg attempt 1 failed with EACCES
+17 http fetch GET https://registry.npmjs.org/pg attempt 2 failed with EACCES
+18 http fetch GET https://registry.npmjs.org/pg attempt 3 failed with EACCES
+19 silly placeDep ROOT pg@ OK for: propostas-fotovoltaicas-portugal@0.1.0 want: *
+20 verbose type system
+21 verbose stack FetchError: request to https://registry.npmjs.org/pg failed, reason: 
+21 verbose stack     at ClientRequest.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)
+21 verbose stack     at ClientRequest.emit (node:events:509:28)
+21 verbose stack     at emitErrorEvent (node:_http_client:109:11)
+21 verbose stack     at _destroy (node:_http_client:993:9)
+21 verbose stack     at onSocketNT (node:_http_client:1013:5)
+21 verbose stack     at process.processTicksAndRejections (node:internal/process/task_queues:91:21)
+22 error code EACCES
+23 error errno EACCES
+24 error FetchError: request to https://registry.npmjs.org/pg failed, reason: 
+24 error     at ClientRequest.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)
+24 error     at ClientRequest.emit (node:events:509:28)
+24 error     at emitErrorEvent (node:_http_client:109:11)
+24 error     at _destroy (node:_http_client:993:9)
+24 error     at onSocketNT (node:_http_client:1013:5)
+24 error     at process.processTicksAndRejections (node:internal/process/task_queues:91:21) {
+24 error   code: 'EACCES',
+24 error   errno: 'EACCES',
+24 error   type: 'system',
+24 error   requiredBy: '.'
+24 error }
+25 error
+25 error The operation was rejected by your operating system.
+25 error It's possible that the file was already in use (by a text editor or antivirus), or that you lack permissions to access it.
+25 error
+25 error If you believe this might be a permissions issue, please double-check the permissions of the file and its containing directories, or try running the command again as root/Administrator.
+26 silly unfinished npm timer reify 1777054691964
+27 silly unfinished npm timer reify:loadTrees 1777054691965
+28 verbose cwd C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico
+29 verbose os Windows_NT 10.0.19045
+30 verbose node v24.15.0
+31 verbose npm  v11.12.1
+32 verbose exit 1
+33 verbose code 1
+34 error A complete log of this run can be found in: C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T18_18_11_545Z-debug-0.log

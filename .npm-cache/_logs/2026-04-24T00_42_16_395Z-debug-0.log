@@ -1,0 +1,189 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.12.1
+2 info using node@v24.15.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npmrc
+5 silly config load:file:C:\Users\Rainha\.npmrc
+6 silly config load:file:C:\Users\Rainha\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm rebuild better-sqlite3
+8 verbose argv "rebuild" "better-sqlite3" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T00_42_16_395Z-
+10 verbose logfile C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T00_42_16_395Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 info run better-sqlite3@11.10.0 install node_modules/better-sqlite3 prebuild-install || node-gyp rebuild --release
+14 info run better-sqlite3@11.10.0 install { code: 1, signal: null }
+15 verbose stack Error: command failed
+15 verbose stack     at promiseSpawn (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:22:22)
+15 verbose stack     at spawnWithShell (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:124:10)
+15 verbose stack     at promiseSpawn (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:12:12)
+15 verbose stack     at runScriptPkg (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script-pkg.js:79:13)
+15 verbose stack     at runScript (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script.js:9:12)
+15 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\rebuild.js:328:17
+15 verbose stack     at run (C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:67:22)
+15 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:84:9
+15 verbose stack     at new Promise (<anonymous>)
+15 verbose stack     at callLimit (C:\Program Files\nodejs\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:35:69)
+16 verbose pkgid better-sqlite3@11.10.0
+17 error code 1
+18 error path C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\node_modules\better-sqlite3
+19 error command failed
+20 error command C:\Windows\system32\cmd.exe /d /s /c prebuild-install || node-gyp rebuild --release
+21 error (node:18264) [DEP0176] DeprecationWarning: fs.R_OK is deprecated, use fs.constants.R_OK instead
+21 error (Use `node --trace-deprecation ...` to show where the warning was created)
+21 error prebuild-install warn install No prebuilt binaries found (target=24.15.0 runtime=node arch=x64 libc= platform=win32)
+21 error gyp info it worked if it ends with ok
+21 error gyp info using node-gyp@12.2.0
+21 error gyp info using node@24.15.0 | win32 | x64
+21 error (node:21076) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+21 error (Use `node --trace-deprecation ...` to show where the warning was created)
+21 error gyp ERR! find Python 
+21 error gyp ERR! find Python --python was not set on the command line
+21 error gyp ERR! find Python Python is not set from environment variable PYTHON
+21 error gyp ERR! find Python checking if the py launcher can be used to find Python 3
+21 error gyp ERR! find Python - executable path is ""
+21 error gyp ERR! find Python - "" could not be run
+21 error gyp ERR! find Python checking if "python3" can be used
+21 error gyp ERR! find Python - executable path is ""
+21 error gyp ERR! find Python - "" could not be run
+21 error gyp ERR! find Python checking if "python" can be used
+21 error gyp ERR! find Python - executable path is ""
+21 error gyp ERR! find Python - "" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python311\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python311\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python311\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python311\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python311-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python311-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python311-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python311-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files (x86)\Python311-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files (x86)\Python311-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python310\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python310\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python310\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python310\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python310-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python310-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python310-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python310-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files (x86)\Python310-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files (x86)\Python310-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python39\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python39\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python39\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python39\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python39-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python39-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python39-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python39-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files (x86)\Python39-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files (x86)\Python39-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python38\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python38\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python38\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python38\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Users\Rainha\AppData\Local\Programs\Python\Python38-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Users\Rainha\AppData\Local\Programs\Python\Python38-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files\Python38-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files\Python38-32\python.exe" could not be run
+21 error gyp ERR! find Python checking if Python is C:\Program Files (x86)\Python38-32\python.exe
+21 error gyp ERR! find Python - version is ""
+21 error gyp ERR! find Python - version is  - should be >=3.6.0
+21 error gyp ERR! find Python - THIS VERSION OF PYTHON IS NOT SUPPORTED
+21 error gyp ERR! find Python - "C:\Program Files (x86)\Python38-32\python.exe" could not be run
+21 error gyp ERR! find Python 
+21 error gyp ERR! find Python **********************************************************
+21 error gyp ERR! find Python You need to install the latest version of Python.
+21 error gyp ERR! find Python Node-gyp should be able to find and use Python. If not,
+21 error gyp ERR! find Python you can try one of the following options:
+21 error gyp ERR! find Python - Use the switch --python="C:\Path\To\python.exe"
+21 error gyp ERR! find Python (accepted by both node-gyp and npm)
+21 error gyp ERR! find Python - Set the environment variable PYTHON
+21 error gyp ERR! find Python For more information consult the documentation at:
+21 error gyp ERR! find Python https://github.com/nodejs/node-gyp#installation
+21 error gyp ERR! find Python **********************************************************
+21 error gyp ERR! find Python 
+21 error gyp ERR! configure error 
+21 error gyp ERR! stack Error: Could not find any Python installation to use
+21 error gyp ERR! stack at PythonFinder.fail (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-python.js:300:11)
+21 error gyp ERR! stack at PythonFinder.findPython (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\find-python.js:160:17)
+21 error gyp ERR! stack at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+21 error gyp ERR! stack at async configure (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\lib\configure.js:27:18)
+21 error gyp ERR! stack at async run (C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js:81:18)
+21 error gyp ERR! System Windows_NT 10.0.19045
+21 error gyp ERR! command "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--release"
+21 error gyp ERR! cwd C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\node_modules\better-sqlite3
+21 error gyp ERR! node -v v24.15.0
+21 error gyp ERR! node-gyp -v v12.2.0
+21 error gyp ERR! $npm_package_name better-sqlite3
+21 error gyp ERR! $npm_package_version 11.10.0
+21 error gyp ERR! not ok
+22 silly unfinished npm timer build 1776991336772
+23 silly unfinished npm timer build:deps 1776991336772
+24 silly unfinished npm timer build:run:install 1776991336773
+25 silly unfinished npm timer build:run:install:node_modules/better-sqlite3 1776991336773
+26 verbose cwd C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico
+27 verbose os Windows_NT 10.0.19045
+28 verbose node v24.15.0
+29 verbose npm  v11.12.1
+30 verbose exit 1
+31 verbose code 1
+32 error A complete log of this run can be found in: C:\Users\Rainha\Downloads\teste de codex\quero-construir-um-sistema-autom-tico\.npm-cache\_logs\2026-04-24T00_42_16_395Z-debug-0.log

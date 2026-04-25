@@ -1,0 +1,21 @@
+{
+  "name": "propostas-fotovoltaicas-portugal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node tests/solarCalculator.test.mjs"
+  },
+  "dependencies": {
+    "next": "^15.2.0",
+    "pg": "^8.13.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

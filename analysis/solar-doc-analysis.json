@@ -1,0 +1,6092 @@
+[
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Alexandrino\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Alexandrino",
+    "date": "2025-05-28",
+    "subtotal": 8750,
+    "total": 8750,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 580,
+      "panelCount": 1200,
+      "kwp": 69.6
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG Bifacial 580W (ou similar)",
+        "qty": 1200,
+        "unit": 97.5,
+        "vat": 600,
+        "total": 1170,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe ET Plus 8kW",
+        "qty": 100,
+        "unit": 1325,
+        "vat": 600,
+        "total": 1325,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx D 5kWh",
+        "qty": 300,
+        "unit": 1520,
+        "vat": 600,
+        "total": 4560,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para 12 painéis (ou similar)",
+        "qty": 200,
+        "unit": 235,
+        "vat": 600,
+        "total": 470,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 215,
+        "vat": 600,
+        "total": 215,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 578,
+        "vat": 600,
+        "total": 578,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Amigo Hélio\\Orçamento 5-03-2025.pdf",
+    "name": "Orçamento 5-03-2025.pdf",
+    "folder": "Amigo Hélio",
+    "date": "2025-05-03",
+    "subtotal": 8480,
+    "total": 8480,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 590,
+      "panelCount": 1400,
+      "kwp": 82.6
+    },
+    "items": [
+      {
+        "desc": "Inversor Híbrido Deye SUN-6K-SG04LP3-EU (ou 8K/10K/12K)",
+        "qty": 100,
+        "unit": 2085,
+        "vat": 600,
+        "total": 2085,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel 590w DMEG Ntype TOPCon Bifacial",
+        "qty": 1400,
+        "unit": 97.5,
+        "vat": 600,
+        "total": 1365,
+        "category": "panel"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx 5.12kWh G3",
+        "qty": 200,
+        "unit": 1480,
+        "vat": 600,
+        "total": 2960,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4/11V3 a 5º (não mais de 5º)",
+        "qty": 200,
+        "unit": 355,
+        "vat": 600,
+        "total": 710,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 5G4, cabo 25mm para baterias) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 335,
+        "vat": 600,
+        "total": 335,
+        "category": "battery"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 575,
+        "vat": 600,
+        "total": 575,
+        "category": "meter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 3000,
+        "unit": 15,
+        "vat": 600,
+        "total": 450,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Amigo Hélio\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Amigo Hélio",
+    "date": "2024-10-18",
+    "subtotal": 8437,
+    "total": 8437,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 575,
+      "panelCount": 1400,
+      "kwp": 80.5
+    },
+    "items": [
+      {
+        "desc": "Inversor Híbrido Deye SUN-6K-SG04LP3-EU",
+        "qty": 100,
+        "unit": 2085,
+        "vat": 600,
+        "total": 2085,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel 575w Canadian Solar Ntype TOPCon",
+        "qty": 1400,
+        "unit": 103,
+        "vat": 600,
+        "total": 1442,
+        "category": "panel"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 200,
+        "unit": 1425,
+        "vat": 600,
+        "total": 2850,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4/11V3 a 15º",
+        "qty": 200,
+        "unit": 355,
+        "vat": 600,
+        "total": 710,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 5G4) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 335,
+        "vat": 600,
+        "total": 335,
+        "category": "electrical"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 3000,
+        "unit": 15,
+        "vat": 600,
+        "total": 450,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Anabela Domingues\\Orçamento Sistema Goodwe Híbrido com bateria.pdf",
+    "name": "Orçamento Sistema Goodwe Híbrido com bateria.pdf",
+    "folder": "Anabela Domingues",
+    "date": "2024-08-05",
+    "subtotal": 4262,
+    "total": 4262,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 600,
+        "unit": 107.5,
+        "vat": 600,
+        "total": 645,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para telha Lusa, com var\\ao roscado",
+        "qty": 100,
+        "unit": 192,
+        "vat": 600,
+        "total": 192,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1250,
+        "vat": 600,
+        "total": 1250,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + acessórios + cabos 6mm",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2000,
+        "unit": 18,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 100,
+        "unit": 1650,
+        "vat": 600,
+        "total": 1650,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Anabela Domingues\\Orçamento Sistema Goodwe Híbrido.pdf",
+    "name": "Orçamento Sistema Goodwe Híbrido.pdf",
+    "folder": "Anabela Domingues",
+    "date": "2024-07-25",
+    "subtotal": 2612,
+    "total": 2612,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 600,
+        "unit": 107.5,
+        "vat": 600,
+        "total": 645,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para telha Lusa, com var\\ao roscado",
+        "qty": 100,
+        "unit": 192,
+        "vat": 600,
+        "total": 192,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1250,
+        "vat": 600,
+        "total": 1250,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + acessórios + cabos 6mm",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2000,
+        "unit": 18,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Anabela Domingues\\Orçamento Sistema Goodwe.pdf",
+    "name": "Orçamento Sistema Goodwe.pdf",
+    "folder": "Anabela Domingues",
+    "date": "2024-07-25",
+    "subtotal": 1672,
+    "total": 1672,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 600,
+        "unit": 107.5,
+        "vat": 600,
+        "total": 645,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para telha Lusa, com var\\ao roscado",
+        "qty": 100,
+        "unit": 192,
+        "vat": 600,
+        "total": 192,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor 2500W MONOFASICO, GW2500-XS-11 (15A)",
+        "qty": 100,
+        "unit": 407,
+        "vat": 600,
+        "total": 407,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + acessórios + cabos 6mm",
+        "qty": 100,
+        "unit": 140,
+        "vat": 600,
+        "total": 140,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 18,
+        "vat": 600,
+        "total": 288,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Anabela Domingues\\Orçamento Sistema Solax.pdf",
+    "name": "Orçamento Sistema Solax.pdf",
+    "folder": "Anabela Domingues",
+    "date": "2024-07-25",
+    "subtotal": 1612,
+    "total": 1612,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Painel JA Solar 460W",
+        "qty": 600,
+        "unit": 105,
+        "vat": 600,
+        "total": 630,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Ficsol coplanar para telha Lusa",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor Solax 2.5 - X1",
+        "qty": 100,
+        "unit": 389,
+        "vat": 600,
+        "total": 389,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + acessórios + cabos 6mm",
+        "qty": 100,
+        "unit": 140,
+        "vat": 600,
+        "total": 140,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 18,
+        "vat": 600,
+        "total": 288,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Carlos Puidival (colega)\\orçamento (sem valores).pdf",
+    "name": "orçamento (sem valores).pdf",
+    "folder": "Carlos Puidival (colega)",
+    "date": "2025-10-07",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": []
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Carlos Puidival (colega)\\Orçamento Goodwe+BYD.pdf",
+    "name": "Orçamento Goodwe+BYD.pdf",
+    "folder": "Carlos Puidival (colega)",
+    "date": "2025-11-10",
+    "subtotal": 15353.22,
+    "total": 15353.22,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 580,
+      "panelCount": 1600,
+      "kwp": 92.8
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG Bifacial 580W (ou similar)",
+        "qty": 1600,
+        "unit": 114.7,
+        "vat": 2300,
+        "total": 1835.2,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido Trifásico, GW8KW-ET-16A PLUS 2-MPPT (Vatímetro GM3000 incluido)",
+        "qty": 100,
+        "unit": 2360,
+        "vat": 2300,
+        "total": 2360,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4 triângulo fechado a 30º",
+        "qty": 400,
+        "unit": 324,
+        "vat": 2300,
+        "total": 1296,
+        "category": "structure"
+      },
+      {
+        "desc": "Blocos de betão para suporte da estrutura",
+        "qty": 1200,
+        "unit": 28.5,
+        "vat": 2300,
+        "total": 342,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro trifásico para proteções ao sistema",
+        "qty": 100,
+        "unit": 675,
+        "vat": 2300,
+        "total": 675,
+        "category": "electrical"
+      },
+      {
+        "desc": "Disjuntor tetrapolar",
+        "qty": 100,
+        "unit": 55,
+        "vat": 2300,
+        "total": 55,
+        "category": "other"
+      },
+      {
+        "desc": "Cabo solar 6mm2",
+        "qty": 5600,
+        "unit": 1.42,
+        "vat": 2300,
+        "total": 79.52,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabo 5G6",
+        "qty": 900,
+        "unit": 7.5,
+        "vat": 2300,
+        "total": 67.5,
+        "category": "electrical"
+      },
+      {
+        "desc": "Material elétrico e acessórios não especificados",
+        "qty": 100,
+        "unit": 195,
+        "vat": 2300,
+        "total": 195,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra/instalação/deslocações",
+        "qty": 100,
+        "unit": 1480,
+        "vat": 2300,
+        "total": 1480,
+        "category": "labor"
+      },
+      {
+        "desc": "**Contador Honeywell contagem direta, modem, cartão M2M (contrato de 3 anos Meo incluídos)",
+        "qty": 100,
+        "unit": 735,
+        "vat": 2300,
+        "total": 735,
+        "category": "meter"
+      },
+      {
+        "desc": "Bateria 11kWh (BYD Premium HVM - 2.76 Kwh (53Ah))",
+        "qty": 400,
+        "unit": 1336,
+        "vat": 2300,
+        "total": 5344,
+        "category": "battery"
+      },
+      {
+        "desc": "Unidade de controlo de batería BCU HVS/HVM (BCU2.0) + base",
+        "qty": 100,
+        "unit": 814,
+        "vat": 2300,
+        "total": 814,
+        "category": "other"
+      },
+      {
+        "desc": "Male connector 1 - for 35mm2 cable",
+        "qty": 200,
+        "unit": 37.5,
+        "vat": 2300,
+        "total": 75,
+        "category": "other"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Carlos Puidival (colega)\\Orçamento Growatt.pdf",
+    "name": "Orçamento Growatt.pdf",
+    "folder": "Carlos Puidival (colega)",
+    "date": "2025-11-11",
+    "subtotal": 13534.8,
+    "total": 13534.8,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 580,
+      "panelCount": 1500,
+      "kwp": 87
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG Bifacial 580W (ou similar)",
+        "qty": 1500,
+        "unit": 114.7,
+        "vat": 2300,
+        "total": 1720.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Growatt MOD 7000TL3-XH híbrido trifásico, 2 MPPT, 7 kW",
+        "qty": 100,
+        "unit": 1598,
+        "vat": 2300,
+        "total": 1598,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4 triângulo fechado a 30º",
+        "qty": 400,
+        "unit": 324,
+        "vat": 2300,
+        "total": 1296,
+        "category": "structure"
+      },
+      {
+        "desc": "Blocos de betão para suporte da estrutura",
+        "qty": 1200,
+        "unit": 28.5,
+        "vat": 2300,
+        "total": 342,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro trifásico para proteções ao sistema",
+        "qty": 100,
+        "unit": 675,
+        "vat": 2300,
+        "total": 675,
+        "category": "electrical"
+      },
+      {
+        "desc": "Disjuntor tetrapolar",
+        "qty": 100,
+        "unit": 55,
+        "vat": 2300,
+        "total": 55,
+        "category": "other"
+      },
+      {
+        "desc": "Cabo solar 6mm2",
+        "qty": 5600,
+        "unit": 1.42,
+        "vat": 2300,
+        "total": 79.52,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabo 5G6",
+        "qty": 900,
+        "unit": 7.5,
+        "vat": 2300,
+        "total": 67.5,
+        "category": "electrical"
+      },
+      {
+        "desc": "Material elétrico e acessórios não especificados",
+        "qty": 100,
+        "unit": 195,
+        "vat": 2300,
+        "total": 195,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra/instalação/deslocações",
+        "qty": 100,
+        "unit": 1480,
+        "vat": 2300,
+        "total": 1480,
+        "category": "labor"
+      },
+      {
+        "desc": "**Contador Honeywell contagem direta, modem, cartão M2M (contrato de 3 anos Meo incluídos)",
+        "qty": 100,
+        "unit": 735,
+        "vat": 2300,
+        "total": 735,
+        "category": "meter"
+      },
+      {
+        "desc": "Bateria para Sistema Fotovoltaico (12,8kWh de capacidade), base + controlador + cabos incluídos - OPCIONAL",
+        "qty": 100,
+        "unit": 4980.45,
+        "vat": 2300,
+        "total": 4980.45,
+        "category": "panel"
+      },
+      {
+        "desc": "Growatt TPM, energy meter (possibilidade de injeção zero), ligação por Tis de nucleo aberto, com Shine Wifi;",
+        "qty": 100,
+        "unit": 244.35,
+        "vat": 2300,
+        "total": 244.35,
+        "category": "inverter"
+      },
+      {
+        "desc": "DataLogger Shine WiFi Growatt",
+        "qty": 100,
+        "unit": 66.48,
+        "vat": 2300,
+        "total": 66.48,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Carlos Puidival (colega)\\Orçamento Ongrid Goodwe.pdf",
+    "name": "Orçamento Ongrid Goodwe.pdf",
+    "folder": "Carlos Puidival (colega)",
+    "date": "2025-11-10",
+    "subtotal": 8260.22,
+    "total": 8260.22,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 580,
+      "panelCount": 1600,
+      "kwp": 92.8
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG Bifacial 580W (ou similar)",
+        "qty": 1600,
+        "unit": 114.7,
+        "vat": 2300,
+        "total": 1835.2,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor de rede Goodwe 10000W Trifásico, GW10K-SDT-30",
+        "qty": 100,
+        "unit": 1225,
+        "vat": 2300,
+        "total": 1225,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4 triângulo fechado a 30º",
+        "qty": 400,
+        "unit": 324,
+        "vat": 2300,
+        "total": 1296,
+        "category": "structure"
+      },
+      {
+        "desc": "Blocos de betão para suporte da estrutura",
+        "qty": 1200,
+        "unit": 28.5,
+        "vat": 2300,
+        "total": 342,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro trifásico para proteções ao sistema",
+        "qty": 100,
+        "unit": 675,
+        "vat": 2300,
+        "total": 675,
+        "category": "electrical"
+      },
+      {
+        "desc": "Disjuntor tetrapolar",
+        "qty": 100,
+        "unit": 55,
+        "vat": 2300,
+        "total": 55,
+        "category": "other"
+      },
+      {
+        "desc": "Cabo solar 6mm2",
+        "qty": 5600,
+        "unit": 1.42,
+        "vat": 2300,
+        "total": 79.52,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabo 5G6",
+        "qty": 900,
+        "unit": 7.5,
+        "vat": 2300,
+        "total": 67.5,
+        "category": "electrical"
+      },
+      {
+        "desc": "Material elétrico e acessórios não especificados",
+        "qty": 100,
+        "unit": 175,
+        "vat": 2300,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra/instalação/deslocações",
+        "qty": 100,
+        "unit": 1350,
+        "vat": 2300,
+        "total": 1350,
+        "category": "labor"
+      },
+      {
+        "desc": "**Contador Honeywell contagem direta, modem, cartão M2M (contrato de 3 anos Meo incluídos)",
+        "qty": 100,
+        "unit": 735,
+        "vat": 2300,
+        "total": 735,
+        "category": "meter"
+      },
+      {
+        "desc": "***OPCIONAL - Smart Meter e Injeção zero",
+        "qty": 100,
+        "unit": 425,
+        "vat": 2300,
+        "total": 425,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\David Francisco\\fatura.pdf",
+    "name": "fatura.pdf",
+    "folder": "David Francisco",
+    "date": "2023-09-15",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Cabo solar, vermelho + preto (16m+16m)",
+        "qty": 3200,
+        "unit": 1.2,
+        "vat": 600,
+        "total": 38.4,
+        "category": "electrical"
+      },
+      {
+        "desc": "Quadro elétrico Hager 1 fila 8 módulos",
+        "qty": 100,
+        "unit": 18.7,
+        "vat": 600,
+        "total": 18.7,
+        "category": "electrical"
+      },
+      {
+        "desc": "RX3 Interruptor diferencial 2P 25A 300mA 230V",
+        "qty": 100,
+        "unit": 29.7,
+        "vat": 600,
+        "total": 29.7,
+        "category": "other"
+      },
+      {
+        "desc": "RX3 Disjuntor 1P+N - 16A 230V",
+        "qty": 100,
+        "unit": 16.2,
+        "vat": 600,
+        "total": 16.2,
+        "category": "other"
+      },
+      {
+        "desc": "Outros componentes",
+        "qty": 100,
+        "unit": 62,
+        "vat": 600,
+        "total": 62,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\David Francisco\\orçamento_sistema_solar.pdf",
+    "name": "orçamento_sistema_solar.pdf",
+    "folder": "David Francisco",
+    "date": "2023-08-22",
+    "subtotal": 4583.6,
+    "total": 4583.6,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido, monofásico GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Batería de Litio Goodwe Modelo SECU-A 5.4 de 5.4 Kwh",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\David Francisco\\Pagamentos e fatura-recibo.pdf",
+    "name": "Pagamentos e fatura-recibo.pdf",
+    "folder": "David Francisco",
+    "date": "2023-09-15",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Cabo solar, vermelho + preto (16m+16m)",
+        "qty": 3200,
+        "unit": 1.2,
+        "vat": 600,
+        "total": 38.4,
+        "category": "electrical"
+      },
+      {
+        "desc": "Quadro elétrico Hager 1 fila 8 módulos",
+        "qty": 100,
+        "unit": 18.7,
+        "vat": 600,
+        "total": 18.7,
+        "category": "electrical"
+      },
+      {
+        "desc": "RX3 Interruptor diferencial 2P 25A 300mA 230V",
+        "qty": 100,
+        "unit": 29.7,
+        "vat": 600,
+        "total": 29.7,
+        "category": "other"
+      },
+      {
+        "desc": "RX3 Disjuntor 1P+N - 16A 230V",
+        "qty": 100,
+        "unit": 16.2,
+        "vat": 600,
+        "total": 16.2,
+        "category": "other"
+      },
+      {
+        "desc": "Outros componentes",
+        "qty": 100,
+        "unit": 62,
+        "vat": 600,
+        "total": 62,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Dinis - Barosa\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Dinis - Barosa",
+    "date": "2024-06-03",
+    "subtotal": 2152,
+    "total": 2152,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 460w",
+        "qty": 800,
+        "unit": 110,
+        "vat": 600,
+        "total": 880,
+        "category": "panel"
+      },
+      {
+        "desc": "SOLAX mini X1-3.6-S-D-G3.1 / 3600W / 1 MPPT / DC switch /wi-fi 3.0",
+        "qty": 100,
+        "unit": 522,
+        "vat": 600,
+        "total": 522,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Ficsol coplanar para telha Lusa",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "structure"
+      },
+      {
+        "desc": "SOLAX Single Phase Meter Chint DDSU666-CT",
+        "qty": 100,
+        "unit": 75,
+        "vat": 600,
+        "total": 75,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + acessórios",
+        "qty": 100,
+        "unit": 140,
+        "vat": 600,
+        "total": 140,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 20,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Fernando (Xano-Pocariça)\\Orçamento híbrido (bateria).pdf",
+    "name": "Orçamento híbrido (bateria).pdf",
+    "folder": "Fernando (Xano-Pocariça)",
+    "date": "2025-03-13",
+    "subtotal": 3978,
+    "total": 3978,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1085,
+        "vat": 600,
+        "total": 1085,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 800,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 628,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 01V4 coplanar com varão roscado",
+        "qty": 200,
+        "unit": 124,
+        "vat": 600,
+        "total": 248,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20 (LV)",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Fernando (Xano-Pocariça)\\Orçamento Ongrid.pdf",
+    "name": "Orçamento Ongrid.pdf",
+    "folder": "Fernando (Xano-Pocariça)",
+    "date": "2025-03-13",
+    "subtotal": 1734,
+    "total": 1734,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe GW2500 XS 11",
+        "qty": 100,
+        "unit": 405,
+        "vat": 600,
+        "total": 405,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 600,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 471,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 01V3 coplanar com varão roscado",
+        "qty": 200,
+        "unit": 104,
+        "vat": 600,
+        "total": 208,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 155,
+        "vat": 600,
+        "total": 155,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2200,
+        "unit": 18,
+        "vat": 600,
+        "total": 396,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (para visualização do sistema em aplicação) OPCIONAL",
+        "qty": 100,
+        "unit": 99,
+        "vat": 600,
+        "total": 99,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Fernando Ferreira\\Orçamento sistema híbrido.pdf",
+    "name": "Orçamento sistema híbrido.pdf",
+    "folder": "Fernando Ferreira",
+    "date": "2024-11-14",
+    "subtotal": 3989,
+    "total": 3989,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian N-Type TOPCon 575W Monocristalino 144 célu- las CS6W-575T",
+        "qty": 600,
+        "unit": 99,
+        "vat": 600,
+        "total": 594,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1145,
+        "vat": 600,
+        "total": 1145,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 100,
+        "unit": 1320,
+        "vat": 600,
+        "total": 1320,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V3 + salva-telhas",
+        "qty": 200,
+        "unit": 205,
+        "vat": 600,
+        "total": 410,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 160,
+        "vat": 600,
+        "total": 160,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2000,
+        "unit": 18,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Fernando Ferreira\\Orçamento sistema ongrid.pdf",
+    "name": "Orçamento sistema ongrid.pdf",
+    "folder": "Fernando Ferreira",
+    "date": "2024-11-17",
+    "subtotal": 2062,
+    "total": 2062,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian N-Type TOPCon 575W Monocristalino 144 célu- las CS6W-575T",
+        "qty": 600,
+        "unit": 99,
+        "vat": 600,
+        "total": 594,
+        "category": "other"
+      },
+      {
+        "desc": "GW3600-DNS-30. Inversor conexión a Red 3600W MONOFASICO, 2-MPPT",
+        "qty": 100,
+        "unit": 594,
+        "vat": 600,
+        "total": 594,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V3 + salva-telhas",
+        "qty": 200,
+        "unit": 205,
+        "vat": 600,
+        "total": 410,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 140,
+        "vat": 600,
+        "total": 140,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 18,
+        "vat": 600,
+        "total": 324,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Filipe Faria (Pocariça)\\Orçamento (amigo).pdf",
+    "name": "Orçamento (amigo).pdf",
+    "folder": "Filipe Faria (Pocariça)",
+    "date": "2024-12-13",
+    "subtotal": 2339,
+    "total": 2339,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 575,
+      "panelCount": 600,
+      "kwp": 34.5
+    },
+    "items": [
+      {
+        "desc": "Painel 575w Canadian Solar Ntype TOPCon",
+        "qty": 600,
+        "unit": 95,
+        "vat": 600,
+        "total": 570,
+        "category": "panel"
+      },
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 800,
+        "unit": 78,
+        "vat": 600,
+        "total": 624,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Solax 4.0 X3 MIC trifásico",
+        "qty": 100,
+        "unit": 945,
+        "vat": 600,
+        "total": 945,
+        "category": "inverter"
+      },
+      {
+        "desc": "Inversor Goodwe GW4000 SDT-20 - 2-MPPT",
+        "qty": 100000,
+        "unit": 0,
+        "vat": 600,
+        "total": 0,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Filipe Faria (Pocariça)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Filipe Faria (Pocariça)",
+    "date": "2024-12-10",
+    "subtotal": 3397,
+    "total": 3397,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 575,
+      "panelCount": 600,
+      "kwp": 34.5
+    },
+    "items": [
+      {
+        "desc": "Painel 575w Canadian Solar Ntype TOPCon",
+        "qty": 600,
+        "unit": 95,
+        "vat": 600,
+        "total": 570,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido, monofásico GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1015,
+        "vat": 600,
+        "total": 1015,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6",
+        "qty": 100,
+        "unit": 200,
+        "vat": 600,
+        "total": 200,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 50,
+        "vat": 600,
+        "total": 50,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 900,
+        "unit": 18,
+        "vat": 600,
+        "total": 162,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Gil\\Orçamento 02-05-2025.pdf",
+    "name": "Orçamento 02-05-2025.pdf",
+    "folder": "Gil",
+    "date": "2025-05-02",
+    "subtotal": 4001,
+    "total": 4001,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 590,
+      "panelCount": 600,
+      "kwp": 35.4
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG 590W (ou similar)",
+        "qty": 600,
+        "unit": 97.5,
+        "vat": 600,
+        "total": 585,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1165,
+        "vat": 600,
+        "total": 1165,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 100,
+        "unit": 1480,
+        "vat": 600,
+        "total": 1480,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para 6 paineis (2300mm)",
+        "qty": 100,
+        "unit": 212,
+        "vat": 600,
+        "total": 212,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 16,
+        "vat": 600,
+        "total": 384,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Gil\\Orçamento 05-05-2025.pdf",
+    "name": "Orçamento 05-05-2025.pdf",
+    "folder": "Gil",
+    "date": "2025-05-05",
+    "subtotal": 4649,
+    "total": 4649,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 590,
+      "panelCount": 1000,
+      "kwp": 59
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG 590W (ou similar)",
+        "qty": 1000,
+        "unit": 97.5,
+        "vat": 600,
+        "total": 975,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW5000-ES-20-G2",
+        "qty": 100,
+        "unit": 1255,
+        "vat": 600,
+        "total": 1255,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 100,
+        "unit": 1480,
+        "vat": 600,
+        "total": 1480,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para 10 paineis, (5+5) (2300mm)",
+        "qty": 200,
+        "unit": 158,
+        "vat": 600,
+        "total": 316,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2800,
+        "unit": 16,
+        "vat": 600,
+        "total": 448,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Gil\\Orçamento_Sistema_Solar.pdf",
+    "name": "Orçamento_Sistema_Solar.pdf",
+    "folder": "Gil",
+    "date": "2023-08-10",
+    "subtotal": 4008.25,
+    "total": 4008.25,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 700,
+      "kwp": 32.2
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 460w",
+        "qty": 700,
+        "unit": 155,
+        "vat": 600,
+        "total": 1085,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe GW3648D-ES",
+        "qty": 100,
+        "unit": 1177,
+        "vat": 600,
+        "total": 1177,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Van Der Valk Strongline",
+        "qty": 700,
+        "unit": 43.75,
+        "vat": 600,
+        "total": 306.25,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Batería de Litio Pylontech US2000C 2.4kWh (New version)",
+        "qty": 100,
+        "unit": 985,
+        "vat": 600,
+        "total": 985,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Guillaume Frazão - Arnal\\Orçamento sistema on-grid.pdf",
+    "name": "Orçamento sistema on-grid.pdf",
+    "folder": "Guillaume Frazão - Arnal",
+    "date": "2025-08-27",
+    "subtotal": 1742,
+    "total": 1742,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 455,
+      "panelCount": 800,
+      "kwp": 36.4
+    },
+    "items": [
+      {
+        "desc": "Painel 455W (ou similar)",
+        "qty": 800,
+        "unit": 70,
+        "vat": 2300,
+        "total": 560,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe GW4200-DNS-20. 2-MPPT",
+        "qty": 100,
+        "unit": 615,
+        "vat": 2300,
+        "total": 615,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 135,
+        "vat": 2300,
+        "total": 135,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 2300,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Hugo Frederico\\Fatura.pdf",
+    "name": "Fatura.pdf",
+    "folder": "Hugo Frederico",
+    "date": "2025-06-19",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "[CS6W-595T] Módulo Canadian N-Type TOPCon 595W Monocristalino 144 células CS6W-595T",
+        "qty": 2000,
+        "unit": 99,
+        "vat": 600,
+        "total": 1980,
+        "category": "other"
+      },
+      {
+        "desc": "[GW6000-ES-20-G2] Inversor híbrido, monofásico GW6000-ES-20-G2 de 6000w 48V bidireccional",
+        "qty": 100,
+        "unit": 1295,
+        "vat": 600,
+        "total": 1295,
+        "category": "inverter"
+      },
+      {
+        "desc": "Barras perfil X37 3.6m",
+        "qty": 200,
+        "unit": 29,
+        "vat": 600,
+        "total": 58,
+        "category": "other"
+      },
+      {
+        "desc": "Material elétrico e restante material",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1730,
+        "unit": 18,
+        "vat": 600,
+        "total": 311.4,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Hugo Frederico\\Orçamento Final.pdf",
+    "name": "Orçamento Final.pdf",
+    "folder": "Hugo Frederico",
+    "date": "2025-02-06",
+    "subtotal": 4200,
+    "total": 4200,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "[CS6W-595T] Módulo Canadian N-Type TOPCon 595W Monocristalino 144 células CS6W-595T",
+        "qty": 2000,
+        "unit": 99,
+        "vat": 600,
+        "total": 1980,
+        "category": "other"
+      },
+      {
+        "desc": "[GW6000-ES-20-G2] Inversor híbrido, monofásico GW6000-ES-20-G2 de 6000w 48V bidireccional",
+        "qty": 100,
+        "unit": 1295,
+        "vat": 600,
+        "total": 1295,
+        "category": "inverter"
+      },
+      {
+        "desc": "[05V4] 05V5. Soporte coplanar microrail fijación a chapa para 5 paneles vertical",
+        "qty": 400,
+        "unit": 95,
+        "vat": 600,
+        "total": 380,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e restante material",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2000,
+        "unit": 18,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Hélio talinta\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Hélio talinta",
+    "date": "2023-08-22",
+    "subtotal": 4333.83,
+    "total": 4333.83,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 900,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1345.05,
+        "category": "other"
+      },
+      {
+        "desc": "Estrutura + salva telhas",
+        "qty": 300,
+        "unit": 236.6,
+        "vat": 600,
+        "total": 709.8,
+        "category": "structure"
+      },
+      {
+        "desc": "Batería de Litio Goodwe Modelo SECU-A de 5.4 Kwh",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico + Cabos 6mm + fichas MC4",
+        "qty": 100,
+        "unit": 216,
+        "vat": 600,
+        "total": 216,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1400,
+        "unit": 35,
+        "vat": 600,
+        "total": 490,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Hélio talinta\\Orçamento_2.pdf",
+    "name": "Orçamento_2.pdf",
+    "folder": "Hélio talinta",
+    "date": "2023-08-22",
+    "subtotal": 1211.96,
+    "total": 1211.96,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 400,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 597.8,
+        "category": "other"
+      },
+      {
+        "desc": "Estrutura + salva telhas",
+        "qty": 100,
+        "unit": 156.16,
+        "vat": 600,
+        "total": 156.16,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico + Cabos 6mm",
+        "qty": 100,
+        "unit": 178,
+        "vat": 600,
+        "total": 178,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Jacinto Pocariça\\Fatura recibo e comprovativo pagamento.pdf",
+    "name": "Fatura recibo e comprovativo pagamento.pdf",
+    "folder": "Jacinto Pocariça",
+    "date": "2023-10-21",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Cabo solar, vermelho + preto (30m+30m)",
+        "qty": 6000,
+        "unit": 1.2,
+        "vat": 600,
+        "total": 72,
+        "category": "electrical"
+      },
+      {
+        "desc": "Efapel Interruptor diferencial 2P 25A 300mA 230V",
+        "qty": 100,
+        "unit": 19.9,
+        "vat": 600,
+        "total": 19.9,
+        "category": "other"
+      },
+      {
+        "desc": "Efapel Disjuntor 1P+N - 16A 230V",
+        "qty": 100,
+        "unit": 10.8,
+        "vat": 600,
+        "total": 10.8,
+        "category": "other"
+      },
+      {
+        "desc": "Outros componentes",
+        "qty": 100,
+        "unit": 42.3,
+        "vat": 600,
+        "total": 42.3,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1000,
+        "unit": 30,
+        "vat": 600,
+        "total": 300,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Jacinto Pocariça\\fatura.pdf",
+    "name": "fatura.pdf",
+    "folder": "Jacinto Pocariça",
+    "date": "2023-10-21",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Cabo solar, vermelho + preto (30m+30m)",
+        "qty": 6000,
+        "unit": 1.2,
+        "vat": 600,
+        "total": 72,
+        "category": "electrical"
+      },
+      {
+        "desc": "Efapel Interruptor diferencial 2P 25A 300mA 230V",
+        "qty": 100,
+        "unit": 19.9,
+        "vat": 600,
+        "total": 19.9,
+        "category": "other"
+      },
+      {
+        "desc": "Efapel Disjuntor 1P+N - 16A 230V",
+        "qty": 100,
+        "unit": 10.8,
+        "vat": 600,
+        "total": 10.8,
+        "category": "other"
+      },
+      {
+        "desc": "Outros componentes",
+        "qty": 100,
+        "unit": 42.3,
+        "vat": 600,
+        "total": 42.3,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1000,
+        "unit": 30,
+        "vat": 600,
+        "total": 300,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Jacinto Pocariça\\orçamento_sistema_solar.pdf",
+    "name": "orçamento_sistema_solar.pdf",
+    "folder": "Jacinto Pocariça",
+    "date": "2023-08-22",
+    "subtotal": 4583.6,
+    "total": 4583.6,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido, monofásico GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Batería de Litio Goodwe Modelo SECU-A 5.4 de 5.4 Kwh",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Jorge Ascenso (Piri)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Jorge Ascenso (Piri)",
+    "date": "2025-10-20",
+    "subtotal": 4491,
+    "total": 4491,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 455,
+      "panelCount": 1200,
+      "kwp": 54.6
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 455W (ou potência similar)",
+        "qty": 1200,
+        "unit": 66.5,
+        "vat": 2300,
+        "total": 798,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6 a 15º",
+        "qty": 200,
+        "unit": 315,
+        "vat": 2300,
+        "total": 630,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1209,
+        "vat": 2300,
+        "total": 1209,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 100,
+        "unit": 1425,
+        "vat": 2300,
+        "total": 1425,
+        "category": "battery"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 105,
+        "vat": 2300,
+        "total": 105,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 18,
+        "vat": 2300,
+        "total": 324,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Jorge Ascenso (Piri)\\Orçamento_novo.pdf",
+    "name": "Orçamento_novo.pdf",
+    "folder": "Jorge Ascenso (Piri)",
+    "date": "2026-04-13",
+    "subtotal": 3246,
+    "total": 3246,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 595,
+      "panelCount": 1000,
+      "kwp": 59.5
+    },
+    "items": [
+      {
+        "desc": "Painel DMEGC 595W Bifacial 144 células",
+        "qty": 1000,
+        "unit": 82,
+        "vat": 2300,
+        "total": 820,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6 a 15º",
+        "qty": 200,
+        "unit": 296,
+        "vat": 2300,
+        "total": 592,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1209,
+        "vat": 2300,
+        "total": 1209,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 301,
+        "vat": 2300,
+        "total": 301,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 18,
+        "vat": 2300,
+        "total": 324,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Morado\\fatura 30-06-2025.pdf",
+    "name": "fatura 30-06-2025.pdf",
+    "folder": "José Morado",
+    "date": "2025-06-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 500,
+      "kwp": 23
+    },
+    "items": [
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 200,
+        "unit": 1455,
+        "vat": 600,
+        "total": 2910,
+        "category": "battery"
+      },
+      {
+        "desc": "Painel DMEG 460W",
+        "qty": 500,
+        "unit": 67,
+        "vat": 600,
+        "total": 335,
+        "category": "panel"
+      },
+      {
+        "desc": "Sunfer Microrail 62V5",
+        "qty": 100,
+        "unit": 102,
+        "vat": 600,
+        "total": 102,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios para sistema AC",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW5000-ES-20-G2",
+        "qty": 100,
+        "unit": 1220,
+        "vat": 600,
+        "total": 1220,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios para sistema BACKUP",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2200,
+        "unit": 16,
+        "vat": 600,
+        "total": 352,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Morado\\Orçamento 30-6-2025.pdf",
+    "name": "Orçamento 30-6-2025.pdf",
+    "folder": "José Morado",
+    "date": "2025-06-30",
+    "subtotal": 5269,
+    "total": 5269,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 500,
+      "kwp": 23
+    },
+    "items": [
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 200,
+        "unit": 1455,
+        "vat": 600,
+        "total": 2910,
+        "category": "battery"
+      },
+      {
+        "desc": "Painel DMEG 460W",
+        "qty": 500,
+        "unit": 67,
+        "vat": 600,
+        "total": 335,
+        "category": "panel"
+      },
+      {
+        "desc": "Sunfer Microrail 62V5",
+        "qty": 100,
+        "unit": 102,
+        "vat": 600,
+        "total": 102,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios para sistema AC",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW5000-ES-20-G2",
+        "qty": 100,
+        "unit": 1220,
+        "vat": 600,
+        "total": 1220,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios para sistema BACKUP",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2200,
+        "unit": 16,
+        "vat": 600,
+        "total": 352,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Morado\\Orçamento 5-5-2025.pdf",
+    "name": "Orçamento 5-5-2025.pdf",
+    "folder": "José Morado",
+    "date": "2025-05-05",
+    "subtotal": 4824.5,
+    "total": 4824.5,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 300,
+      "kwp": 13.8
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1165,
+        "vat": 600,
+        "total": 1165,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 200,
+        "unit": 1455,
+        "vat": 600,
+        "total": 2910,
+        "category": "battery"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W TOPHiKu6 N-type TOPCon",
+        "qty": 300,
+        "unit": 67,
+        "vat": 600,
+        "total": 201,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular 5º Ficsol, fixação chapa (a verificar no local)",
+        "qty": 100,
+        "unit": 127.5,
+        "vat": 600,
+        "total": 127.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 16,
+        "vat": 600,
+        "total": 256,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Rosa (Arnal)\\Fatura.pdf",
+    "name": "Fatura.pdf",
+    "folder": "José Rosa (Arnal)",
+    "date": "2025-06-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "GW3600-DNS-30. Inversor conexão à rede 3600W monofásico, 2-MPPT",
+        "qty": 100,
+        "unit": 625,
+        "vat": 600,
+        "total": 625,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 800,
+        "unit": 76,
+        "vat": 600,
+        "total": 608,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V5 a 10º",
+        "qty": 100,
+        "unit": 255,
+        "vat": 600,
+        "total": 255,
+        "category": "structure"
+      },
+      {
+        "desc": "Estrutura Sunfer 20H1 a 10º",
+        "qty": 300,
+        "unit": 66,
+        "vat": 600,
+        "total": 198,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 170,
+        "vat": 600,
+        "total": 170,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Rosa (Arnal)\\Orçamento_híbrido.pdf",
+    "name": "Orçamento_híbrido.pdf",
+    "folder": "José Rosa (Arnal)",
+    "date": "2025-06-16",
+    "subtotal": 4211,
+    "total": 4211,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1115,
+        "vat": 600,
+        "total": 1115,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 800,
+        "unit": 76,
+        "vat": 600,
+        "total": 608,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V5 a 10º",
+        "qty": 100,
+        "unit": 255,
+        "vat": 600,
+        "total": 255,
+        "category": "structure"
+      },
+      {
+        "desc": "Estrutura Sunfer 20H1 a 10º",
+        "qty": 300,
+        "unit": 66,
+        "vat": 600,
+        "total": 198,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx 5.12kWh G3",
+        "qty": 100,
+        "unit": 1418,
+        "vat": 600,
+        "total": 1418,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\José Rosa (Arnal)\\Orçamento_ongrid.pdf",
+    "name": "Orçamento_ongrid.pdf",
+    "folder": "José Rosa (Arnal)",
+    "date": "2025-06-09",
+    "subtotal": 2288,
+    "total": 2288,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "GW3600-DNS-30. Inversor conexão à rede 3600W monofásico, 2-MPPT",
+        "qty": 100,
+        "unit": 625,
+        "vat": 600,
+        "total": 625,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 800,
+        "unit": 76,
+        "vat": 600,
+        "total": 608,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V5 a 10º",
+        "qty": 100,
+        "unit": 255,
+        "vat": 600,
+        "total": 255,
+        "category": "structure"
+      },
+      {
+        "desc": "Estrutura Sunfer 20H1 a 10º",
+        "qty": 300,
+        "unit": 66,
+        "vat": 600,
+        "total": 198,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 170,
+        "vat": 600,
+        "total": 170,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Boavista)\\Fatura 30-06-2025.pdf",
+    "name": "Fatura 30-06-2025.pdf",
+    "folder": "João (Boavista)",
+    "date": "2025-06-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 590,
+      "panelCount": 1000,
+      "kwp": 59
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1165,
+        "vat": 600,
+        "total": 1165,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel DMEG 590W",
+        "qty": 1000,
+        "unit": 98.5,
+        "vat": 600,
+        "total": 985,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura coplanar e fixadores",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 169,
+        "vat": 600,
+        "total": 169,
+        "category": "electrical"
+      },
+      {
+        "desc": "Painel 480W (a confirmar)",
+        "qty": 200,
+        "unit": 80.5,
+        "vat": 600,
+        "total": 161,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura para 2 paineis + fixadores",
+        "qty": 100,
+        "unit": 40,
+        "vat": 600,
+        "total": 40,
+        "category": "structure"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2700,
+        "unit": 18,
+        "vat": 600,
+        "total": 486,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Boavista)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "João (Boavista)",
+    "date": "2025-03-13",
+    "subtotal": 5296.5,
+    "total": 5296.5,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 700,
+      "kwp": 32.2
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1165,
+        "vat": 600,
+        "total": 1165,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 700,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 549.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura coplanar e fixadores",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "structure"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20 (LV)",
+        "qty": 200,
+        "unit": 1400,
+        "vat": 600,
+        "total": 2800,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Boavista)\\Orçamento_2.pdf",
+    "name": "Orçamento_2.pdf",
+    "folder": "João (Boavista)",
+    "date": "2025-04-02",
+    "subtotal": 3191,
+    "total": 3191,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 590,
+      "panelCount": 1000,
+      "kwp": 59
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1165,
+        "vat": 600,
+        "total": 1165,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel DMEG 590W",
+        "qty": 1000,
+        "unit": 98.5,
+        "vat": 600,
+        "total": 985,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura coplanar e fixadores",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 169,
+        "vat": 600,
+        "total": 169,
+        "category": "electrical"
+      },
+      {
+        "desc": "Painel 480W (a confirmar)",
+        "qty": 200,
+        "unit": 80.5,
+        "vat": 600,
+        "total": 161,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura para 2 paineis + fixadores",
+        "qty": 100,
+        "unit": 40,
+        "vat": 600,
+        "total": 40,
+        "category": "structure"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2700,
+        "unit": 18,
+        "vat": 600,
+        "total": 486,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Carolina) - Gândara\\Fatura de adiantamento.pdf",
+    "name": "Fatura de adiantamento.pdf",
+    "folder": "João (Carolina) - Gândara",
+    "date": "2024-10-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Adiantamento por conta da Adjudicação do Orçamento nº 2024/25 (JJTKZGH3-25)",
+        "qty": 100,
+        "unit": 3773.58,
+        "vat": 600,
+        "total": 3773.58,
+        "category": "other"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Carolina) - Gândara\\Fatura final.pdf",
+    "name": "Fatura final.pdf",
+    "folder": "João (Carolina) - Gândara",
+    "date": "2025-06-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 900,
+      "kwp": 41.4
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 900,
+        "unit": 90.5,
+        "vat": 600,
+        "total": 814.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Painel LONGI 575w",
+        "qty": 500,
+        "unit": 106,
+        "vat": 600,
+        "total": 530,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 5.0kw (GW5000-ES-20-G2)",
+        "qty": 100,
+        "unit": 1255,
+        "vat": 600,
+        "total": 1255,
+        "category": "inverter"
+      },
+      {
+        "desc": "Módulos de estrutura SUNFER (1x módulo para 5 painéis na vertical; 1x módulo para 2 painéis na vertical; 1x módulo para 3 painéis na horizontal; 1x módulo para 4 painéis na horizontal) com salva telhas",
+        "qty": 400,
+        "unit": 122.7,
+        "vat": 600,
+        "total": 490.8,
+        "category": "structure"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4",
+        "qty": 200,
+        "unit": 1620,
+        "vat": 600,
+        "total": 3240,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G4 + Cabos 6mm + fichas solares + Cabos baterias",
+        "qty": 100,
+        "unit": 200,
+        "vat": 600,
+        "total": 200,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 15,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador ITRON módulo GSM",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Carolina) - Gândara\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "João (Carolina) - Gândara",
+    "date": "2024-09-24",
+    "subtotal": 7510,
+    "total": 7510,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 450,
+      "panelCount": 700,
+      "kwp": 31.5
+    },
+    "items": [
+      {
+        "desc": "Painel AIKO 450w",
+        "qty": 700,
+        "unit": 100.5,
+        "vat": 600,
+        "total": 703.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Painel LONGI 575w",
+        "qty": 500,
+        "unit": 107.5,
+        "vat": 600,
+        "total": 537.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 5.0kw (GW5000-ES-20-G2)",
+        "qty": 100,
+        "unit": 1385,
+        "vat": 600,
+        "total": 1385,
+        "category": "inverter"
+      },
+      {
+        "desc": "Módulos de estrutura SUNFER (1x módulo para 5 painéis na vertical; 1x módulo para 2 painéis na vertical; 1x módulo para 2 painéis na horizontal; 1x módulo para 3 painéis na horizontal)",
+        "qty": 400,
+        "unit": 91,
+        "vat": 600,
+        "total": 364,
+        "category": "structure"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4",
+        "qty": 200,
+        "unit": 1650,
+        "vat": 600,
+        "total": 3300,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G4 + Cabos 6mm + fichas solares + Cabos baterias",
+        "qty": 100,
+        "unit": 235,
+        "vat": 600,
+        "total": 235,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 15,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador ITRON módulo GSM",
+        "qty": 100,
+        "unit": 625,
+        "vat": 600,
+        "total": 625,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Carolina) - Gândara\\Orçamento_2.pdf",
+    "name": "Orçamento_2.pdf",
+    "folder": "João (Carolina) - Gândara",
+    "date": "2024-10-03",
+    "subtotal": 7320.5,
+    "total": 7320.5,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 700,
+      "kwp": 32.2
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar 460w",
+        "qty": 700,
+        "unit": 93.5,
+        "vat": 600,
+        "total": 654.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Painel LONGI 575w",
+        "qty": 500,
+        "unit": 106,
+        "vat": 600,
+        "total": 530,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 5.0kw (GW5000-ES-20-G2)",
+        "qty": 100,
+        "unit": 1295,
+        "vat": 600,
+        "total": 1295,
+        "category": "inverter"
+      },
+      {
+        "desc": "Módulos de estrutura SUNFER (1x módulo para 5 painéis na vertical; 1x módulo para 2 painéis na vertical; 1x módulo para 2 painéis na horizontal; 1x módulo para 3 painéis na horizontal)",
+        "qty": 400,
+        "unit": 99.5,
+        "vat": 600,
+        "total": 398,
+        "category": "structure"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4",
+        "qty": 200,
+        "unit": 1650,
+        "vat": 600,
+        "total": 3300,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G4 + Cabos 6mm + fichas solares + Cabos baterias",
+        "qty": 100,
+        "unit": 218,
+        "vat": 600,
+        "total": 218,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 15,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador ITRON módulo GSM",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Carolina) - Gândara\\Orçamento_3.pdf",
+    "name": "Orçamento_3.pdf",
+    "folder": "João (Carolina) - Gândara",
+    "date": "2024-10-22",
+    "subtotal": 7455.3,
+    "total": 7455.3,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 900,
+      "kwp": 41.4
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar TOPHiKu6 N-Type TOPCon 460W",
+        "qty": 900,
+        "unit": 90.5,
+        "vat": 600,
+        "total": 814.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Painel LONGI 575w",
+        "qty": 500,
+        "unit": 106,
+        "vat": 600,
+        "total": 530,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 5.0kw (GW5000-ES-20-G2)",
+        "qty": 100,
+        "unit": 1255,
+        "vat": 600,
+        "total": 1255,
+        "category": "inverter"
+      },
+      {
+        "desc": "Módulos de estrutura SUNFER (1x módulo para 5 painéis na vertical; 1x módulo para 2 painéis na vertical; 1x módulo para 3 painéis na horizontal; 1x módulo para 4 painéis na horizontal) com salva telhas",
+        "qty": 400,
+        "unit": 122.7,
+        "vat": 600,
+        "total": 490.8,
+        "category": "structure"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4",
+        "qty": 200,
+        "unit": 1620,
+        "vat": 600,
+        "total": 3240,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G4 + Cabos 6mm + fichas solares + Cabos baterias",
+        "qty": 100,
+        "unit": 200,
+        "vat": 600,
+        "total": 200,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 15,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador ITRON módulo GSM",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Golpilheira)\\Orçamento hibrido.pdf",
+    "name": "Orçamento hibrido.pdf",
+    "folder": "João (Golpilheira)",
+    "date": "2025-06-27",
+    "subtotal": 5385,
+    "total": 5385,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": 580,
+      "panelCount": 700,
+      "kwp": 40.6
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG 580W (ou similar - 9 paineis 460W)",
+        "qty": 700,
+        "unit": 127,
+        "vat": 2300,
+        "total": 711.2,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW5000-ES-20-G2",
+        "qty": 100,
+        "unit": 1349,
+        "vat": 2300,
+        "total": 1241.08,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V3/11v4 a 15º",
+        "qty": 100,
+        "unit": 615,
+        "vat": 2300,
+        "total": 553.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G6 + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 215,
+        "vat": 2300,
+        "total": 215,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2800,
+        "unit": 18,
+        "vat": 2300,
+        "total": 504,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (incluído)",
+        "qty": 100,
+        "unit": 0,
+        "vat": 2300,
+        "total": 0,
+        "category": "meter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 100,
+        "unit": 1813,
+        "vat": 2300,
+        "total": 1541.05,
+        "category": "battery"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\João (Golpilheira)\\Orçamento ongrid.pdf",
+    "name": "Orçamento ongrid.pdf",
+    "folder": "João (Golpilheira)",
+    "date": "2025-06-27",
+    "subtotal": 2809,
+    "total": 2809,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 580,
+      "panelCount": 700,
+      "kwp": 40.6
+    },
+    "items": [
+      {
+        "desc": "Painel DMEG 580W (ou similar - 9 paineis 460W)",
+        "qty": 700,
+        "unit": 127,
+        "vat": 2300,
+        "total": 711.2,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe GW4200D-NS 2-MPPT",
+        "qty": 100,
+        "unit": 688,
+        "vat": 2300,
+        "total": 688,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V3/11v4 a 15º",
+        "qty": 100,
+        "unit": 615,
+        "vat": 2300,
+        "total": 553.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, calhas, cabo 3G6 + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 185,
+        "vat": 2300,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 2300,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (incluído)",
+        "qty": 100,
+        "unit": 0,
+        "vat": 2300,
+        "total": 0,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Lino - Parceiros\\orçamento Goodwe.pdf",
+    "name": "orçamento Goodwe.pdf",
+    "folder": "Lino - Parceiros",
+    "date": "2024-05-23",
+    "subtotal": 2497,
+    "total": 2497,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 460W",
+        "qty": 600,
+        "unit": 115,
+        "vat": 600,
+        "total": 690,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe GW4000-SDT-20. Trifásico",
+        "qty": 100,
+        "unit": 945,
+        "vat": 600,
+        "total": 945,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer coplanar para telha Lusa, com var\\ao roscado",
+        "qty": 100,
+        "unit": 192,
+        "vat": 600,
+        "total": 192,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixa, cabos, fichas,....)",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Goodwe GM3000 - medidor e limitador (opcional)",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 20,
+        "vat": 600,
+        "total": 320,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Lino - Parceiros\\orçamento Solax.pdf",
+    "name": "orçamento Solax.pdf",
+    "folder": "Lino - Parceiros",
+    "date": "2024-05-23",
+    "subtotal": 2272,
+    "total": 2272,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo JA Solar 460W",
+        "qty": 600,
+        "unit": 112,
+        "vat": 600,
+        "total": 672,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Solax 3.0 X3 MIC trifásico",
+        "qty": 100,
+        "unit": 795,
+        "vat": 600,
+        "total": 795,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Ficsol coplanar para telha Lusa",
+        "qty": 100,
+        "unit": 145,
+        "vat": 600,
+        "total": 145,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixa, cabos, fichas,....)",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Meter DTSU666 com 3 pinças",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 20,
+        "vat": 600,
+        "total": 320,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Luisa Maria Campos Coelho\\orçamento_sistema_solar.pdf",
+    "name": "orçamento_sistema_solar.pdf",
+    "folder": "Luisa Maria Campos Coelho",
+    "date": "2023-08-10",
+    "subtotal": 4212,
+    "total": 4212,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 460w",
+        "qty": 800,
+        "unit": 155,
+        "vat": 600,
+        "total": 1240,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe GW3648D-ES",
+        "qty": 100,
+        "unit": 1177,
+        "vat": 600,
+        "total": 1177,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Van Der Valk Strongline",
+        "qty": 800,
+        "unit": 43.75,
+        "vat": 600,
+        "total": 350,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico",
+        "qty": 100,
+        "unit": 180,
+        "vat": 600,
+        "total": 180,
+        "category": "electrical"
+      },
+      {
+        "desc": "Batería de Litio Pylontech US2000C 2.4kWh (New version)",
+        "qty": 100,
+        "unit": 985,
+        "vat": 600,
+        "total": 985,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 270,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Lúcio (estufador)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Lúcio (estufador)",
+    "date": "2025-03-13",
+    "subtotal": 2784.5,
+    "total": 2784.5,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 900,
+      "kwp": 41.4
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe GW4000-SDT-20 4000W Trifásico",
+        "qty": 100,
+        "unit": 950,
+        "vat": 600,
+        "total": 950,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 900,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 706.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular a 15ª Sunfer 10V4+10V5",
+        "qty": 100,
+        "unit": 412,
+        "vat": 600,
+        "total": 412,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (para visualização do sistema em aplicação) OPCIONAL",
+        "qty": 100,
+        "unit": 99,
+        "vat": 600,
+        "total": 99,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Lúcio (estufador)\\Orçamento_2.pdf",
+    "name": "Orçamento_2.pdf",
+    "folder": "Lúcio (estufador)",
+    "date": "2025-04-02",
+    "subtotal": 3137,
+    "total": 3137,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 590,
+      "panelCount": 800,
+      "kwp": 47.2
+    },
+    "items": [
+      {
+        "desc": "GW5000-SDT-20. Inversor conexión a Red 5000W Trifásico, SERIE G2 PLUS",
+        "qty": 100,
+        "unit": 1035,
+        "vat": 600,
+        "total": 1035,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel DMEG 590W",
+        "qty": 800,
+        "unit": 98.5,
+        "vat": 600,
+        "total": 788,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular a 15ª Sunfer 11V4",
+        "qty": 200,
+        "unit": 256,
+        "vat": 600,
+        "total": 512,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (para visualização do sistema em aplicação) OPCIONAL",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Magalhaes\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Magalhaes",
+    "date": "2025-03-12",
+    "subtotal": 3997,
+    "total": 3997,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1120,
+        "vat": 600,
+        "total": 1120,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 200,
+        "unit": 1380,
+        "vat": 600,
+        "total": 2760,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico",
+        "qty": 100,
+        "unit": 45,
+        "vat": 600,
+        "total": 45,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 400,
+        "unit": 18,
+        "vat": 600,
+        "total": 72,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Manuel Cardoso\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Manuel Cardoso",
+    "date": "2024-10-14",
+    "subtotal": 1523,
+    "total": 1523,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 400,
+      "kwp": 18.4
+    },
+    "items": [
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 400,
+        "unit": 91,
+        "vat": 600,
+        "total": 364,
+        "category": "panel"
+      },
+      {
+        "desc": "SOLAX X1-2.5K-S-D(L)-G3 / 2500W / 1 MPPT / DC switch /wi-fi 3.0",
+        "qty": 100,
+        "unit": 415,
+        "vat": 600,
+        "total": 415,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura triangular 15º Ficsol com salva telhas",
+        "qty": 100,
+        "unit": 212,
+        "vat": 600,
+        "total": 212,
+        "category": "structure"
+      },
+      {
+        "desc": "SOLAX Single Phase Meter Chint DDSU666-CT",
+        "qty": 100,
+        "unit": 89,
+        "vat": 600,
+        "total": 89,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 155,
+        "vat": 600,
+        "total": 155,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 18,
+        "vat": 600,
+        "total": 288,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Febra\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Marco Febra",
+    "date": "2024-05-27",
+    "subtotal": 3138,
+    "total": 3138,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 460w (ou JA Solar)",
+        "qty": 800,
+        "unit": 115,
+        "vat": 600,
+        "total": 920,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1235,
+        "vat": 600,
+        "total": 1235,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V... a 15º",
+        "qty": 100,
+        "unit": 448,
+        "vat": 600,
+        "total": 448,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 20,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Galga\\fatura 3.pdf",
+    "name": "fatura 3.pdf",
+    "folder": "Marco Galga",
+    "date": "2023-10-25",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "HomeKit Monofásico",
+        "qty": 100,
+        "unit": 142.85,
+        "vat": 600,
+        "total": 142.85,
+        "category": "other"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Galga\\fatura 4.pdf",
+    "name": "fatura 4.pdf",
+    "folder": "Marco Galga",
+    "date": "2023-10-25",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 200,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 298.9,
+        "category": "other"
+      },
+      {
+        "desc": "Suporte inclinado aberto, regulável 20º a 35º",
+        "qty": 100,
+        "unit": 150.64,
+        "vat": 600,
+        "total": 150.64,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor conexão à rede GW2500-XS 1-MPPT, MONOFASICO",
+        "qty": 100,
+        "unit": 380.76,
+        "vat": 600,
+        "total": 380.76,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 148,
+        "vat": 600,
+        "total": 148,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Galga\\fatura edp.pdf",
+    "name": "fatura edp.pdf",
+    "folder": "Marco Galga",
+    "date": "2023-10-19",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": []
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Salada\\Orçamento_Híbrido.pdf",
+    "name": "Orçamento_Híbrido.pdf",
+    "folder": "Marco Salada",
+    "date": "2023-11-16",
+    "subtotal": 3789,
+    "total": 3789,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 500,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 747.25,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3648-EM) ou similar",
+        "qty": 100,
+        "unit": 1145.5,
+        "vat": 600,
+        "total": 1145.5,
+        "category": "inverter"
+      },
+      {
+        "desc": "Suporte inclinado fechado a 30º",
+        "qty": 100,
+        "unit": 331.25,
+        "vat": 600,
+        "total": 331.25,
+        "category": "other"
+      },
+      {
+        "desc": "Bateria Pylontech US3000C 3,5kWh 48V",
+        "qty": 100,
+        "unit": 985,
+        "vat": 600,
+        "total": 985,
+        "category": "battery"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 190,
+        "vat": 600,
+        "total": 190,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1300,
+        "unit": 30,
+        "vat": 600,
+        "total": 390,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marco Salada\\Orçamento_Ongrid.pdf",
+    "name": "Orçamento_Ongrid.pdf",
+    "folder": "Marco Salada",
+    "date": "2023-11-16",
+    "subtotal": 2024.26,
+    "total": 2024.26,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 500,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 747.25,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor conexão à rede GW2500-XS 1-MPPT, MONOFASICO",
+        "qty": 100,
+        "unit": 380.76,
+        "vat": 600,
+        "total": 380.76,
+        "category": "inverter"
+      },
+      {
+        "desc": "Suporte inclinado fechado a 30º",
+        "qty": 100,
+        "unit": 331.25,
+        "vat": 600,
+        "total": 331.25,
+        "category": "other"
+      },
+      {
+        "desc": "CT90 - Pinça amperimétrica para controle do inversor",
+        "qty": 100,
+        "unit": 100,
+        "vat": 600,
+        "total": 100,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1000,
+        "unit": 30,
+        "vat": 600,
+        "total": 300,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marisa Branco\\comprovativo de pagamento e fatura_recibo.pdf",
+    "name": "comprovativo de pagamento e fatura_recibo.pdf",
+    "folder": "Marisa Branco",
+    "date": "2023-10-31",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 600,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 896.7,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3648-EM)",
+        "qty": 100,
+        "unit": 1138.75,
+        "vat": 600,
+        "total": 1138.75,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Pylontech US3000C 3,5kWh 48V",
+        "qty": 100,
+        "unit": 957.45,
+        "vat": 600,
+        "total": 957.45,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 318.5,
+        "vat": 600,
+        "total": 318.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro parcial, proteções, fichas, cabos",
+        "qty": 100,
+        "unit": 121,
+        "vat": 600,
+        "total": 121,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabos bateria 25mm2",
+        "qty": 100,
+        "unit": 28.4,
+        "vat": 600,
+        "total": 28.4,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1300,
+        "unit": 30,
+        "vat": 600,
+        "total": 390,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marisa Branco\\fatura.pdf",
+    "name": "fatura.pdf",
+    "folder": "Marisa Branco",
+    "date": "2023-10-31",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 600,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 896.7,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3648-EM)",
+        "qty": 100,
+        "unit": 1138.75,
+        "vat": 600,
+        "total": 1138.75,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Pylontech US3000C 3,5kWh 48V",
+        "qty": 100,
+        "unit": 957.45,
+        "vat": 600,
+        "total": 957.45,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 318.5,
+        "vat": 600,
+        "total": 318.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro parcial, proteções, fichas, cabos",
+        "qty": 100,
+        "unit": 121,
+        "vat": 600,
+        "total": 121,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabos bateria 25mm2",
+        "qty": 100,
+        "unit": 28.4,
+        "vat": 600,
+        "total": 28.4,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1300,
+        "unit": 30,
+        "vat": 600,
+        "total": 390,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marisa Branco\\orçamento sistema fotovoltaico.pdf",
+    "name": "orçamento sistema fotovoltaico.pdf",
+    "folder": "Marisa Branco",
+    "date": "2023-09-27",
+    "subtotal": 3725.45,
+    "total": 3725.45,
+    "system": {
+      "mode": "hybrid",
+      "phase": "monofasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 500,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 747.25,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.0KW (GW3000-ES-20-G2)",
+        "qty": 100,
+        "unit": 1165.35,
+        "vat": 600,
+        "total": 1165.35,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Pylontech US3000C 3,5kWh 48V",
+        "qty": 100,
+        "unit": 932.45,
+        "vat": 600,
+        "total": 932.45,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 365,
+        "vat": 600,
+        "total": 365,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + cabos + proteções + fichas",
+        "qty": 100,
+        "unit": 97,
+        "vat": 600,
+        "total": 97,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabos bateria 25mm2",
+        "qty": 100,
+        "unit": 28.4,
+        "vat": 600,
+        "total": 28.4,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1300,
+        "unit": 30,
+        "vat": 600,
+        "total": 390,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Marisa Branco\\orçamento sistema fotovoltaico_2.pdf",
+    "name": "orçamento sistema fotovoltaico_2.pdf",
+    "folder": "Marisa Branco",
+    "date": "2023-10-01",
+    "subtotal": 3850.8,
+    "total": 3850.8,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 600,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 896.7,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3648-EM)",
+        "qty": 100,
+        "unit": 1138.75,
+        "vat": 600,
+        "total": 1138.75,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Pylontech US3000C 3,5kWh 48V",
+        "qty": 100,
+        "unit": 957.45,
+        "vat": 600,
+        "total": 957.45,
+        "category": "battery"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 318.5,
+        "vat": 600,
+        "total": 318.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Quadro parcial, proteções, fichas, cabos",
+        "qty": 100,
+        "unit": 121,
+        "vat": 600,
+        "total": 121,
+        "category": "electrical"
+      },
+      {
+        "desc": "Cabos bateria 25mm2",
+        "qty": 100,
+        "unit": 28.4,
+        "vat": 600,
+        "total": 28.4,
+        "category": "battery"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1300,
+        "unit": 30,
+        "vat": 600,
+        "total": 390,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Micael Sousa\\Fatura.pdf",
+    "name": "Fatura.pdf",
+    "folder": "Micael Sousa",
+    "date": "2024-12-10",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 575,
+      "panelCount": 600,
+      "kwp": 34.5
+    },
+    "items": [
+      {
+        "desc": "Painel 575w Canadian Solar Ntype TOPCon",
+        "qty": 600,
+        "unit": 95,
+        "vat": 600,
+        "total": 570,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1085,
+        "vat": 600,
+        "total": 1085,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 01V4+01V2",
+        "qty": 100,
+        "unit": 218,
+        "vat": 600,
+        "total": 218,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Micael Sousa\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Micael Sousa",
+    "date": "2024-12-10",
+    "subtotal": 3870,
+    "total": 3870,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 575,
+      "panelCount": 600,
+      "kwp": 34.5
+    },
+    "items": [
+      {
+        "desc": "Painel 575w Canadian Solar Ntype TOPCon",
+        "qty": 600,
+        "unit": 95,
+        "vat": 600,
+        "total": 570,
+        "category": "panel"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1085,
+        "vat": 600,
+        "total": 1085,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 01V4+01V2",
+        "qty": 100,
+        "unit": 218,
+        "vat": 600,
+        "total": 218,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 165,
+        "vat": 600,
+        "total": 165,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Mário\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Mário",
+    "date": "2023-09-04",
+    "subtotal": 1298.25,
+    "total": 1298.25,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 200,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 298.9,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor conexão à rede GW2000-XS 1-MPPT, MONOFASICO",
+        "qty": 100,
+        "unit": 352.5,
+        "vat": 600,
+        "total": 352.5,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 86.5,
+        "vat": 600,
+        "total": 86.5,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 137.5,
+        "vat": 600,
+        "total": 137.5,
+        "category": "electrical"
+      },
+      {
+        "desc": "HomeKit Monofásico",
+        "qty": 100,
+        "unit": 142.85,
+        "vat": 600,
+        "total": 142.85,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Paulo - Casalinho\\Orçamento com bateria Goodwe.pdf",
+    "name": "Orçamento com bateria Goodwe.pdf",
+    "folder": "Paulo - Casalinho",
+    "date": "2024-01-27",
+    "subtotal": 5015,
+    "total": 5015,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 455w",
+        "qty": 800,
+        "unit": 125,
+        "vat": 600,
+        "total": 1000,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1245,
+        "vat": 600,
+        "total": 1245,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4",
+        "qty": 200,
+        "unit": 230,
+        "vat": 600,
+        "total": 460,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1200,
+        "unit": 30,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1775,
+        "vat": 600,
+        "total": 1775,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Paulo - Casalinho\\Orçamento com bateria Pylontech.pdf",
+    "name": "Orçamento com bateria Pylontech.pdf",
+    "folder": "Paulo - Casalinho",
+    "date": "2024-01-27",
+    "subtotal": 6465,
+    "total": 6465,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 455w",
+        "qty": 800,
+        "unit": 125,
+        "vat": 600,
+        "total": 1000,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1245,
+        "vat": 600,
+        "total": 1245,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4",
+        "qty": 200,
+        "unit": 230,
+        "vat": 600,
+        "total": 460,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1200,
+        "unit": 30,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria Pylontech 3.5kWh",
+        "qty": 100,
+        "unit": 975,
+        "vat": 600,
+        "total": 975,
+        "category": "battery"
+      },
+      {
+        "desc": "Bateria Pylontech 2.4kWh",
+        "qty": 100,
+        "unit": 850,
+        "vat": 600,
+        "total": 850,
+        "category": "battery"
+      },
+      {
+        "desc": "Bateria Pylontech 4.8kWh",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "battery"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Paulo - Casalinho\\Orçamento Goodwe + bateria Lynx.pdf",
+    "name": "Orçamento Goodwe + bateria Lynx.pdf",
+    "folder": "Paulo - Casalinho",
+    "date": "2024-05-26",
+    "subtotal": 3150,
+    "total": 3150,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 460w",
+        "qty": 800,
+        "unit": 115,
+        "vat": 600,
+        "total": 920,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1235,
+        "vat": 600,
+        "total": 1235,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4",
+        "qty": 200,
+        "unit": 230,
+        "vat": 600,
+        "total": 460,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1800,
+        "unit": 20,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Paulo - Casalinho\\Orçamento on-grid.pdf",
+    "name": "Orçamento on-grid.pdf",
+    "folder": "Paulo - Casalinho",
+    "date": "2024-01-27",
+    "subtotal": 2757,
+    "total": 2757,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 455w",
+        "qty": 800,
+        "unit": 125,
+        "vat": 600,
+        "total": 1000,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe GW4200D-NS 2-MPPT",
+        "qty": 100,
+        "unit": 749,
+        "vat": 600,
+        "total": 749,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V4",
+        "qty": 200,
+        "unit": 230,
+        "vat": 600,
+        "total": 460,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 150,
+        "vat": 600,
+        "total": 150,
+        "category": "electrical"
+      },
+      {
+        "desc": "CT90 - Pinça amperimétrica para controle do inversor",
+        "qty": 100,
+        "unit": 38,
+        "vat": 600,
+        "total": 38,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1200,
+        "unit": 30,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Paulo Rodrigues\\orçamento para sistema fotovoltaico.pdf",
+    "name": "orçamento para sistema fotovoltaico.pdf",
+    "folder": "Paulo Rodrigues",
+    "date": "2023-09-27",
+    "subtotal": 4597,
+    "total": 4597,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1220.74,
+        "vat": 600,
+        "total": 1220.74,
+        "category": "inverter"
+      },
+      {
+        "desc": "Módulo Canadian HiKu6 450W Monocristalino",
+        "qty": 700,
+        "unit": 149.45,
+        "vat": 600,
+        "total": 1046.15,
+        "category": "other"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1572.98,
+        "vat": 600,
+        "total": 1572.98,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura e fixadores",
+        "qty": 100,
+        "unit": 298.73,
+        "vat": 600,
+        "total": 298.73,
+        "category": "structure"
+      },
+      {
+        "desc": "Cabo solar, vermelho + preto (16m+16m)",
+        "qty": 3200,
+        "unit": 1.2,
+        "vat": 600,
+        "total": 38.4,
+        "category": "electrical"
+      },
+      {
+        "desc": "Quadro elétrico Legrand + proteções",
+        "qty": 100,
+        "unit": 58,
+        "vat": 600,
+        "total": 58,
+        "category": "electrical"
+      },
+      {
+        "desc": "Outros componentes",
+        "qty": 100,
+        "unit": 62,
+        "vat": 600,
+        "total": 62,
+        "category": "other"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1000,
+        "unit": 30,
+        "vat": 600,
+        "total": 300,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Pedro Ascenso (Scouts)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Pedro Ascenso (Scouts)",
+    "date": "2025-10-21",
+    "subtotal": 3731,
+    "total": 3731,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 455,
+      "panelCount": 600,
+      "kwp": 27.3
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 455W (ou potência similar)",
+        "qty": 600,
+        "unit": 66.5,
+        "vat": 2300,
+        "total": 399,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6 (15º ou 30º)",
+        "qty": 100,
+        "unit": 315,
+        "vat": 2300,
+        "total": 315,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor híbrido GOODWE, monofásico de 3.6KW (GW3600-ES-20-G2)",
+        "qty": 100,
+        "unit": 1209,
+        "vat": 2300,
+        "total": 1209,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Lynx G3 - 5.12kWh",
+        "qty": 100,
+        "unit": 1425,
+        "vat": 2300,
+        "total": 1425,
+        "category": "battery"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 95,
+        "vat": 2300,
+        "total": 95,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1600,
+        "unit": 18,
+        "vat": 2300,
+        "total": 288,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Ricardo - Reguengo\\Orçamento com bateria (novo).pdf",
+    "name": "Orçamento com bateria (novo).pdf",
+    "folder": "Ricardo - Reguengo",
+    "date": "2024-10-14",
+    "subtotal": 3892,
+    "total": 3892,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 460w",
+        "qty": 800,
+        "unit": 91,
+        "vat": 600,
+        "total": 728,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1000,
+        "vat": 600,
+        "total": 1000,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Coplanar",
+        "qty": 100,
+        "unit": 250,
+        "vat": 600,
+        "total": 250,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 150,
+        "vat": 600,
+        "total": 150,
+        "category": "electrical"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1380,
+        "vat": 600,
+        "total": 1380,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 16,
+        "vat": 600,
+        "total": 384,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Ricardo - Reguengo\\Orçamento com bateria.pdf",
+    "name": "Orçamento com bateria.pdf",
+    "folder": "Ricardo - Reguengo",
+    "date": "2024-04-07",
+    "subtotal": 4820,
+    "total": 4820,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 455W ou JA Solar 460W",
+        "qty": 600,
+        "unit": 120,
+        "vat": 600,
+        "total": 720,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1245,
+        "vat": 600,
+        "total": 1245,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6",
+        "qty": 100,
+        "unit": 390,
+        "vat": 600,
+        "total": 390,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 190,
+        "vat": 600,
+        "total": 190,
+        "category": "electrical"
+      },
+      {
+        "desc": "Bateria GOODWE, 5.4KW (SECU-A5.4L)",
+        "qty": 100,
+        "unit": 1855,
+        "vat": 600,
+        "total": 1855,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1400,
+        "unit": 30,
+        "vat": 600,
+        "total": 420,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Ricardo - Reguengo\\Orçamento on-grid.pdf",
+    "name": "Orçamento on-grid.pdf",
+    "folder": "Ricardo - Reguengo",
+    "date": "2024-04-07",
+    "subtotal": 2280,
+    "total": 2280,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian Solar 455W ou JA Solar 460W",
+        "qty": 600,
+        "unit": 120,
+        "vat": 600,
+        "total": 720,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor Goodwe GW2500 XS 11",
+        "qty": 100,
+        "unit": 530,
+        "vat": 600,
+        "total": 530,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 11V6",
+        "qty": 100,
+        "unit": 390,
+        "vat": 600,
+        "total": 390,
+        "category": "structure"
+      },
+      {
+        "desc": "Caixa + proteções + cabos",
+        "qty": 100,
+        "unit": 160,
+        "vat": 600,
+        "total": 160,
+        "category": "electrical"
+      },
+      {
+        "desc": "CT90 - Pinça amperimétrica para controle do inversor",
+        "qty": 100,
+        "unit": 60,
+        "vat": 600,
+        "total": 60,
+        "category": "inverter"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 1400,
+        "unit": 30,
+        "vat": 600,
+        "total": 420,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Rogério Barbeiro\\Orçamento_Sistema_Injeção_Rede.pdf",
+    "name": "Orçamento_Sistema_Injeção_Rede.pdf",
+    "folder": "Rogério Barbeiro",
+    "date": "2023-08-10",
+    "subtotal": 1483,
+    "total": 1483,
+    "system": {
+      "mode": "unknown",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 300,
+      "kwp": 13.8
+    },
+    "items": [
+      {
+        "desc": "Painel Solar JASolar 460w",
+        "qty": 300,
+        "unit": 155,
+        "vat": 600,
+        "total": 465,
+        "category": "panel"
+      },
+      {
+        "desc": "INVERSOR GOODWE GW1500-XS",
+        "qty": 100,
+        "unit": 298,
+        "vat": 600,
+        "total": 298,
+        "category": "inverter"
+      },
+      {
+        "desc": "KIT BULNES 30º 2 PANELES",
+        "qty": 100,
+        "unit": 265,
+        "vat": 600,
+        "total": 265,
+        "category": "other"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 175,
+        "vat": 600,
+        "total": 175,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 800,
+        "unit": 35,
+        "vat": 600,
+        "total": 280,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Romeu Barbeiro\\Orçamento (sistema monofásico híbrido).pdf",
+    "name": "Orçamento (sistema monofásico híbrido).pdf",
+    "folder": "Romeu Barbeiro",
+    "date": "2025-03-13",
+    "subtotal": 4125,
+    "total": 4125,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": 460,
+      "panelCount": 800,
+      "kwp": 36.8
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1080,
+        "vat": 600,
+        "total": 1080,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 800,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 628,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular a 15ª Sunfer 10V4",
+        "qty": 200,
+        "unit": 200,
+        "vat": 600,
+        "total": 400,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20 (LV)",
+        "qty": 100,
+        "unit": 1400,
+        "vat": 600,
+        "total": 1400,
+        "category": "inverter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Romeu Barbeiro\\Orçamento (sistema monofásico ongrid).pdf",
+    "name": "Orçamento (sistema monofásico ongrid).pdf",
+    "folder": "Romeu Barbeiro",
+    "date": "2025-03-13",
+    "subtotal": 1906,
+    "total": 1906,
+    "system": {
+      "mode": "ongrid",
+      "phase": "monofasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 600,
+      "kwp": 27.6
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe 2500W MONOFASICO, GW2500-XS-11",
+        "qty": 100,
+        "unit": 405,
+        "vat": 600,
+        "total": 405,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 600,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 471,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular a 15ª Sunfer 10V3",
+        "qty": 200,
+        "unit": 190,
+        "vat": 600,
+        "total": 380,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 155,
+        "vat": 600,
+        "total": 155,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2200,
+        "unit": 18,
+        "vat": 600,
+        "total": 396,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (para visualização do sistema em aplicação) OPCIONAL",
+        "qty": 100,
+        "unit": 99,
+        "vat": 600,
+        "total": 99,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Romeu Barbeiro\\Orçamento (sistema trifásico ongrid).pdf",
+    "name": "Orçamento (sistema trifásico ongrid).pdf",
+    "folder": "Romeu Barbeiro",
+    "date": "2025-03-13",
+    "subtotal": 2784.5,
+    "total": 2784.5,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": 460,
+      "panelCount": 900,
+      "kwp": 41.4
+    },
+    "items": [
+      {
+        "desc": "Inversor Goodwe GW4000-SDT-20. Trifásico",
+        "qty": 100,
+        "unit": 950,
+        "vat": 600,
+        "total": 950,
+        "category": "inverter"
+      },
+      {
+        "desc": "Painel Canadian Solar 460W",
+        "qty": 900,
+        "unit": 78.5,
+        "vat": 600,
+        "total": 706.5,
+        "category": "panel"
+      },
+      {
+        "desc": "Estrutura triangular a 15ª Sunfer 10V4+10V5",
+        "qty": 100,
+        "unit": 412,
+        "vat": 600,
+        "total": 412,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 185,
+        "vat": 600,
+        "total": 185,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2400,
+        "unit": 18,
+        "vat": 600,
+        "total": 432,
+        "category": "labor"
+      },
+      {
+        "desc": "Smart Meter (para visualização do sistema em aplicação) OPCIONAL",
+        "qty": 100,
+        "unit": 99,
+        "vat": 600,
+        "total": 99,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago (Dora)\\Fatura final.pdf",
+    "name": "Fatura final.pdf",
+    "folder": "Tiago (Dora)",
+    "date": "2025-06-30",
+    "subtotal": null,
+    "total": null,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian TOPBiHiKu6 N-Type Bifacial TOPCon 575W 144 células",
+        "qty": 1600,
+        "unit": 98.5,
+        "vat": 600,
+        "total": 1576,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor de conexão à rede 10000W Trifásico Smart, SERIE G2 - GW10KT-DT",
+        "qty": 100,
+        "unit": 1125,
+        "vat": 600,
+        "total": 1125,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 09V4-30º, alumínio, FIXA.",
+        "qty": 400,
+        "unit": 178.5,
+        "vat": 600,
+        "total": 714,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, tubo térreo calhas, cabo 5G6) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 315,
+        "vat": 600,
+        "total": 315,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 3500,
+        "unit": 15,
+        "vat": 600,
+        "total": 525,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago (Dora)\\Orçamento.pdf",
+    "name": "Orçamento.pdf",
+    "folder": "Tiago (Dora)",
+    "date": "2024-07-29",
+    "subtotal": 9077.64,
+    "total": 9077.64,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo LONGI Solar Hi-MO6 Explorer 575W Monocristalino 144 células LR5-72HTH-575M",
+        "qty": 1600,
+        "unit": 179,
+        "vat": 600,
+        "total": 2434.4,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido Trifásico, GW8KW-ET-16A PLUS 2-MPPT (Vatímetro GM3000 incluido)",
+        "qty": 100,
+        "unit": 2499,
+        "vat": 600,
+        "total": 1874.25,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 35V8, tudo em alumínio, FIXA.",
+        "qty": 200,
+        "unit": 1044.82,
+        "vat": 600,
+        "total": 1567.23,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, tubo térreo calhas, cabo 5G4) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 400,
+        "vat": 600,
+        "total": 400,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 4000,
+        "unit": 15,
+        "vat": 600,
+        "total": 600,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM",
+        "qty": 100,
+        "unit": 625,
+        "vat": 600,
+        "total": 625,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago (Dora)\\Orçamento_2.pdf",
+    "name": "Orçamento_2.pdf",
+    "folder": "Tiago (Dora)",
+    "date": "2024-09-26",
+    "subtotal": 5940,
+    "total": 5940,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo LONGI Solar Hi-MO6 Explorer 575W Monocristalino 144 células LR5-72HTH-575M",
+        "qty": 1600,
+        "unit": 112,
+        "vat": 600,
+        "total": 1792,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido Trifásico, GW8KW-ET-16A PLUS 2-MPPT (Vatímetro GM3000 incluido)",
+        "qty": 100,
+        "unit": 1799,
+        "vat": 600,
+        "total": 1799,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 09V4, alumínio, FIXA.",
+        "qty": 400,
+        "unit": 181,
+        "vat": 600,
+        "total": 724,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, tubo térreo calhas, cabo 5G6) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 400,
+        "vat": 600,
+        "total": 400,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 4000,
+        "unit": 15,
+        "vat": 600,
+        "total": 600,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM",
+        "qty": 100,
+        "unit": 625,
+        "vat": 600,
+        "total": 625,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago (Dora)\\Orçamento_3.pdf",
+    "name": "Orçamento_3.pdf",
+    "folder": "Tiago (Dora)",
+    "date": "2024-10-03",
+    "subtotal": 5704,
+    "total": 5704,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian TOPBiHiKu6 N-Type Bifacial TOPCon 575W 144 células",
+        "qty": 1600,
+        "unit": 108.5,
+        "vat": 600,
+        "total": 1736,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor híbrido Trifásico, GW8KW-ET-16A PLUS 2-MPPT (Vatímetro GM3000 incluido)",
+        "qty": 100,
+        "unit": 1689,
+        "vat": 600,
+        "total": 1689,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 09V4-30º, alumínio, FIXA.",
+        "qty": 400,
+        "unit": 178.5,
+        "vat": 600,
+        "total": 714,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, tubo térreo calhas, cabo 5G6) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 400,
+        "vat": 600,
+        "total": 400,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 4000,
+        "unit": 15,
+        "vat": 600,
+        "total": 600,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago (Dora)\\Orçamento_4.pdf",
+    "name": "Orçamento_4.pdf",
+    "folder": "Tiago (Dora)",
+    "date": "2024-12-13",
+    "subtotal": 4820,
+    "total": 4820,
+    "system": {
+      "mode": "ongrid",
+      "phase": "trifasico",
+      "hasBattery": false,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo Canadian TOPBiHiKu6 N-Type Bifacial TOPCon 575W 144 células",
+        "qty": 1600,
+        "unit": 98.5,
+        "vat": 600,
+        "total": 1576,
+        "category": "other"
+      },
+      {
+        "desc": "Inversor de conexão à rede 10000W Trifásico Smart, SERIE G2 - GW10KT-DT",
+        "qty": 100,
+        "unit": 1125,
+        "vat": 600,
+        "total": 1125,
+        "category": "inverter"
+      },
+      {
+        "desc": "Estrutura Sunfer 09V4-30º, alumínio, FIXA.",
+        "qty": 400,
+        "unit": 178.5,
+        "vat": 600,
+        "total": 714,
+        "category": "structure"
+      },
+      {
+        "desc": "Material elétrico (caixas, disjuntores, diferenciais, tubo térreo calhas, cabo 5G6) + Cabos 6mm + fichas solares",
+        "qty": 100,
+        "unit": 315,
+        "vat": 600,
+        "total": 315,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 3500,
+        "unit": 15,
+        "vat": 600,
+        "total": 525,
+        "category": "labor"
+      },
+      {
+        "desc": "Contador Inteligente Itron SL7000 + módulo GSM (contém 3 anos de serviço MEO)",
+        "qty": 100,
+        "unit": 565,
+        "vat": 600,
+        "total": 565,
+        "category": "meter"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago Faria (primo do Nuno Marques)\\Orçamento Inversor Deye + Baterias Lynx.pdf",
+    "name": "Orçamento Inversor Deye + Baterias Lynx.pdf",
+    "folder": "Tiago Faria (primo do Nuno Marques)",
+    "date": "2024-12-10",
+    "subtotal": 6760,
+    "total": 6760,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Inversor híbrido Deye SUN-12K-SG04LP3-EU (12kW)",
+        "qty": 100,
+        "unit": 2150,
+        "vat": 600,
+        "total": 2150,
+        "category": "inverter"
+      },
+      {
+        "desc": "Bateria Goodwe Lynx U5.4-20 (LV)",
+        "qty": 300,
+        "unit": 1350,
+        "vat": 600,
+        "total": 4050,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico e acessórios",
+        "qty": 100,
+        "unit": 200,
+        "vat": 600,
+        "total": 200,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2000,
+        "unit": 18,
+        "vat": 600,
+        "total": 360,
+        "category": "labor"
+      }
+    ]
+  },
+  {
+    "file": "C:\\Users\\Rainha\\Documents\\Sistemas Solares\\Tiago Sousa - Casal dos Matos, Leiria\\Orçamento Híbrido.pdf",
+    "name": "Orçamento Híbrido.pdf",
+    "folder": "Tiago Sousa - Casal dos Matos, Leiria",
+    "date": "2026-04-15",
+    "subtotal": 4014,
+    "total": 4014,
+    "system": {
+      "mode": "hybrid",
+      "phase": "trifasico",
+      "hasBattery": true,
+      "panelW": null,
+      "panelCount": null,
+      "kwp": null
+    },
+    "items": [
+      {
+        "desc": "Módulo DMEGC 460W (ou similar)",
+        "qty": 800,
+        "unit": 78,
+        "vat": 2300,
+        "total": 624,
+        "category": "other"
+      },
+      {
+        "desc": "Estrutura Sunfer 01V8 (coplanar com varão roscado)",
+        "qty": 100,
+        "unit": 255,
+        "vat": 2300,
+        "total": 255,
+        "category": "structure"
+      },
+      {
+        "desc": "Inversor Goodwe híbrido GW3600-ES-20-G2",
+        "qty": 100,
+        "unit": 1095,
+        "vat": 2300,
+        "total": 1095,
+        "category": "inverter"
+      },
+      {
+        "desc": "Material elétrico AC (caixas, disjuntores, diferencial, calhas, cabo 3G4mm)",
+        "qty": 100,
+        "unit": 140,
+        "vat": 2300,
+        "total": 140,
+        "category": "electrical"
+      },
+      {
+        "desc": "Material elétrico DC (cabo solar 6mm2 + fichas MC4)",
+        "qty": 100,
+        "unit": 40,
+        "vat": 2300,
+        "total": 40,
+        "category": "electrical"
+      },
+      {
+        "desc": "Mão de obra",
+        "qty": 2500,
+        "unit": 18,
+        "vat": 2300,
+        "total": 450,
+        "category": "labor"
+      },
+      {
+        "desc": "Backup manual (opcional)",
+        "qty": 100,
+        "unit": 85,
+        "vat": 2300,
+        "total": 85,
+        "category": "other"
+      },
+      {
+        "desc": "Bateria GoodWe Lynx - 5.0kWh G3",
+        "qty": 100,
+        "unit": 1325,
+        "vat": 2300,
+        "total": 1325,
+        "category": "inverter"
+      }
+    ]
+  }
+]
