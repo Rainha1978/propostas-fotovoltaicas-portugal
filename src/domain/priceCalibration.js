@@ -18,14 +18,17 @@ export const PRICE_DATABASE = {
     }
   },
   inverters: {
-    manualPriceRule: "Usar preco_manual apenas quando usar_preco_manual=true; caso contrario usar preco_tabela.",
+    manualPriceRule: "Usar preco_manual quando existir; caso contrario usar preco_tabela_goodwe.",
     goodwe: [
       { brand: "GoodWe", model: "GoodWe XS 3kW", type: "ongrid", phase: "monofasico", powerKw: 3, limitKwp: 3, tablePrice: 505, manualPrice: null, useManualPrice: false },
       { brand: "GoodWe", model: "GoodWe DNS 3.6kW", type: "ongrid", phase: "monofasico", powerKw: 3.6, limitKwp: 4, tablePrice: 590, manualPrice: null, useManualPrice: false },
       { brand: "GoodWe", model: "GoodWe DNS 5kW", type: "ongrid", phase: "monofasico", powerKw: 5, limitKwp: 99, tablePrice: 735, manualPrice: null, useManualPrice: false },
-      { brand: "GoodWe", model: "GoodWe EH 3.6kW", type: "hibrido", phase: "monofasico", powerKw: 3.6, limitKwp: 3.6, tablePrice: 1145, manualPrice: null, useManualPrice: false },
-      { brand: "GoodWe", model: "GoodWe EH 5kW", type: "hibrido", phase: "monofasico", powerKw: 5, limitKwp: 5, tablePrice: 1255, manualPrice: null, useManualPrice: false },
-      { brand: "GoodWe", model: "GoodWe EH 6kW", type: "hibrido", phase: "monofasico", powerKw: 6, limitKwp: 99, tablePrice: 1100, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW3600-ES-20-G2", type: "hibrido", phase: "monofasico", powerKw: 3.6, limitKwp: 3.6, tablePrice: 1271.88, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW5000-ES-20-G2", type: "hibrido", phase: "monofasico", powerKw: 5, limitKwp: 5, tablePrice: 1349.03, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW6000-ES-20-G2", type: "hibrido", phase: "monofasico", powerKw: 6, limitKwp: 6, tablePrice: 1373.28, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW8000-ES-C10", type: "hibrido", phase: "monofasico", powerKw: 8, limitKwp: 8, tablePrice: 1710.54, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW10K-ES-C10", type: "hibrido", phase: "monofasico", powerKw: 10, limitKwp: 10, tablePrice: 1886.88, manualPrice: null, useManualPrice: false },
+      { brand: "GoodWe", model: "GW12K-ES-C10", type: "hibrido", phase: "monofasico", powerKw: 12, limitKwp: 12, tablePrice: 2054.41, manualPrice: null, useManualPrice: false },
       { brand: "GoodWe", model: "GW4000-SDT-30", type: "ongrid", phase: "trifasico", powerKw: 4, limitKwp: 4, tablePrice: 773.71, manualPrice: null, useManualPrice: false },
       { brand: "GoodWe", model: "GW10K-SDT-30", type: "ongrid", phase: "trifasico", powerKw: 10, limitKwp: 10, tablePrice: 1155.05, manualPrice: null, useManualPrice: false },
       { brand: "GoodWe", model: "GW15K-SDT-30", type: "ongrid", phase: "trifasico", powerKw: 15, limitKwp: 15, tablePrice: 1236.61, manualPrice: null, useManualPrice: false },

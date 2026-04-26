@@ -115,8 +115,9 @@ function pairsForPanels(panelCount) {
 
 function getInverterPrice(inverter) {
   if (!inverter) return null;
-  if (inverter.useManualPrice && inverter.manualPrice != null) return inverter.manualPrice;
-  return inverter.tablePrice;
+  const manualPrice = inverter.manualPrice ?? inverter.preco_manual;
+  if (manualPrice != null && Number.isFinite(Number(manualPrice))) return Number(manualPrice);
+  return inverter.tablePrice ?? inverter.preco_tabela;
 }
 
 function hasConfirmedPrice(value) {
