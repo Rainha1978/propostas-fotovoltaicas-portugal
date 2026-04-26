@@ -31,6 +31,14 @@ export default function NewLeadPage() {
         <div className="field"><label>Escolha do cliente</label><select name="escolha_cliente"><option value="ainda_nao_sei">Ainda nao sei</option><option value="ongrid">On-grid</option><option value="hibrido">Hibrido</option><option value="hibrido_backup">Hibrido com backup</option></select></div>
         <div className="field"><label>Tipo de rede</label><select name="rede"><option value="monofasico">Monofasico</option><option value="trifasico">Trifasico</option><option value="nao_sei">Nao sei</option></select></div>
         <div className="field"><label>Tipo de telhado</label><select name="tipo_telhado"><option value="telha_lusa">Telha lusa</option><option value="sanduiche">Sanduiche</option><option value="terreo">Terreo</option></select></div>
+        <div className="field">
+          <label>Preferencia de painel</label>
+          <select name="panel_preference" defaultValue="standard_460">
+            <option value="standard_460">Standard 460W</option>
+            <option value="large_595">Grande 595W</option>
+          </select>
+          <small>Painel 595W apenas disponivel para telhado sanduiche ou instalacao terrea, sujeito a validacao tecnica.</small>
+        </div>
         <div className="field"><label>Telha lusa dificil</label><select name="telha_lusa_dificil"><option value="">Nao</option><option value="sim">Sim</option></select></div>
         <div className="field"><label>Tipo de estrutura</label><select name="tipo_estrutura"><option value="coplanar">Coplanar</option><option value="triangular">Triangular</option></select></div>
         <div className="field"><label>Distancia paineis ate inversor (m)</label><input name="distancia_paineis_inversor_m" type="number" step="0.1" /></div>

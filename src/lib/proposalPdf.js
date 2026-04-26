@@ -265,6 +265,7 @@ function drawNotes(calculation, x, y) {
     "Proposta indicativa sujeita a validacao tecnica no local.",
     "Precos sujeitos a atualizacao de mercado.",
     "Nao inclui trabalhos de construcao civil ou alteracoes eletricas nao previstas.",
+    "Painel 460W usado por defeito. Painel 595W disponivel para telhado sanduiche ou instalacao terrea quando escolhido/validado tecnicamente.",
     calculation.sizing?.needsTechnicalAnalysis ? "Consumo acima de 800 kWh/mes: recomenda-se analise tecnica." : null,
     ...(calculation.advice?.technicalFlags ?? []).map((flag) => flag.message),
     ...(calculation.recommendation?.notes ?? [])

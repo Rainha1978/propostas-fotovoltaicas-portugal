@@ -29,6 +29,7 @@
   escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei',
   rede TEXT NOT NULL DEFAULT 'monofasico',
   tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa',
+  panel_preference TEXT NOT NULL DEFAULT 'standard_460',
   telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE,
   tipo_estrutura TEXT NOT NULL DEFAULT 'coplanar',
   distancia_paineis_inversor_m DOUBLE PRECISION NOT NULL DEFAULT 0,
@@ -49,6 +50,7 @@ ALTER TABLE leads ADD COLUMN IF NOT EXISTS objetivo TEXT NOT NULL DEFAULT 'poupa
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS rede TEXT NOT NULL DEFAULT 'monofasico';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa';
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_460';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_estrutura TEXT NOT NULL DEFAULT 'coplanar';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS distancia_paineis_inversor_m DOUBLE PRECISION NOT NULL DEFAULT 0;

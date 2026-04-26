@@ -170,9 +170,10 @@ export function dimensionarSistema(input) {
   let needsTechnicalAnalysis = false;
 
   if (monthlyConsumptionKwh <= 250) targetKwp = 2;
-  else if (monthlyConsumptionKwh <= 400) targetKwp = 3;
-  else if (monthlyConsumptionKwh <= 600) targetKwp = 4.5;
-  else if (monthlyConsumptionKwh <= 800) targetKwp = 5.5;
+  else if (monthlyConsumptionKwh <= 400) targetKwp = 2.5;
+  else if (monthlyConsumptionKwh <= 600) targetKwp = 3.5;
+  else if (monthlyConsumptionKwh <= 800) targetKwp = 4.5;
+  else if (monthlyConsumptionKwh <= 1000) targetKwp = 5.5;
   else needsTechnicalAnalysis = true;
 
   const notes = [];
@@ -202,8 +203,8 @@ export function dimensionSystem(monthlyConsumptionKwh) {
 
 export function escolherPainel(input) {
   const roofType = normalizeRoofType(input);
-  const groundFloor = normalizeBoolean(input.groundFloor) || normalizeBoolean(input.res_do_chao) || roofType === "terreo";
-  const canUseLargePanel = roofType === "sanduiche" && groundFloor;
+  const panelPreference = input.panel_preference ?? input.panelPreference ?? "standard_460";
+  const canUseLargePanel = panelPreference === "large_595" && (roofType === "sanduiche" || roofType === "terreo");
   const panel = canUseLargePanel ? PRICE_DATABASE.panels.large595w : PRICE_DATABASE.panels.standard460w;
 
   return {
@@ -211,7 +212,15 @@ export function escolherPainel(input) {
     unitPrice: panel.unitPrice,
     label: panel.label,
     sourceKey: canUseLargePanel ? "large595w" : "standard460w",
-    notes: canUseLargePanel ? [] : ["Painel 460W usado por defeito fora de sanduiche simples/res do chao."]
+    preference: canUseLargePanel ? "large_595" : "standard_460",
+    notes: [
+      canUseLargePanel
+        ? "Painel 595W usado por escolha explicita/validacao tecnica."
+        : "Painel 460W usado por defeito. Painel 595W disponivel para telhado sanduiche ou instalacao terrea quando escolhido/validado tecnicamente.",
+      panelPreference === "large_595" && roofType === "telha_lusa"
+        ? "Telha lusa usa sempre painel 460W; pedido de 595W ignorado por regra tecnica."
+        : null
+    ].filter(Boolean)
   };
 }
 

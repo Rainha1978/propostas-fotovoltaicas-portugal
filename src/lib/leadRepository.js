@@ -58,6 +58,7 @@ async function ensureSchema() {
         escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei',
         rede TEXT NOT NULL DEFAULT 'monofasico',
         tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa',
+        panel_preference TEXT NOT NULL DEFAULT 'standard_460',
         telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE,
         tipo_estrutura TEXT NOT NULL DEFAULT 'coplanar',
         distancia_paineis_inversor_m DOUBLE PRECISION NOT NULL DEFAULT 0,
@@ -78,6 +79,7 @@ async function ensureSchema() {
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS rede TEXT NOT NULL DEFAULT 'monofasico';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa';
+      ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_460';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_estrutura TEXT NOT NULL DEFAULT 'coplanar';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS distancia_paineis_inversor_m DOUBLE PRECISION NOT NULL DEFAULT 0;
@@ -161,6 +163,7 @@ function mapLead(row) {
   const escolhaCliente = enumValue(firstValue(row.escolha_cliente, row.clientChoice, "ainda_nao_sei"), ["ongrid", "hibrido", "hibrido_backup", "ainda_nao_sei"], "ainda_nao_sei");
   const rede = normalizeGrid(firstValue(row.grid_type, row.gridType, row.rede, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(row.roof_type, row.roofType, row.tipo_telhado, row.tipoTelhado, "telha_lusa"));
+  const panelPreference = enumValue(firstValue(row.panel_preference, row.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
   const telhaLusaDificil = Boolean(firstValue(row.difficult_tile, row.difficultTile, row.telha_lusa_dificil, row.telhaLusaDificil, false));
   const tipoEstrutura = enumValue(firstValue(row.tipo_estrutura, row.tipoEstrutura, "coplanar"), ["coplanar", "triangular"], "coplanar");
   const distanciaPaineisInversorM = Number(firstValue(row.distance_pv_to_inverter_m, row.distancePvToInverterM, row.distancia_paineis_inversor_m, row.distanciaPaineisInversorM, 0));
@@ -201,6 +204,8 @@ function mapLead(row) {
     escolha_cliente: escolhaCliente,
     rede,
     tipo_telhado: tipoTelhado,
+    panel_preference: panelPreference,
+    panelPreference,
     telha_lusa_dificil: telhaLusaDificil,
     tipo_estrutura: tipoEstrutura,
     distancia_paineis_inversor_m: distanciaPaineisInversorM,
@@ -228,6 +233,7 @@ function normalizeLeadInput(data) {
   const escolhaCliente = enumValue(firstValue(data.escolha_cliente, data.clientChoice, backup !== "sem_backup" ? "hibrido_backup" : "ainda_nao_sei"), ["ongrid", "hibrido", "hibrido_backup", "ainda_nao_sei"], "ainda_nao_sei");
   const rede = normalizeGrid(firstValue(data.rede, data.gridType, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(data.tipo_telhado, data.roofType, "telha_lusa"));
+  const panelPreference = enumValue(firstValue(data.panel_preference, data.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
   const telhaLusaDificil = toBool(firstValue(data.telha_lusa_dificil, data.difficultTile));
   const tipoEstrutura = enumValue(firstValue(data.tipo_estrutura, data.structureType, "coplanar"), ["coplanar", "triangular"], "coplanar");
   const distanciaPaineisInversorM = numberValue(data.distancia_paineis_inversor_m, data.distancePvToInverterM);
@@ -267,6 +273,8 @@ function normalizeLeadInput(data) {
     escolha_cliente: escolhaCliente,
     rede,
     tipo_telhado: tipoTelhado,
+    panel_preference: panelPreference,
+    panelPreference,
     telha_lusa_dificil: telhaLusaDificil,
     tipo_estrutura: tipoEstrutura,
     distancia_paineis_inversor_m: distanciaPaineisInversorM,
@@ -346,7 +354,7 @@ export async function createLead(data) {
       distance_pv_to_inverter_m, distance_inverter_to_panel_m, distance_to_maceira_km,
       wants_battery, battery_capacity_kwh, wants_ev_charger,
       fatura_mensal_eur, consumo_mensal_kwh, perfil_consumo, objetivo, escolha_cliente,
-      rede, tipo_telhado, telha_lusa_dificil, tipo_estrutura,
+      rede, tipo_telhado, panel_preference, telha_lusa_dificil, tipo_estrutura,
       distancia_paineis_inversor_m, distancia_inversor_quadro_m, distancia_maceira_km,
       pretende_ev, backup, pretende_bateria, preferencia_bateria, capacidade_bateria_desejada_kwh,
       notes
@@ -354,7 +362,7 @@ export async function createLead(data) {
       $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
       $11, $12, $13, $14, $15, $16, $17, $18, $19, $20,
       $21, $22, $23, $24, $25, $26, $27, $28, $29, $30,
-      $31, $32, $33, $34, $35, $36, $37, $38, $39
+      $31, $32, $33, $34, $35, $36, $37, $38, $39, $40
     )`,
     [
       lead.id, lead.status, lead.name, lead.phone, lead.email, lead.locality, lead.source,
@@ -363,8 +371,8 @@ export async function createLead(data) {
       lead.distancePvToInverterM, lead.distanceInverterToPanelM, lead.distanceToMaceiraKm,
       lead.wantsBattery, lead.batteryCapacityKwh, lead.wantsEvCharger,
       lead.fatura_mensal_eur, lead.consumo_mensal_kwh, lead.perfil_consumo, lead.objetivo,
-      lead.escolha_cliente, lead.rede, lead.tipo_telhado, lead.telha_lusa_dificil,
-      lead.tipo_estrutura, lead.distancia_paineis_inversor_m, lead.distancia_inversor_quadro_m,
+      lead.escolha_cliente, lead.rede, lead.tipo_telhado, lead.panel_preference,
+      lead.telha_lusa_dificil, lead.tipo_estrutura, lead.distancia_paineis_inversor_m, lead.distancia_inversor_quadro_m,
       lead.distancia_maceira_km, lead.pretende_EV, lead.backup, lead.pretende_bateria,
       lead.preferencia_bateria, lead.capacidade_bateria_desejada_kwh, lead.notes
     ]

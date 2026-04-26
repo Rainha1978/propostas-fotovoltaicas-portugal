@@ -14,6 +14,10 @@ function yesNo(value) {
   return value ? "Sim" : "Nao";
 }
 
+function panelPreferenceLabel(value) {
+  return value === "large_595" ? "Grande 595W" : "Standard 460W";
+}
+
 export default async function LeadDetailPage({ params }) {
   const { id } = await params;
   const lead = await getLead(id);
@@ -50,6 +54,7 @@ export default async function LeadDetailPage({ params }) {
             <div><dt>Imovel</dt><dd>{valueOrDash(lead.propertyType)}</dd></div>
             <div><dt>Rede</dt><dd>{lead.rede}</dd></div>
             <div><dt>Telhado</dt><dd>{lead.tipo_telhado}</dd></div>
+            <div><dt>Preferencia painel</dt><dd>{panelPreferenceLabel(lead.panel_preference)}</dd></div>
             <div><dt>Estrutura</dt><dd>{lead.tipo_estrutura}</dd></div>
             <div><dt>Telha dificil</dt><dd>{yesNo(lead.telha_lusa_dificil)}</dd></div>
             <div><dt>Objetivo</dt><dd>{lead.objetivo}</dd></div>
@@ -90,6 +95,7 @@ export default async function LeadDetailPage({ params }) {
           <div className="equipment-card">
             <span>Paineis</span>
             <strong>{proposal.equipment.panelCount} x {proposal.equipment.panel.label}</strong>
+            <small>Escolha: {panelPreferenceLabel(lead.panel_preference)}</small>
           </div>
           <div className="equipment-card">
             <span>Inversor</span>
