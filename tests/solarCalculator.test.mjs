@@ -13,7 +13,7 @@ const baseLead = {
   tipo_telhado: "telha_lusa",
   panel_preference: "standard_460",
   gridType: "monofasico",
-  consumptionPeriod: "dia",
+  consumptionPeriod: "equilibrado",
   distancePvToInverterM: 12,
   distanceInverterToPanelM: 8,
   distanceToMaceiraKm: 20,
@@ -21,21 +21,44 @@ const baseLead = {
   wantsEvCharger: false
 };
 
-test("converte fatura mensal para consumo com energia a 0.20 EUR/kWh", () => {
-  assert.equal(estimateMonthlyConsumptionKwh({ monthlyBillEur: 80 }), 400);
+test("converte fatura mensal para consumo removendo IVA e custos fixos", () => {
+  assert.equal(estimateMonthlyConsumptionKwh({ monthlyBillEur: 80 }), 300.3);
 });
 
-test("dimensiona potencia por novos escaloes de consumo mensal", () => {
-  assert.deepEqual(dimensionSystem(250), { targetKwp: 2, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(251), { targetKwp: 2.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(400), { targetKwp: 2.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(401), { targetKwp: 3.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(600), { targetKwp: 3.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(601), { targetKwp: 4.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(800), { targetKwp: 4.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(801), { targetKwp: 5.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(1000), { targetKwp: 5.5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(1001), { targetKwp: 6, needsTechnicalAnalysis: true });
+test("dimensiona perfil equilibrado mantendo paineis base", () => {
+  assert.deepEqual(dimensionSystem(250, "equilibrado"), { targetKwp: 2.3, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(251, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(350, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(351, "equilibrado"), { targetKwp: 3.22, basePanelCount: 7, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1150, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1151, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
+});
+
+test("dimensiona perfil dia aumentando paineis por escalao", () => {
+  assert.deepEqual(dimensionSystem(250, "dia"), { targetKwp: 2.76, basePanelCount: 5, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(300, "dia"), { targetKwp: 3.22, basePanelCount: 6, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(600, "dia"), { targetKwp: 4.6, basePanelCount: 9, adjustedPanelCount: 10, needsTechnicalAnalysis: false });
+});
+
+test("dimensiona perfil noite reduzindo paineis sem baixar de 5", () => {
+  assert.deepEqual(dimensionSystem(250, "noite"), { targetKwp: 2.3, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(600, "noite"), { targetKwp: 3.68, basePanelCount: 9, adjustedPanelCount: 8, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1000, "noite"), { targetKwp: 5.06, basePanelCount: 13, adjustedPanelCount: 11, needsTechnicalAnalysis: false });
+});
+
+test("120 EUR mensais com perfil noite reduz para 7 paineis", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    fatura_mensal_eur: 120,
+    monthlyBillEur: 120,
+    perfil_consumo: "noite",
+    consumptionPeriod: "noite"
+  });
+
+  assert.equal(proposal.consumption.monthlyConsumptionKwh, 517.1);
+  assert.equal(proposal.sizing.basePanelCount, 8);
+  assert.equal(proposal.sizing.adjustedPanelCount, 7);
+  assert.equal(proposal.equipment.panelCount, 7);
 });
 
 test("usa 460W em telha lusa mesmo com preferencia 595W", () => {
@@ -106,10 +129,10 @@ test("calcula proposta on-grid com preco total composto e IVA", () => {
 test("calcula mao de obra por numero de paineis segundo a regra nova", () => {
   const cases = [
     { monthlyConsumptionKwh: 180, expectedPanels: 5, expectedLabor: 400 },
-    { monthlyConsumptionKwh: 400, expectedPanels: 6, expectedLabor: 400 },
-    { monthlyConsumptionKwh: 600, expectedPanels: 8, expectedLabor: 440 },
-    { monthlyConsumptionKwh: 800, expectedPanels: 10, expectedLabor: 480 },
-    { monthlyConsumptionKwh: 1000, expectedPanels: 12, expectedLabor: 520 },
+    { monthlyConsumptionKwh: 400, expectedPanels: 7, expectedLabor: 440 },
+    { monthlyConsumptionKwh: 600, expectedPanels: 9, expectedLabor: 480 },
+    { monthlyConsumptionKwh: 800, expectedPanels: 11, expectedLabor: 520 },
+    { monthlyConsumptionKwh: 1000, expectedPanels: 13, expectedLabor: 560 },
     { monthlyConsumptionKwh: 1200, expectedPanels: 14, expectedLabor: 560 }
   ];
 

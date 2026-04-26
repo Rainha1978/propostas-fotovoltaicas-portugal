@@ -1,6 +1,8 @@
 import { PRICE_CALIBRATION, PRICE_DATABASE } from "./priceCalibration.js";
 
 export const ENERGY_PRICE_EUR_PER_KWH = 0.2;
+export const BILLING_ENERGY_PRICE_EUR_PER_KWH_EX_VAT = 0.15;
+export const ESTIMATED_FIXED_COSTS_EUR_EX_VAT = 20;
 export const ANNUAL_PRODUCTION_KWH_PER_KWP = 1500;
 export const VAT_RATE = PRICE_DATABASE.vat.rate;
 
@@ -25,6 +27,19 @@ const ON_GRID_SELF_CONSUMPTION_RATE = {
   equilibrado: 0.35,
   noite: 0.25
 };
+
+const SIZING_PANEL_TIERS = [
+  { maxKwh: 250, basePanelCount: 5 },
+  { maxKwh: 350, basePanelCount: 6 },
+  { maxKwh: 450, basePanelCount: 7 },
+  { maxKwh: 550, basePanelCount: 8 },
+  { maxKwh: 650, basePanelCount: 9 },
+  { maxKwh: 750, basePanelCount: 10 },
+  { maxKwh: 850, basePanelCount: 11 },
+  { maxKwh: 950, basePanelCount: 12 },
+  { maxKwh: 1050, basePanelCount: 13 },
+  { maxKwh: 1150, basePanelCount: 14 }
+];
 
 function roundMoney(value) {
   return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
@@ -142,19 +157,31 @@ function getTechnicalFlags({ inverter, structure, electrical, extras, batterySel
 export function calcularConsumo(input) {
   const monthlyConsumptionInput = input.consumo_mensal_kwh ?? input.monthlyConsumptionKwh;
   const monthlyBillInput = input.fatura_mensal_eur ?? input.monthlyBillEur;
-  const monthlyConsumptionKwh = numberOrZero(monthlyConsumptionInput) > 0
+  const notes = [];
+  const hasConsumptionInput = numberOrZero(monthlyConsumptionInput) > 0;
+  const hasBillInput = numberOrZero(monthlyBillInput) > 0;
+  const billExVat = numberOrZero(monthlyBillInput) / (1 + VAT_RATE);
+  const energyValueExVat = Math.max(0, billExVat - ESTIMATED_FIXED_COSTS_EUR_EX_VAT);
+  const monthlyConsumptionKwh = hasConsumptionInput
     ? numberOrZero(monthlyConsumptionInput)
-    : numberOrZero(monthlyBillInput) / ENERGY_PRICE_EUR_PER_KWH;
+    : energyValueExVat / BILLING_ENERGY_PRICE_EUR_PER_KWH_EX_VAT;
   const monthlyBillEur = numberOrZero(monthlyBillInput) > 0
     ? numberOrZero(monthlyBillInput)
     : monthlyConsumptionKwh * ENERGY_PRICE_EUR_PER_KWH;
+
+  if (!hasConsumptionInput && hasBillInput) {
+    notes.push("Consumo estimado a partir da fatura mensal, removendo IVA e custos fixos tipicos de potencia e taxas.");
+  }
 
   return {
     monthlyConsumptionKwh: roundOne(monthlyConsumptionKwh),
     monthlyBillEur: roundMoney(monthlyBillEur),
     annualConsumptionKwh: roundOne(monthlyConsumptionKwh * 12),
     annualCurrentCostEur: roundMoney(monthlyBillEur * 12),
-    energyPriceEurPerKwh: ENERGY_PRICE_EUR_PER_KWH
+    energyPriceEurPerKwh: ENERGY_PRICE_EUR_PER_KWH,
+    billingEnergyPriceEurPerKwhExVat: BILLING_ENERGY_PRICE_EUR_PER_KWH_EX_VAT,
+    estimatedFixedCostsEurExVat: ESTIMATED_FIXED_COSTS_EUR_EX_VAT,
+    notes
   };
 }
 
@@ -165,19 +192,24 @@ export function estimateMonthlyConsumptionKwh({ monthlyBillEur, monthlyConsumpti
 export function dimensionarSistema(input) {
   const monthlyConsumptionKwh = numberOrZero(input.monthlyConsumptionKwh ?? input.consumo_mensal_kwh);
   const objective = input.objective ?? input.objetivo ?? "poupar";
+  const profile = normalizeProfile(input);
   const theoreticalKwp = monthlyConsumptionKwh * 12 / ANNUAL_PRODUCTION_KWH_PER_KWP;
-  let targetKwp = 6;
-  let needsTechnicalAnalysis = false;
-
-  if (monthlyConsumptionKwh <= 250) targetKwp = 2;
-  else if (monthlyConsumptionKwh <= 400) targetKwp = 2.5;
-  else if (monthlyConsumptionKwh <= 600) targetKwp = 3.5;
-  else if (monthlyConsumptionKwh <= 800) targetKwp = 4.5;
-  else if (monthlyConsumptionKwh <= 1000) targetKwp = 5.5;
-  else needsTechnicalAnalysis = true;
+  const tierIndex = SIZING_PANEL_TIERS.findIndex((tier) => monthlyConsumptionKwh <= tier.maxKwh);
+  const tier = tierIndex >= 0 ? SIZING_PANEL_TIERS[tierIndex] : SIZING_PANEL_TIERS.at(-1);
+  const sizingStep = tierIndex >= 0 ? tierIndex + 1 : SIZING_PANEL_TIERS.length;
+  const adjustmentPercent = sizingStep + 9;
+  const profileFactor = profile === "dia"
+    ? 1 + adjustmentPercent / 100
+    : profile === "noite"
+      ? 1 - adjustmentPercent / 100
+      : 1;
+  const basePanelCount = tier.basePanelCount;
+  const adjustedPanelCount = Math.max(5, Math.round(basePanelCount * profileFactor));
+  const targetKwp = roundTwo(adjustedPanelCount * PRICE_DATABASE.panels.standard460w.powerW / 1000);
+  const needsTechnicalAnalysis = tierIndex < 0;
 
   const notes = [];
-  if (needsTechnicalAnalysis) notes.push("Consumo acima de 800kWh/mes: validar potencia final em analise tecnica.");
+  if (needsTechnicalAnalysis) notes.push("Consumo acima de 1150kWh/mes: validar potencia final em analise tecnica.");
   if (objective === "poupar" && targetKwp > theoreticalKwp * 1.35) {
     notes.push("Dimensionamento limitado por ROI: evitar sobredimensionamento sem consumo futuro confirmado.");
   }
@@ -188,15 +220,21 @@ export function dimensionarSistema(input) {
   return {
     targetKwp,
     theoreticalKwp: roundTwo(theoreticalKwp),
+    profile,
+    sizingStep,
+    basePanelCount,
+    adjustedPanelCount,
     needsTechnicalAnalysis,
     notes
   };
 }
 
-export function dimensionSystem(monthlyConsumptionKwh) {
-  const sizing = dimensionarSistema({ monthlyConsumptionKwh });
+export function dimensionSystem(monthlyConsumptionKwh, profile = "equilibrado") {
+  const sizing = dimensionarSistema({ monthlyConsumptionKwh, perfilConsumo: profile });
   return {
     targetKwp: sizing.targetKwp,
+    basePanelCount: sizing.basePanelCount,
+    adjustedPanelCount: sizing.adjustedPanelCount,
     needsTechnicalAnalysis: sizing.needsTechnicalAnalysis
   };
 }
@@ -803,9 +841,11 @@ export function calculateProposal(input) {
   const gridType = normalizeGridType(input);
   const systemAdvice = escolherSistema(input);
   const system = systemAdvice.system;
-  const sizing = dimensionarSistema({ monthlyConsumptionKwh: consumption.monthlyConsumptionKwh, objective });
+  const sizing = dimensionarSistema({ monthlyConsumptionKwh: consumption.monthlyConsumptionKwh, objective, perfilConsumo: profile });
   const panel = escolherPainel(input);
-  const panelCount = Math.ceil(sizing.targetKwp / (panel.powerW / 1000));
+  const panelCount = panel.powerW === PRICE_DATABASE.panels.standard460w.powerW
+    ? sizing.adjustedPanelCount
+    : Math.ceil(sizing.targetKwp / (panel.powerW / 1000));
   const actualPanelPowerKwp = roundTwo(panelCount * panel.powerW / 1000);
   const annualProductionKwh = actualPanelPowerKwp * ANNUAL_PRODUCTION_KWH_PER_KWP;
   const needsBattery = system !== "ongrid";
@@ -879,6 +919,7 @@ export function calculateProposal(input) {
     }))
     : [];
   const allNotes = [
+    ...consumption.notes,
     ...systemAdvice.notes,
     ...sizing.notes,
     ...panel.notes,
@@ -917,6 +958,8 @@ export function calculateProposal(input) {
       annualCurrentCostEur: consumption.annualCurrentCostEur,
       targetKwp: sizing.targetKwp,
       theoreticalKwp: sizing.theoreticalKwp,
+      basePanelCount: sizing.basePanelCount,
+      adjustedPanelCount: sizing.adjustedPanelCount,
       actualPanelPowerKwp,
       needsTechnicalAnalysis: sizing.needsTechnicalAnalysis
     },
