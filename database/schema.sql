@@ -11,6 +11,8 @@
   property_type TEXT,
   grid_type TEXT NOT NULL,
   roof_type TEXT NOT NULL,
+  panel_preference TEXT NOT NULL DEFAULT 'standard_460',
+  structure_type TEXT NOT NULL DEFAULT 'coplanar',
   ground_floor BOOLEAN NOT NULL DEFAULT FALSE,
   difficult_tile BOOLEAN NOT NULL DEFAULT FALSE,
   consumption_period TEXT NOT NULL,

@@ -1,4 +1,4 @@
-import { PRICE_CALIBRATION, PRICE_DATABASE } from "./priceCalibration.js";
+﻿import { PRICE_CALIBRATION, PRICE_DATABASE } from "./priceCalibration.js";
 
 export const ENERGY_PRICE_EUR_PER_KWH = 0.2;
 export const BILLING_ENERGY_PRICE_EUR_PER_KWH_EX_VAT = 0.15;
@@ -90,8 +90,11 @@ function normalizeRoofType(input) {
 }
 
 function normalizeStructureType(input) {
+  const roofType = normalizeRoofType(input);
+  if (roofType === "terreo") return "nao_aplicavel";
   const value = input.tipo_estrutura ?? input.structureType ?? input.roofType ?? "coplanar";
   if (value === "triangular") return "triangular";
+  if (value === "nao_aplicavel") return "nao_aplicavel";
   return "coplanar";
 }
 
@@ -207,7 +210,7 @@ export function dimensionarSistema(input) {
   const basePanelCount = tier.basePanelCount;
   const adjustedPanelCount = Math.max(5, Math.round(basePanelCount * profileFactor));
   const targetKwp = roundTwo(adjustedPanelCount * PRICE_DATABASE.panels.standard460w.powerW / 1000);
-  const needsTechnicalAnalysis = tierIndex < 0;
+  const needsTechnicalAnalysis = tierIndex < 0 || sizingStep === SIZING_PANEL_TIERS.length;
 
   const notes = [];
   if (needsTechnicalAnalysis) notes.push("Consumo acima de 1150kWh/mes: validar potencia final em analise tecnica.");
@@ -638,14 +641,13 @@ export function calcularEstrutura(input) {
 export function calcularMaoObra(input) {
   const panelCount = numberOrZero(input.panelCount);
   const roofType = normalizeRoofType(input);
-  const difficultTile = normalizeBoolean(input.difficultTile) || normalizeBoolean(input.telha_lusa_dificil);
   const batteryOption = input.batteryOption;
   const tier = PRICE_DATABASE.labor.byPanelCount.find((item) => panelCount <= item.maxPanels);
   const base = tier
     ? tier.price
     : PRICE_DATABASE.labor.aboveTwelve.basePrice
       + pairsForPanels(panelCount - 12) * PRICE_DATABASE.labor.aboveTwelve.extraPerTwoPanels;
-  const difficultExtra = roofType === "telha_lusa" && difficultTile
+  const difficultExtra = roofType === "telha_lusa"
     ? pairsForPanels(panelCount) * PRICE_DATABASE.labor.difficultTileExtraPerTwoPanels
     : 0;
   const batteryExtra = !batteryOption
@@ -927,10 +929,11 @@ export function calculateProposal(input) {
     ...batterySelection.notes,
     ...inverter.notes,
     ...structure.notes,
+    labor.difficultTileExtra > 0 ? "Acrescimo telha lusa incluido na mao de obra." : null,
     ...electrical.notes,
     ...extras.notes,
     ...technicalFlags.map((flag) => flag.message)
-  ];
+  ].filter(Boolean);
 
   if (priceGross > 0 && consumption.monthlyBillEur < 60 && system !== "ongrid") {
     allNotes.push("Esta solucao pode ser mais orientada para autonomia/backup do que para retorno financeiro rapido.");

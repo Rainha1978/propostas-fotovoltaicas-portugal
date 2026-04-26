@@ -164,8 +164,10 @@ function mapLead(row) {
   const rede = normalizeGrid(firstValue(row.grid_type, row.gridType, row.rede, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(row.roof_type, row.roofType, row.tipo_telhado, row.tipoTelhado, "telha_lusa"));
   const panelPreference = enumValue(firstValue(row.panel_preference, row.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
-  const telhaLusaDificil = Boolean(firstValue(row.difficult_tile, row.difficultTile, row.telha_lusa_dificil, row.telhaLusaDificil, false));
-  const tipoEstrutura = enumValue(firstValue(row.tipo_estrutura, row.tipoEstrutura, "coplanar"), ["coplanar", "triangular"], "coplanar");
+  const telhaLusaDificil = false;
+  const tipoEstrutura = tipoTelhado === "terreo"
+    ? "nao_aplicavel"
+    : enumValue(firstValue(row.tipo_estrutura, row.tipoEstrutura, "coplanar"), ["coplanar", "triangular"], "coplanar");
   const distanciaPaineisInversorM = Number(firstValue(row.distance_pv_to_inverter_m, row.distancePvToInverterM, row.distancia_paineis_inversor_m, row.distanciaPaineisInversorM, 0));
   const distanciaInversorQuadroM = Number(firstValue(row.distance_inverter_to_panel_m, row.distanceInverterToPanelM, row.distancia_inversor_quadro_m, row.distanciaInversorQuadroM, 0));
   const distanciaMaceiraKm = Number(firstValue(row.distance_to_maceira_km, row.distanceToMaceiraKm, row.distancia_maceira_km, row.distanciaMaceiraKm, 0));
@@ -234,8 +236,10 @@ function normalizeLeadInput(data) {
   const rede = normalizeGrid(firstValue(data.rede, data.gridType, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(data.tipo_telhado, data.roofType, "telha_lusa"));
   const panelPreference = enumValue(firstValue(data.panel_preference, data.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
-  const telhaLusaDificil = toBool(firstValue(data.telha_lusa_dificil, data.difficultTile));
-  const tipoEstrutura = enumValue(firstValue(data.tipo_estrutura, data.structureType, "coplanar"), ["coplanar", "triangular"], "coplanar");
+  const telhaLusaDificil = false;
+  const tipoEstrutura = tipoTelhado === "terreo"
+    ? "nao_aplicavel"
+    : enumValue(firstValue(data.tipo_estrutura, data.structureType, "coplanar"), ["coplanar", "triangular"], "coplanar");
   const distanciaPaineisInversorM = numberValue(data.distancia_paineis_inversor_m, data.distancePvToInverterM);
   const distanciaInversorQuadroM = numberValue(data.distancia_inversor_quadro_m, data.distanceInverterToPanelM);
   const distanciaMaceiraKm = numberValue(data.distancia_maceira_km, data.distanceToMaceiraKm);

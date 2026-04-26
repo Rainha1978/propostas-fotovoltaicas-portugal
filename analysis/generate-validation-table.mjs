@@ -18,8 +18,8 @@ const scenarios = [
   { name: "2kWp on-grid sanduiche", input: { ...base, monthlyConsumptionKwh: 250, roofType: "sanduiche", groundFloor: true } },
   { name: "3kWp on-grid telha lusa", input: { ...base, monthlyConsumptionKwh: 400, roofType: "telha-lusa" } },
   { name: "3kWp on-grid sanduiche", input: { ...base, monthlyConsumptionKwh: 400, roofType: "sanduiche", groundFloor: true } },
-  { name: "4kWp on-grid telha lusa", input: { ...base, monthlyConsumptionKwh: 600, roofType: "telha-lusa" }, note: "O motor atual dimensiona este escalão como 4.5kWp alvo." },
-  { name: "4kWp on-grid sanduiche", input: { ...base, monthlyConsumptionKwh: 600, roofType: "sanduiche", groundFloor: true }, note: "O motor atual dimensiona este escalão como 4.5kWp alvo." },
+  { name: "4kWp on-grid telha lusa", input: { ...base, monthlyConsumptionKwh: 600, roofType: "telha-lusa" }, note: "O motor dimensiona por numero real de paineis, nao por kWp redondo." },
+  { name: "4kWp on-grid sanduiche", input: { ...base, monthlyConsumptionKwh: 600, roofType: "sanduiche", groundFloor: true }, note: "O motor dimensiona por numero real de paineis, nao por kWp redondo." },
   { name: "5kWp hibrido monofasico com 10kWh", input: { ...base, monthlyConsumptionKwh: 800, roofType: "telha-lusa", consumptionPeriod: "noite", wantsBattery: true, batteryCapacityKwh: 10 } },
   { name: "6kWp hibrido trifasico DEYE + GSL HV 10kWh", input: { ...base, monthlyConsumptionKwh: 900, roofType: "telha-lusa", gridType: "trifasico", consumptionPeriod: "noite", wantsBattery: true, batteryCapacityKwh: 10 } }
 ];

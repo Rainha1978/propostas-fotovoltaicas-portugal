@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+﻿import { redirect } from "next/navigation";
 import { createLead } from "../../../src/lib/leadRepository.js";
 
 async function createLeadAction(formData) {
@@ -30,7 +30,7 @@ export default function NewLeadPage() {
         <div className="field"><label>Objetivo</label><select name="objetivo"><option value="poupar">Poupar</option><option value="backup">Backup</option><option value="autonomia">Autonomia</option><option value="preparar_EV">Preparar EV</option><option value="aconselhamento">Aconselhamento</option></select></div>
         <div className="field"><label>Escolha do cliente</label><select name="escolha_cliente"><option value="ainda_nao_sei">Ainda nao sei</option><option value="ongrid">On-grid</option><option value="hibrido">Hibrido</option><option value="hibrido_backup">Hibrido com backup</option></select></div>
         <div className="field"><label>Tipo de rede</label><select name="rede"><option value="monofasico">Monofasico</option><option value="trifasico">Trifasico</option><option value="nao_sei">Nao sei</option></select></div>
-        <div className="field"><label>Tipo de telhado</label><select name="tipo_telhado"><option value="telha_lusa">Telha lusa</option><option value="sanduiche">Sanduiche</option><option value="terreo">Terreo</option></select></div>
+        <div className="field"><label>Tipo de telhado</label><select id="tipo_telhado" name="tipo_telhado"><option value="telha_lusa">Telha lusa</option><option value="sanduiche">Sanduiche</option><option value="terreo">Terreo</option></select></div>
         <div className="field">
           <label>Preferencia de painel</label>
           <select name="panel_preference" defaultValue="standard_460">
@@ -39,8 +39,15 @@ export default function NewLeadPage() {
           </select>
           <small>Painel 595W apenas disponivel para telhado sanduiche ou instalacao terrea, sujeito a validacao tecnica.</small>
         </div>
-        <div className="field"><label>Telha lusa dificil</label><select name="telha_lusa_dificil"><option value="">Nao</option><option value="sim">Sim</option></select></div>
-        <div className="field"><label>Tipo de estrutura</label><select name="tipo_estrutura"><option value="coplanar">Coplanar</option><option value="triangular">Triangular</option></select></div>
+        <div className="field" id="tipo_estrutura_field">
+          <label>Tipo de estrutura</label>
+          <select id="tipo_estrutura" name="tipo_estrutura">
+            <option value="coplanar">Coplanar</option>
+            <option value="triangular">Triangular</option>
+            <option value="nao_aplicavel">Nao aplicavel</option>
+          </select>
+          <small id="estrutura_terreo_help" hidden>Estrutura terrea a definir apos visita tecnica.</small>
+        </div>
         <div className="field"><label>Distancia paineis ate inversor (m)</label><input name="distancia_paineis_inversor_m" type="number" step="0.1" /></div>
         <div className="field"><label>Distancia inversor ate quadro (m)</label><input name="distancia_inversor_quadro_m" type="number" step="0.1" /></div>
         <div className="field"><label>Distancia ate Maceira (km)</label><input name="distancia_maceira_km" type="number" step="0.1" /></div>
@@ -52,6 +59,28 @@ export default function NewLeadPage() {
         <div className="field full"><label>Observacoes</label><textarea name="notes" /></div>
         <div className="full"><button className="button" type="submit">Guardar lead</button></div>
       </form>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (() => {
+              const roof = document.getElementById("tipo_telhado");
+              const structure = document.getElementById("tipo_estrutura");
+              const field = document.getElementById("tipo_estrutura_field");
+              const help = document.getElementById("estrutura_terreo_help");
+              if (!roof || !structure || !field || !help) return;
+              const syncStructure = () => {
+                const isGround = roof.value === "terreo";
+                structure.value = isGround ? "nao_aplicavel" : (structure.value === "nao_aplicavel" ? "coplanar" : structure.value);
+                structure.disabled = isGround;
+                help.hidden = !isGround;
+                field.dataset.ground = isGround ? "true" : "false";
+              };
+              roof.addEventListener("change", syncStructure);
+              syncStructure();
+            })();
+          `
+        }}
+      />
     </>
   );
 }

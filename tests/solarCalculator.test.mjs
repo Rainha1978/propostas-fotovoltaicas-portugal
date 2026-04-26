@@ -1,4 +1,4 @@
-import test from "node:test";
+﻿import test from "node:test";
 import assert from "node:assert/strict";
 import {
   calculateProposal,
@@ -31,7 +31,7 @@ test("dimensiona perfil equilibrado mantendo paineis base", () => {
   assert.deepEqual(dimensionSystem(251, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
   assert.deepEqual(dimensionSystem(350, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
   assert.deepEqual(dimensionSystem(351, "equilibrado"), { targetKwp: 3.22, basePanelCount: 7, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(1150, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1150, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
   assert.deepEqual(dimensionSystem(1151, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
 });
 
@@ -140,6 +140,8 @@ test("calcula mao de obra por numero de paineis segundo a regra nova", () => {
   for (const item of cases) {
     const proposal = calculateProposal({
       ...baseLead,
+      tipo_telhado: "sanduiche",
+      roofType: "sanduiche",
       monthlyConsumptionKwh: item.monthlyConsumptionKwh,
       monthlyBillEur: 0
     });
@@ -147,6 +149,19 @@ test("calcula mao de obra por numero de paineis segundo a regra nova", () => {
     assert.equal(proposal.equipment.panelCount, item.expectedPanels);
     assert.equal(proposal.internalCosts.labor, item.expectedLabor);
   }
+});
+
+test("aplica acrescimo automatico de telha lusa na mao de obra", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    monthlyBillEur: 0,
+    monthlyConsumptionKwh: 400,
+    telha_lusa_dificil: ""
+  });
+
+  assert.equal(proposal.equipment.panelCount, 7);
+  assert.equal(proposal.internalCosts.labor, 440 + 40);
+  assert.ok(proposal.recommendation.notes.some((note) => note.includes("Acrescimo telha lusa incluido")));
 });
 
 test("calcula bateria GoodWe LV premium a 1320 EUR por modulo", () => {

@@ -36,9 +36,9 @@ Os testes usam `node:test`, por isso nao dependem de bibliotecas adicionais.
 
 - Energia: `0.20 EUR/kWh`
 - Producao anual: `1500 kWh/kWp`
-- Fatura sem consumo informado: `fatura / 0.20`
-- Dimensionamento por escaloes ate `6 kWp`
-- Painel 595W apenas para telhado sanduiche em res do chao
+- Fatura sem consumo informado: remove IVA, desconta 20 EUR de custos fixos e divide por `0.15 EUR/kWh`
+- Dimensionamento por escaloes de paineis 460W, com ajuste por perfil `dia/equilibrado/noite`
+- Painel 595W apenas quando escolhido e validado para telhado sanduiche, instalacao terrea ou res do chao
 - Hibrido quando ha bateria ou consumo principal noturno
 - Trifasico com bateria usa DEYE + GSL HV como opcao principal
 - Preco final apresenta sem IVA, IVA a 23% e total com IVA

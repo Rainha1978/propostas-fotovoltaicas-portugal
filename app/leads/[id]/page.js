@@ -55,8 +55,8 @@ export default async function LeadDetailPage({ params }) {
             <div><dt>Rede</dt><dd>{lead.rede}</dd></div>
             <div><dt>Telhado</dt><dd>{lead.tipo_telhado}</dd></div>
             <div><dt>Preferencia painel</dt><dd>{panelPreferenceLabel(lead.panel_preference)}</dd></div>
-            <div><dt>Estrutura</dt><dd>{lead.tipo_estrutura}</dd></div>
-            <div><dt>Telha dificil</dt><dd>{yesNo(lead.telha_lusa_dificil)}</dd></div>
+            <div><dt>Estrutura</dt><dd>{lead.tipo_telhado === "terreo" ? "nao_aplicavel" : lead.tipo_estrutura}</dd></div>
+            {lead.tipo_telhado === "telha_lusa" ? <div><dt>Telha lusa</dt><dd>Acrescimo incluido na mao de obra</dd></div> : null}
             <div><dt>Objetivo</dt><dd>{lead.objetivo}</dd></div>
             <div><dt>Escolha cliente</dt><dd>{lead.escolha_cliente}</dd></div>
             <div><dt>Backup</dt><dd>{lead.backup}</dd></div>

@@ -4,16 +4,16 @@ Foram analisados 47 documentos indicados pelo utilizador. A extracao aproveitave
 
 ## Regras mantidas
 
-- O dimensionamento por consumo mensal continua igual.
+- O dimensionamento passa a partir de escaloes de paineis 460W, ajustados pelo perfil de consumo dia/equilibrado/noite.
 - A recomendacao on-grid vs hibrido continua baseada em bateria pedida ou consumo principal noturno.
-- A escolha de painel 595W continua limitada a telhado sanduiche em res do chao.
+- A escolha de painel 595W fica disponivel quando escolhida/validada tecnicamente em sanduiche, terreo ou res do chao.
 - Trifasico com bateria continua a privilegiar DEYE + GSL HV como opcao principal.
 
 ## Coeficientes ajustados
 
 - IVA atual do MVP: 23%.
 - IVA historico observado nos documentos: 6%; usado apenas para interpretar orcamentos antigos, nao como regra atual.
-- Painel pequeno/standard: 79 EUR por painel, calibrado pela mediana dos 460W.
+- Painel pequeno/standard: 73 EUR por painel, calibrado pela mediana dos 460W e pelo caso real recente.
 - Painel grande: 99 EUR por painel, calibrado por 575W/590W/595W recentes.
 - Estrutura telha lusa: 95 EUR por par de paineis, com minimo de 190 EUR.
 - Estrutura sanduiche: 70 EUR por par de paineis.
@@ -27,7 +27,7 @@ Foram analisados 47 documentos indicados pelo utilizador. A extracao aproveitave
   - 11 a 12 paineis: 520 EUR;
   - acima de 12 paineis: +40 EUR por cada 2 paineis;
   - hibrido: mesma base on-grid +120 EUR por bateria instalada no seu todo;
-  - telha lusa dificil: +10 EUR por cada 2 paineis;
+  - telha lusa: +10 EUR por cada 2 paineis, aplicado automaticamente;
   - sanduiche simples: mantem valor base.
 - Material eletrico/protecoes base: 165 EUR, com cabo proporcional as distancias introduzidas.
 - Extras de instalacao: 35 EUR/kWp.

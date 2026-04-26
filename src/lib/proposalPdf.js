@@ -1,4 +1,4 @@
-function escapePdfText(value) {
+﻿function escapePdfText(value) {
   return String(value ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -226,11 +226,12 @@ function drawContext({ hybridPriceOptions }, x, y) {
 }
 
 function drawCostDetail(option, x, y) {
+  const structureNeedsVisit = (option.flags ?? []).some((flag) => flag.area === "estrutura" && flag.type === "visita_tecnica");
   const rows = [
     ["Paineis", costValue(option, "panels")],
     ["Inversor", costValue(option, "inverter")],
     ["Bateria", costValue(option, "battery")],
-    ["Estrutura", costValue(option, "structure")],
+    ["Estrutura", structureNeedsVisit ? "valor a definir apos visita tecnica" : costValue(option, "structure")],
     ["Mao de obra", costValue(option, "labor") + costValue(option, "batteryLabor")],
     ["Protecoes/eletrica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual")],
     ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors")],
@@ -243,7 +244,7 @@ function drawCostDetail(option, x, y) {
   rows.forEach(([label, value], index) => {
     const rowY = y - 24 - index * 18;
     commands.push(text(label, x, rowY, 8.5, "F1", "0.30 0.36 0.44"));
-    commands.push(text(money(value), x + 180, rowY, 8.5, "F2"));
+    commands.push(text(typeof value === "string" ? value : money(value), x + 180, rowY, 8.5, "F2"));
     commands.push(line(x, rowY - 7, x + 250, rowY - 7));
   });
   return commands.join("\n");
