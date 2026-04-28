@@ -8,7 +8,7 @@ async function createLeadAction(formData) {
     throw new Error("Indique pelo menos a fatura mensal ou o consumo mensal em kWh.");
   }
   const lead = await createLead(data);
-  redirect(`/leads/${lead.id}`);
+  redirect(`/leads/${lead.id}/success`);
 }
 
 export default function NewLeadPage() {

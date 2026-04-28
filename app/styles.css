@@ -309,6 +309,106 @@ textarea {
   padding: 12px 14px;
 }
 
+.success-shell {
+  display: grid;
+  min-height: calc(100vh - 120px);
+  place-items: start center;
+}
+
+.success-card {
+  background: radial-gradient(circle at top left, #dcfce7 0, #ffffff 36%, #f8fafc 100%);
+  border: 1px solid #dbe7df;
+  border-radius: 20px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  max-width: 760px;
+  padding: 34px;
+  text-align: center;
+  width: 100%;
+}
+
+.success-badge {
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 999px;
+  color: #166534;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  text-transform: uppercase;
+}
+
+.success-card h1 {
+  color: #0f172a;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.04;
+  margin: 0 0 14px;
+}
+
+.success-intro,
+.success-email-note {
+  color: #334155;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 8px auto;
+  max-width: 610px;
+}
+
+.success-email-note {
+  font-weight: 700;
+}
+
+.success-actions {
+  align-items: center;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  margin: 28px auto;
+  max-width: 420px;
+}
+
+.whatsapp-button {
+  background: #25D366;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(37, 211, 102, 0.32);
+  color: #052e16;
+  font-size: 20px;
+  padding: 18px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+.whatsapp-button:hover {
+  background: #20bd5a;
+}
+
+.success-secondary-button {
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.success-back-link {
+  color: #166534;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.success-final-note {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 18px auto 0;
+  max-width: 640px;
+  padding: 16px;
+}
+
 @media (max-width: 760px) {
   .grid,
   .summary,
@@ -333,5 +433,18 @@ textarea {
     flex-direction: column;
     gap: 10px;
     padding: 16px;
+  }
+
+  main {
+    padding: 18px;
+  }
+
+  .success-card {
+    padding: 24px 18px;
+  }
+
+  .success-intro,
+  .success-email-note {
+    font-size: 16px;
   }
 }
