@@ -3,8 +3,19 @@ import { getLead } from "../../../../src/lib/leadRepository.js";
 
 const WHATSAPP_URL = "https://wa.me/351969880053?text=Ol%C3%A1,%20acabei%20de%20fazer%20uma%20simula%C3%A7%C3%A3o%20fotovoltaica%20no%20site%20SolexR%20e%20gostava%20de%20ajuda%20com%20o%20or%C3%A7amento.";
 
-export default async function LeadSuccessPage({ params }) {
+function emailMessage(status) {
+  if (status === "failed") {
+    return "A simulacao foi criada. Se nao receber o email, pode descarregar o PDF ou falar connosco no WhatsApp.";
+  }
+  if (status === "skipped") {
+    return "A simulacao foi criada. Como nao foi indicado email, pode descarregar o PDF ou falar connosco no WhatsApp.";
+  }
+  return "Enviamos a proposta para o seu email. Se nao encontrar, verifique tambem a pasta de spam.";
+}
+
+export default async function LeadSuccessPage({ params, searchParams }) {
   const { id } = await params;
+  const query = await searchParams;
   const lead = await getLead(id);
   if (!lead) notFound();
 
@@ -17,7 +28,7 @@ export default async function LeadSuccessPage({ params }) {
           A sua simulacao fotovoltaica foi gerada com base nos dados fornecidos.
         </p>
         <p className="success-email-note">
-          Enviamos a proposta para o seu email. Se nao encontrar, verifique tambem a pasta de spam.
+          {emailMessage(query?.email)}
         </p>
 
         <div className="success-actions">
