@@ -5,8 +5,6 @@ import { buildProposalPdf } from "../../../src/lib/proposalPdf.js";
 import { sendEmail } from "../../../src/lib/sendEmail.js";
 
 async function buildAndSendProposalEmail(lead) {
-  if (!lead.email) return "skipped";
-
   try {
     const calculation = calculateProposal(lead);
     const onGridOption = calculateProposal({
@@ -33,8 +31,8 @@ async function buildAndSendProposalEmail(lead) {
       }
     });
 
-    await sendEmail(lead.email, pdf);
-    return "sent";
+    const emailResult = await sendEmail(lead.email, pdf, { lead, calculation });
+    return emailResult.cliente;
   } catch (error) {
     console.error("Erro ao enviar email:", error);
     return "failed";
