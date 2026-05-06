@@ -1,6 +1,3 @@
-import { notFound } from "next/navigation";
-import { getLead } from "../../../../src/lib/leadRepository.js";
-
 const WHATSAPP_URL = "https://wa.me/351969880053?text=Ol%C3%A1,%20acabei%20de%20fazer%20uma%20simula%C3%A7%C3%A3o%20fotovoltaica%20no%20site%20SolexR%20e%20gostava%20de%20ajuda%20com%20o%20or%C3%A7amento.";
 
 function emailMessage(status) {
@@ -13,11 +10,8 @@ function emailMessage(status) {
   return "Enviamos a proposta para o seu email. Se nao encontrar, verifique tambem a pasta de spam.";
 }
 
-export default async function LeadSuccessPage({ params, searchParams }) {
-  const { id } = await params;
+export default async function LeadSuccessPage({ searchParams }) {
   const query = await searchParams;
-  const lead = await getLead(id);
-  if (!lead) notFound();
 
   return (
     <section className="success-shell">
@@ -34,9 +28,6 @@ export default async function LeadSuccessPage({ params, searchParams }) {
         <div className="success-actions">
           <a className="button whatsapp-button" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Falar no WhatsApp
-          </a>
-          <a className="button secondary success-secondary-button" href={`/api/leads/${lead.id}/proposal`}>
-            Descarregar simulacao em PDF
           </a>
           <a className="success-back-link" href="/leads/new">
             Voltar ao simulador

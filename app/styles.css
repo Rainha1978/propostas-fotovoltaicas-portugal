@@ -409,6 +409,21 @@ textarea {
   padding: 16px;
 }
 
+.auth-panel {
+  max-width: 520px;
+  margin: 40px auto;
+}
+
+.auth-form {
+  display: grid;
+  gap: 18px;
+}
+
+.auth-error {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
 @media (max-width: 760px) {
   .grid,
   .summary,

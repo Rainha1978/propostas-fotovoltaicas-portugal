@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { calculateProposal } from "../../../../../src/domain/solarCalculator.js";
+import { requireAdminApi } from "../../../../../src/lib/adminAuth.js";
 import { getLead, saveProposal } from "../../../../../src/lib/leadRepository.js";
 import { buildProposalPdf } from "../../../../../src/lib/proposalPdf.js";
 
@@ -8,6 +9,10 @@ export const revalidate = 0;
 
 export async function GET(_request, { params }) {
   const { id } = await params;
+  if (!(await requireAdminApi(`/api/leads/${id}/proposal`))) {
+    return new Response("Nao autorizado", { status: 401 });
+  }
+
   const lead = await getLead(id);
   if (!lead) notFound();
 

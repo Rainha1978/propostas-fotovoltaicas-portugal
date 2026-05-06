@@ -1,5 +1,6 @@
 ﻿import { notFound } from "next/navigation";
 import { calculateProposal } from "../../../src/domain/solarCalculator.js";
+import { requireAdminPage } from "../../../src/lib/adminAuth.js";
 import { getLead, listFollowUps } from "../../../src/lib/leadRepository.js";
 
 function eur(value) {
@@ -20,6 +21,7 @@ function panelPreferenceLabel(value) {
 
 export default async function LeadDetailPage({ params }) {
   const { id } = await params;
+  await requireAdminPage(`/leads/${id}`);
   const lead = await getLead(id);
   if (!lead) notFound();
   const proposal = calculateProposal(lead);

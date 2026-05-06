@@ -8,7 +8,6 @@ export default function HomePage() {
         </div>
         <a className="button" href="/leads/new">Criar lead</a>
       </div>
-      <a className="button secondary" href="/leads">Ver leads</a>
     </section>
   );
 }

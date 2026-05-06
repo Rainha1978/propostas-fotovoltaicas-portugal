@@ -1,6 +1,8 @@
 import { listLeads } from "../../src/lib/leadRepository.js";
+import { requireAdminPage } from "../../src/lib/adminAuth.js";
 
 export default async function LeadsPage() {
+  await requireAdminPage("/leads");
   const leads = await listLeads();
 
   return (
