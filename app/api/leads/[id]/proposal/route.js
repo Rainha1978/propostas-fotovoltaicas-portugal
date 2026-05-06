@@ -3,6 +3,9 @@ import { calculateProposal } from "../../../../../src/domain/solarCalculator.js"
 import { getLead, saveProposal } from "../../../../../src/lib/leadRepository.js";
 import { buildProposalPdf } from "../../../../../src/lib/proposalPdf.js";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET(_request, { params }) {
   const { id } = await params;
   const lead = await getLead(id);
@@ -36,7 +39,10 @@ export async function GET(_request, { params }) {
   return new Response(pdf, {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition": `attachment; filename="proposta-${lead.id}.pdf"`
+      "Content-Disposition": `attachment; filename="proposta-${lead.id}.pdf"`,
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
     }
   });
 }

@@ -31,7 +31,7 @@ async function buildAndSendProposalEmail(lead) {
       }
     });
 
-    const emailResult = await sendEmail(lead.email, pdf, { lead, calculation });
+    const emailResult = await sendEmail({ lead, pdfBuffer: pdf, calculation });
     return emailResult.cliente;
   } catch (error) {
     console.error("Erro ao enviar email:", error);

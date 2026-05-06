@@ -1,16 +1,16 @@
 ﻿import { LEAD_STATUSES } from "../domain/solarCalculator.js";
 
-const memoryStore = globalThis.__leadMemoryStore ??= {
-  leads: [],
-  proposals: [],
-  followUps: []
-};
-
 let poolPromise;
 let schemaReadyPromise;
 
 function hasDatabase() {
   return Boolean(process.env.DATABASE_URL);
+}
+
+function assertDatabase() {
+  if (!hasDatabase()) {
+    throw new Error("DATABASE_URL e obrigatorio para guardar e ler simulacoes com isolamento por ID.");
+  }
 }
 
 async function getPool() {
@@ -110,6 +110,10 @@ async function ensureSchema() {
         reason TEXT NOT NULL,
         completed_at TIMESTAMPTZ
       );
+
+      ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
+      ALTER TABLE public.proposals ENABLE ROW LEVEL SECURITY;
+      ALTER TABLE public.follow_ups ENABLE ROW LEVEL SECURITY;
     `));
   }
   await schemaReadyPromise;
@@ -294,6 +298,7 @@ function normalizeLeadInput(data) {
 }
 
 async function addFollowUp({ leadId, days, reason }) {
+  assertDatabase();
   const dueAt = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   const followUp = {
     id: crypto.randomUUID(),
@@ -302,11 +307,6 @@ async function addFollowUp({ leadId, days, reason }) {
     reason,
     completedAt: null
   };
-
-  if (!hasDatabase()) {
-    memoryStore.followUps.push(followUp);
-    return followUp.id;
-  }
 
   await ensureSchema();
   const pool = await getPool();
@@ -318,10 +318,7 @@ async function addFollowUp({ leadId, days, reason }) {
 }
 
 export async function listLeads() {
-  if (!hasDatabase()) {
-    return [...memoryStore.leads].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  }
-
+  assertDatabase();
   await ensureSchema();
   const pool = await getPool();
   const result = await pool.query("SELECT * FROM leads ORDER BY created_at DESC");
@@ -329,10 +326,8 @@ export async function listLeads() {
 }
 
 export async function getLead(id) {
-  if (!hasDatabase()) {
-    return memoryStore.leads.find((lead) => lead.id === id) ?? null;
-  }
-
+  assertDatabase();
+  if (!id) return null;
   await ensureSchema();
   const pool = await getPool();
   const result = await pool.query("SELECT * FROM leads WHERE id = $1", [id]);
@@ -340,14 +335,8 @@ export async function getLead(id) {
 }
 
 export async function createLead(data) {
+  assertDatabase();
   const lead = normalizeLeadInput(data);
-  const now = new Date().toISOString();
-
-  if (!hasDatabase()) {
-    memoryStore.leads.push({ ...lead, createdAt: now, updatedAt: now });
-    await addFollowUp({ leadId: lead.id, days: 1, reason: "24h apos contacto sem resposta" });
-    return getLead(lead.id);
-  }
 
   await ensureSchema();
   const pool = await getPool();
@@ -387,29 +376,8 @@ export async function createLead(data) {
 }
 
 export async function saveProposal({ leadId, calculation }) {
+  assertDatabase();
   const id = crypto.randomUUID();
-
-  if (!hasDatabase()) {
-    memoryStore.proposals.push({
-      id,
-      leadId,
-      createdAt: new Date().toISOString(),
-      calculation,
-      priceNet: calculation.price.net,
-      vat: calculation.price.vat,
-      priceGross: calculation.price.gross,
-      annualSavings: calculation.roi.annualSavingsEur,
-      roiYears: calculation.roi.roiYears
-    });
-    const lead = memoryStore.leads.find((item) => item.id === leadId);
-    if (lead) {
-      lead.status = "Pre-orcamento enviado";
-      lead.updatedAt = new Date().toISOString();
-    }
-    await addFollowUp({ leadId, days: 3, reason: "3 dias apos proposta enviada" });
-    await addFollowUp({ leadId, days: 7, reason: "7 dias apos proposta enviada" });
-    return id;
-  }
 
   await ensureSchema();
   const pool = await getPool();
@@ -437,12 +405,7 @@ export async function saveProposal({ leadId, calculation }) {
 }
 
 export async function listFollowUps(leadId) {
-  if (!hasDatabase()) {
-    return memoryStore.followUps
-      .filter((followUp) => followUp.leadId === leadId)
-      .sort((a, b) => a.dueAt.localeCompare(b.dueAt));
-  }
-
+  assertDatabase();
   await ensureSchema();
   const pool = await getPool();
   const result = await pool.query(

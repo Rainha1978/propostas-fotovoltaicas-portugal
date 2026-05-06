@@ -49,8 +49,16 @@ function buildInternalEmailHtml({ lead = {}, calculation = {} }) {
   `;
 }
 
-export async function sendEmail(clienteEmail, pdfBuffer, { lead = {}, calculation = {} } = {}) {
+export async function sendEmail({ lead = {}, pdfBuffer, calculation = {} } = {}) {
+  const clienteEmail = lead.email || null;
   const results = { cliente: "skipped", simulador: "skipped" };
+
+  if (!pdfBuffer) {
+    const error = new Error("PDF da simulacao nao indicado.");
+    console.error("Erro email cliente:", error);
+    console.error("Erro email simulador:", error);
+    return { cliente: "failed", simulador: "failed" };
+  }
 
   const transporter = getTransporter();
 
