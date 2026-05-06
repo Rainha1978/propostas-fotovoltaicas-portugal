@@ -1,4 +1,8 @@
-﻿function escapePdfText(value) {
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { deflateSync, inflateSync } from "node:zlib";
+
+function escapePdfText(value) {
   return String(value ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -37,6 +41,102 @@ function line(x1, y1, x2, y2, color = "0.85 0.89 0.93", width = 1) {
   return `${color} RG ${width} w ${x1} ${y1} m ${x2} ${y2} l S`;
 }
 
+function cardBox(x, y, w, h, fill = "1 1 1", stroke = "0.86 0.86 0.86") {
+  return rect(x, y - h, w, h, fill, stroke);
+}
+
+function readPngChunks(buffer) {
+  const signature = buffer.subarray(0, 8).toString("hex");
+  if (signature !== "89504e470d0a1a0a") {
+    throw new Error("Logo PNG invalido.");
+  }
+
+  const chunks = [];
+  let offset = 8;
+  while (offset < buffer.length) {
+    const length = buffer.readUInt32BE(offset);
+    const type = buffer.subarray(offset + 4, offset + 8).toString("ascii");
+    const data = buffer.subarray(offset + 8, offset + 8 + length);
+    chunks.push({ type, data });
+    offset += length + 12;
+    if (type === "IEND") break;
+  }
+  return chunks;
+}
+
+function unfilterPngScanlines(inflated, width, height, channels) {
+  const stride = width * channels;
+  const output = Buffer.alloc(width * height * channels);
+  let inputOffset = 0;
+  let outputOffset = 0;
+
+  for (let y = 0; y < height; y += 1) {
+    const filter = inflated[inputOffset];
+    inputOffset += 1;
+    for (let x = 0; x < stride; x += 1) {
+      const raw = inflated[inputOffset + x];
+      const left = x >= channels ? output[outputOffset + x - channels] : 0;
+      const up = y > 0 ? output[outputOffset + x - stride] : 0;
+      const upLeft = y > 0 && x >= channels ? output[outputOffset + x - stride - channels] : 0;
+      let value = raw;
+
+      if (filter === 1) value = raw + left;
+      if (filter === 2) value = raw + up;
+      if (filter === 3) value = raw + Math.floor((left + up) / 2);
+      if (filter === 4) {
+        const p = left + up - upLeft;
+        const pa = Math.abs(p - left);
+        const pb = Math.abs(p - up);
+        const pc = Math.abs(p - upLeft);
+        const predictor = pa <= pb && pa <= pc ? left : pb <= pc ? up : upLeft;
+        value = raw + predictor;
+      }
+
+      output[outputOffset + x] = value & 255;
+    }
+    inputOffset += stride;
+    outputOffset += stride;
+  }
+
+  return output;
+}
+
+function loadLogoImage() {
+  const logoPath = join(process.cwd(), "assets", "logo-solexr-header.png");
+  if (!existsSync(logoPath)) return null;
+
+  const buffer = readFileSync(logoPath);
+  const chunks = readPngChunks(buffer);
+  const ihdr = chunks.find((chunk) => chunk.type === "IHDR")?.data;
+  if (!ihdr) return null;
+
+  const width = ihdr.readUInt32BE(0);
+  const height = ihdr.readUInt32BE(4);
+  const bitDepth = ihdr[8];
+  const colorType = ihdr[9];
+  const interlace = ihdr[12];
+  if (bitDepth !== 8 || colorType !== 6 || interlace !== 0) return null;
+
+  const idat = Buffer.concat(chunks.filter((chunk) => chunk.type === "IDAT").map((chunk) => chunk.data));
+  const pixels = unfilterPngScanlines(inflateSync(idat), width, height, 4);
+  const rgb = Buffer.alloc(width * height * 3);
+  const alpha = Buffer.alloc(width * height);
+
+  for (let source = 0, color = 0, mask = 0; source < pixels.length; source += 4, color += 3, mask += 1) {
+    rgb[color] = pixels[source];
+    rgb[color + 1] = pixels[source + 1];
+    rgb[color + 2] = pixels[source + 2];
+    alpha[mask] = pixels[source + 3];
+  }
+
+  return {
+    width,
+    height,
+    rgb: deflateSync(rgb),
+    alpha: deflateSync(alpha)
+  };
+}
+
 function wrap(value, maxChars) {
   const words = String(value ?? "").split(/\s+/).filter(Boolean);
   const lines = [];
@@ -56,6 +156,12 @@ function wrap(value, maxChars) {
 
 function wrappedText(value, x, y, maxChars, size = 8, gap = 10, font = "F1", color = "0.30 0.36 0.44") {
   return wrap(value, maxChars)
+    .map((part, index) => text(part, x, y - index * gap, size, font, color))
+    .join("\n");
+}
+
+function drawWrappedLines(lines, x, y, size = 8, gap = 10, font = "F1", color = "0.30 0.36 0.44") {
+  return lines
     .map((part, index) => text(part, x, y - index * gap, size, font, color))
     .join("\n");
 }
@@ -118,33 +224,47 @@ function optionRoi(option) {
   return option.roi ?? {};
 }
 
+function pageHeader(title, subtitle = "") {
+  return [
+    rect(0, 778, 595, 64, "0.05 0.22 0.16"),
+    text(title, 40, 806, 17, "F2", "1 1 1"),
+    subtitle ? text(subtitle, 40, 787, 9, "F1", "0.88 0.96 0.91") : ""
+  ].filter(Boolean).join("\n");
+}
+
+function drawLogo(x = 40, y = 771, width = 150, height = 78) {
+  return `q ${width} 0 0 ${height} ${x} ${y} cm /Logo Do Q`;
+}
+
 function drawHeader() {
   return [
-    rect(0, 728, 595, 114, "0.04 0.20 0.15"),
-    rect(396, 728, 199, 114, "0.10 0.40 0.27"),
-    text("PROPOSTA FOTOVOLTAICA INDICATIVA", 40, 795, 19, "F2", "1 1 1"),
-    text("Dimensionamento, comparacao e estimativa financeira", 40, 770, 11, "F1", "0.88 0.96 0.91"),
-    text(`Data: ${new Date().toLocaleDateString("pt-PT")}`, 424, 795, 9, "F1", "0.92 0.97 0.94"),
-    text(`Validade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias`, 424, 775, 9, "F2", "1 1 1"),
-    text("precos sujeitos a atualizacao", 424, 762, 7.5, "F1", "0.82 0.91 0.86")
+    rect(0, 760, 595, 82, "1 1 1"),
+    drawLogo(40, 766, 150, 78),
+    rect(40, 674, 515, 72, "0.04 0.20 0.15"),
+    rect(395, 674, 160, 72, "0.10 0.40 0.27"),
+    text("PROPOSTA FOTOVOLTAICA", 60, 722, 16, "F2", "1 1 1"),
+    text("INDICATIVA", 60, 700, 16, "F2", "1 1 1"),
+    text("Dimensionamento e estimativa financeira", 60, 684, 9, "F1", "0.88 0.96 0.91"),
+    text(`Data: ${new Date().toLocaleDateString("pt-PT")}`, 424, 718, 8.5, "F1", "0.92 0.97 0.94"),
+    text(`Validade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias`, 424, 700, 8.5, "F2", "1 1 1"),
+    text("precos sujeitos a atualizacao", 424, 686, 7, "F1", "0.82 0.91 0.86")
   ].join("\n");
 }
 
 function drawClientAndConsumption(lead, calculation, x, y) {
   const consumption = calculation.consumption ?? calculation.sizing;
   return [
-    rect(x, y - 138, 515, 138, "1 1 1", "0.82 0.88 0.84"),
-    text("CLIENTE", x + 14, y - 22, 11, "F2", "0.05 0.22 0.16"),
-    text(lead.name, x + 14, y - 42, 10, "F2"),
-    text(`Telefone: ${lead.phone || "-"}`, x + 14, y - 59, 8),
-    text(`Email: ${lead.email || "-"}`, x + 14, y - 74, 8),
-    text(`Localidade: ${lead.locality || "-"}`, x + 14, y - 89, 8),
-    text("CONSUMO ATUAL", x + 280, y - 22, 11, "F2", "0.05 0.22 0.16"),
-    text(`Fatura mensal: ${money(consumption.monthlyBillEur)}`, x + 280, y - 42, 8.5),
-    text(`Consumo mensal: ${kwh(consumption.monthlyConsumptionKwh)}`, x + 280, y - 58, 8.5),
-    text(`Custo anual atual: ${money(consumption.annualCurrentCostEur)}`, x + 280, y - 74, 8.5),
-    text(`Perfil: ${calculation.recommendation?.profile || "-"}`, x + 280, y - 90, 8.5),
-    text(`Consumo noturno diario: ${kwh(consumption.night?.nightDailyKwh)}`, x + 280, y - 106, 8.5)
+    cardBox(x, y, 515, 118, "1 1 1"),
+    text("CLIENTE", x + 16, y - 26, 11, "F2", "0.05 0.22 0.16"),
+    text(lead.name, x + 16, y - 46, 10, "F2"),
+    wrappedText(`Telefone: ${lead.phone || "-"}`, x + 16, y - 63, 34, 8),
+    wrappedText(`Email: ${lead.email || "-"}`, x + 16, y - 79, 34, 8),
+    wrappedText(`Localidade: ${lead.locality || "-"}`, x + 16, y - 95, 34, 8),
+    text("CONSUMO ATUAL", x + 280, y - 26, 11, "F2", "0.05 0.22 0.16"),
+    text(`Fatura mensal: ${money(consumption.monthlyBillEur)}`, x + 280, y - 46, 8.5),
+    text(`Consumo mensal: ${kwh(consumption.monthlyConsumptionKwh)}`, x + 280, y - 62, 8.5),
+    text(`Custo anual atual: ${money(consumption.annualCurrentCostEur)}`, x + 280, y - 78, 8.5),
+    text(`Perfil: ${calculation.recommendation?.profile || "-"}`, x + 280, y - 94, 8.5)
   ].join("\n");
 }
 
@@ -155,59 +275,93 @@ function drawRecommendation(calculation, x, y) {
     ...(calculation.recommendation?.notes ?? []).slice(0, 2)
   ];
   return [
-    rect(x, y - 136, 515, 136, "0.95 0.98 0.96", "0.72 0.84 0.76"),
-    text("SISTEMA RECOMENDADO", x + 14, y - 22, 12, "F2", "0.05 0.22 0.16"),
-    text(`Sistema: ${calculation.recommendation?.text || "-"}`, x + 14, y - 44, 9.5, "F2"),
-    text(`Potencia alvo: ${kwp(calculation.sizing.targetKwp)}`, x + 14, y - 63, 8.5),
-    text(`Potencia real em paineis: ${kwp(calculation.sizing.actualPanelPowerKwp)}`, x + 14, y - 79, 8.5),
-    text(`Paineis: ${calculation.equipment.panelCount} x ${panel.label}`, x + 14, y - 95, 8.5),
-    text(`Producao anual: ${kwh(calculation.roi.annualProductionKwh)}`, x + 14, y - 111, 8.5),
-    wrappedText(reason.join(" "), x + 280, y - 43, 40, 8, 10)
+    cardBox(x, y, 515, 126, "0.95 0.98 0.96", "0.72 0.84 0.76"),
+    text("SISTEMA RECOMENDADO", x + 16, y - 28, 12, "F2", "0.05 0.22 0.16"),
+    wrappedText(`Sistema: ${calculation.recommendation?.text || "-"}`, x + 16, y - 50, 42, 9, 10, "F2"),
+    text(`Potencia alvo: ${kwp(calculation.sizing.targetKwp)}`, x + 16, y - 72, 8.5),
+    text(`Potencia real em paineis: ${kwp(calculation.sizing.actualPanelPowerKwp)}`, x + 16, y - 88, 8.5),
+    wrappedText(`Paineis: ${calculation.equipment.panelCount} x ${panel.label}`, x + 16, y - 104, 42, 8.5),
+    wrappedText(reason.join(" "), x + 286, y - 50, 39, 8, 10)
   ].join("\n");
 }
 
-function drawOptionCard(option, x, y, width = 245, height = 210, accent = "0.08 0.32 0.22") {
+function optionCardLayout(option, width = 515) {
+  const contentWidth = width - 48;
+  const maxChars = Math.max(42, Math.floor(contentWidth / 5.4));
+  const notes = notesFor(option).slice(0, 3);
+  const noteLines = notes.flatMap((note) => wrap(note, maxChars - 4));
+  const inverterLines = wrap(`Inversor: ${optionInverter(option)}`, maxChars);
+  const batteryLines = wrap(`Bateria: ${optionBattery(option)}`, maxChars);
+  const height = 216
+    + inverterLines.length * 9
+    + batteryLines.length * 9
+    + noteLines.length * 8
+    + notes.length * 4;
+
+  return {
+    height: Math.max(238, height),
+    maxChars,
+    notes,
+    inverterLines,
+    batteryLines
+  };
+}
+
+function drawOptionCard(option, x, y, width = 515, accent = "0.08 0.32 0.22") {
+  const layout = optionCardLayout(option, width);
   const price = optionPrice(option);
   const roi = optionRoi(option);
-  const notes = notesFor(option).slice(0, 3);
-  return [
-    rect(x, y - height, width, height, "1 1 1", "0.80 0.86 0.82"),
-    rect(x, y - 36, width, 36, accent),
-    text(optionTitle(option), x + 12, y - 21, 11, "F2", "1 1 1"),
-    text(`Inversor: ${optionInverter(option)}`, x + 12, y - 55, 7.8, "F1"),
-    wrappedText(`Bateria: ${optionBattery(option)}`, x + 12, y - 71, 34, 7.6, 9),
-    text(`Capacidade: ${optionBatteryCapacity(option)}`, x + 12, y - 98, 7.8),
-    line(x + 12, y - 110, x + width - 12, y - 110),
-    text(`Sem IVA: ${money(price.net)}`, x + 12, y - 127, 8),
-    text(`IVA: ${money(price.vat)}`, x + 12, y - 143, 8),
-    text(`Com IVA: ${money(price.gross)}`, x + 12, y - 161, 10, "F2", "0.08 0.42 0.28"),
-    text(`Poupanca mensal: ${money(roi.monthlySavingsEur)}`, x + 12, y - 180, 7.8),
-    text(`Poupanca anual: ${money(roi.annualSavingsEur)}`, x + 12, y - 194, 7.8),
-    text(`ROI: ${years(roi.roiYears)}`, x + 145, y - 194, 7.8, "F2"),
-    notes.length ? bulletList(notes, x + 12, y - 214, 34, 6.9, 8) : ""
-  ].join("\n");
+  const pad = 24;
+  const commands = [
+    cardBox(x, y, width, layout.height, "1 1 1", "0.80 0.86 0.82"),
+    rect(x, y - 44, width, 44, accent),
+    text(optionTitle(option), x + pad, y - 27, 12, "F2", "1 1 1")
+  ];
+  let cursor = y - 68;
+  commands.push(drawWrappedLines(layout.inverterLines, x + pad, cursor, 8, 10));
+  cursor -= layout.inverterLines.length * 10 + 8;
+  commands.push(drawWrappedLines(layout.batteryLines, x + pad, cursor, 8, 10));
+  cursor -= layout.batteryLines.length * 10 + 8;
+  commands.push(text(`Capacidade: ${optionBatteryCapacity(option)}`, x + pad, cursor, 8));
+  cursor -= 15;
+  commands.push(line(x + pad, cursor, x + width - pad, cursor));
+  cursor -= 18;
+  commands.push(text(`Sem IVA: ${money(price.net)}`, x + pad, cursor, 8));
+  cursor -= 16;
+  commands.push(text(`IVA: ${money(price.vat)}`, x + pad, cursor, 8));
+  cursor -= 18;
+  commands.push(text(`Com IVA: ${money(price.gross)}`, x + pad, cursor, 10, "F2", "0.08 0.42 0.28"));
+  cursor -= 20;
+  commands.push(text(`Poupanca mensal: ${money(roi.monthlySavingsEur)}`, x + pad, cursor, 8));
+  cursor -= 16;
+  commands.push(text(`Poupanca anual: ${money(roi.annualSavingsEur)}`, x + pad, cursor, 8));
+  cursor -= 17;
+  commands.push(text(`ROI: ${years(roi.roiYears)}`, x + pad, cursor, 8.5, "F2"));
+  cursor -= 18;
+  if (layout.notes.length) {
+    commands.push(bulletList(layout.notes, x + pad, cursor, layout.maxChars - 4, 7, 9));
+  }
+  return commands.join("\n");
 }
 
 function drawComparison({ onGrid, hybrid }, x, y) {
-  const cards = [
-    drawOptionCard(onGrid, x, y, 245, 220, "0.08 0.32 0.22"),
-    drawOptionCard(hybrid, x + 270, y, 245, 220, "0.12 0.44 0.30")
-  ];
+  const onGridHeight = optionCardLayout(onGrid).height;
+  const hybridY = y - onGridHeight - 28;
   return [
     text("COMPARACAO DE SOLUCOES", x, y + 22, 13, "F2"),
-    ...cards
+    drawOptionCard(onGrid, x, y, 515, "0.08 0.32 0.22"),
+    drawOptionCard(hybrid, x, hybridY, 515, "0.12 0.44 0.30")
   ].join("\n");
 }
 
 function drawBatteryOptions(hybridPriceOptions, x, y) {
-  const optionCards = hybridPriceOptions.slice(0, 2).map((option, index) => (
-    drawOptionCard(option, x + index * 270, y, 245, 220, index === 0 ? "0.10 0.36 0.48" : "0.37 0.31 0.12")
-  ));
-  if (!optionCards.length) return "";
-  return [
-    text("OPCOES DE BATERIA", x, y + 22, 13, "F2"),
-    ...optionCards
-  ].join("\n");
+  const commands = [text("OPCOES DE BATERIA", x, y + 22, 13, "F2")];
+  let cursor = y;
+  hybridPriceOptions.slice(0, 2).forEach((option, index) => {
+    commands.push(drawOptionCard(option, x, cursor, 515, index === 0 ? "0.10 0.36 0.48" : "0.37 0.31 0.12"));
+    cursor -= optionCardLayout(option).height + 28;
+  });
+  return hybridPriceOptions.length ? commands.join("\n") : "";
 }
 
 function drawContext({ hybridPriceOptions }, x, y) {
@@ -219,9 +373,9 @@ function drawContext({ hybridPriceOptions }, x, y) {
     "As opcoes nao sao boas ou mas por si: devem ser comparadas com o objetivo do cliente, o perfil de consumo e a visita tecnica."
   ].filter(Boolean);
   return [
-    rect(x, y - 106, 515, 106, "0.98 0.99 0.98", "0.84 0.89 0.86"),
-    text("ENQUADRAMENTO", x + 14, y - 22, 12, "F2", "0.05 0.22 0.16"),
-    bulletList(items, x + 14, y - 44, 78, 8, 11)
+    cardBox(x, y, 515, 126, "0.98 0.99 0.98", "0.84 0.89 0.86"),
+    text("ENQUADRAMENTO", x + 20, y - 28, 12, "F2", "0.05 0.22 0.16"),
+    bulletList(items, x + 20, y - 52, 76, 8, 11)
   ].join("\n");
 }
 
@@ -287,30 +441,40 @@ function footer() {
 function buildPageOne({ lead, calculation, onGrid, hybrid, hybridPriceOptions }) {
   return [
     drawHeader(),
-    drawClientAndConsumption(lead, calculation, 40, 704),
-    drawRecommendation(calculation, 40, 548),
-    drawComparison({ onGrid, hybrid }, 40, 370),
+    drawClientAndConsumption(lead, calculation, 40, 650),
+    drawRecommendation(calculation, 40, 502),
     footer()
   ].join("\n");
 }
 
-function buildPageTwo({ calculation, hybridPriceOptions }) {
+function buildPageTwo({ onGrid, hybrid }) {
   return [
-    rect(0, 778, 595, 64, "0.05 0.22 0.16"),
-    text("COMPARACAO E ENQUADRAMENTO", 40, 806, 17, "F2", "1 1 1"),
-    text("Leitura comercial das opcoes propostas", 40, 787, 9, "F1", "0.88 0.96 0.91"),
-    drawContext({ hybridPriceOptions }, 40, 746),
-    drawBatteryOptions(hybridPriceOptions, 40, 590),
-    drawNotes(calculation, 40, 320),
+    pageHeader("COMPARACAO DE SOLUCOES", "Opcoes apresentadas em largura total para leitura limpa"),
+    drawComparison({ onGrid, hybrid }, 40, 735),
     footer()
   ].join("\n");
 }
 
-function buildPageThree({ recommended }) {
+function buildPageThree({ calculation, hybridPriceOptions }) {
   return [
-    rect(0, 778, 595, 64, "0.05 0.22 0.16"),
-    text("DETALHE TECNICO E FINANCEIRO", 40, 806, 17, "F2", "1 1 1"),
-    text("Decomposicao do preco da solucao recomendada", 40, 787, 9, "F1", "0.88 0.96 0.91"),
+    pageHeader("COMPARACAO E ENQUADRAMENTO", "Leitura comercial das opcoes propostas"),
+    drawContext({ hybridPriceOptions }, 40, 735),
+    drawNotes(calculation, 40, 540),
+    footer()
+  ].join("\n");
+}
+
+function buildPageFour({ hybridPriceOptions }) {
+  return [
+    pageHeader("OPCOES DE BATERIA", "Comparacao das alternativas de armazenamento"),
+    drawBatteryOptions(hybridPriceOptions, 40, 735),
+    footer()
+  ].join("\n");
+}
+
+function buildPageFive({ recommended }) {
+  return [
+    pageHeader("DETALHE TECNICO E FINANCEIRO", "Decomposicao do preco da solucao recomendada"),
     drawCostDetail(recommended, 40, 735),
     drawEquipment(recommended, 330, 735),
     footer()
@@ -318,6 +482,7 @@ function buildPageThree({ recommended }) {
 }
 
 function buildPdf(pages) {
+  const logoImage = loadLogoImage();
   const objects = [
     "<< /Type /Catalog /Pages 2 0 R >>",
     `<< /Type /Pages /Kids [${pages.map((_, index) => `${3 + index} 0 R`).join(" ")}] /Count ${pages.length} >>`
@@ -326,13 +491,22 @@ function buildPdf(pages) {
   const pageObjectStart = objects.length + 1;
   const fontRegularObject = pageObjectStart + pages.length;
   const fontBoldObject = fontRegularObject + 1;
-  const contentObjectStart = fontBoldObject + 1;
+  const logoMaskObject = logoImage ? fontBoldObject + 1 : null;
+  const logoObject = logoImage ? fontBoldObject + 2 : null;
+  const contentObjectStart = fontBoldObject + 1 + (logoImage ? 2 : 0);
+  const imageResources = logoImage ? `/XObject << /Logo ${logoObject} 0 R >>` : "";
 
   pages.forEach((_, index) => {
-    objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${fontRegularObject} 0 R /F2 ${fontBoldObject} 0 R >> >> /Contents ${contentObjectStart + index} 0 R >>`);
+    objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${fontRegularObject} 0 R /F2 ${fontBoldObject} 0 R >> ${imageResources} >> /Contents ${contentObjectStart + index} 0 R >>`);
   });
   objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
   objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>");
+  if (logoImage) {
+    const alphaHex = `${logoImage.alpha.toString("hex")}>`;
+    const rgbHex = `${logoImage.rgb.toString("hex")}>`;
+    objects.push(`<< /Type /XObject /Subtype /Image /Width ${logoImage.width} /Height ${logoImage.height} /ColorSpace /DeviceGray /BitsPerComponent 8 /Filter [/ASCIIHexDecode /FlateDecode] /Length ${alphaHex.length} >>\nstream\n${alphaHex}\nendstream`);
+    objects.push(`<< /Type /XObject /Subtype /Image /Width ${logoImage.width} /Height ${logoImage.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter [/ASCIIHexDecode /FlateDecode] /SMask ${logoMaskObject} 0 R /Length ${rgbHex.length} >>\nstream\n${rgbHex}\nendstream`);
+  }
   pages.forEach((content) => {
     objects.push(`<< /Length ${Buffer.byteLength(content)} >>\nstream\n${content}\nendstream`);
   });
@@ -363,7 +537,9 @@ export function buildProposalPdf({ lead, calculation, options }) {
 
   return buildPdf([
     buildPageOne({ lead, calculation, onGrid, hybrid, hybridPriceOptions }),
-    buildPageTwo({ calculation, hybridPriceOptions }),
-    buildPageThree({ recommended: detailedRecommended })
+    buildPageTwo({ onGrid, hybrid }),
+    buildPageThree({ calculation, hybridPriceOptions }),
+    buildPageFour({ hybridPriceOptions }),
+    buildPageFive({ recommended: detailedRecommended })
   ]);
 }
