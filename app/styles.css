@@ -66,6 +66,21 @@ main {
   background: #334155;
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.form-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+  font-weight: 700;
+  margin: 0;
+  padding: 12px 14px;
+}
+
 .grid {
   display: grid;
   gap: 16px;

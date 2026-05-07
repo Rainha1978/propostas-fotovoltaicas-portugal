@@ -3,10 +3,10 @@ export default function HomePage() {
     <section className="panel">
       <div className="page-title">
         <div>
-          <h1>Gestao de propostas fotovoltaicas</h1>
-          <p className="muted">Comeca por criar uma lead e validar o calculo automatico da proposta.</p>
+          <h1>Descubra quanto pode poupar com energia solar</h1>
+          <p className="muted">Faça uma simulação gratuita e receba uma proposta personalizada em poucos segundos.</p>
         </div>
-        <a className="button" href="/leads/new">Criar lead</a>
+        <a className="button" href="/leads/new">Simular agora</a>
       </div>
     </section>
   );

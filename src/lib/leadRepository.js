@@ -29,6 +29,7 @@ async function ensureSchema() {
     schemaReadyPromise = getPool().then((pool) => pool.query(`
       CREATE TABLE IF NOT EXISTS leads (
         id TEXT PRIMARY KEY,
+        client_request_id TEXT UNIQUE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         status TEXT NOT NULL DEFAULT 'Novo',
@@ -72,6 +73,7 @@ async function ensureSchema() {
         notes TEXT
       );
 
+      ALTER TABLE leads ADD COLUMN IF NOT EXISTS client_request_id TEXT;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS fatura_mensal_eur DOUBLE PRECISION NOT NULL DEFAULT 0;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS consumo_mensal_kwh DOUBLE PRECISION;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS perfil_consumo TEXT NOT NULL DEFAULT 'equilibrado';
@@ -114,6 +116,7 @@ async function ensureSchema() {
       ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
       ALTER TABLE public.proposals ENABLE ROW LEVEL SECURITY;
       ALTER TABLE public.follow_ups ENABLE ROW LEVEL SECURITY;
+      CREATE UNIQUE INDEX IF NOT EXISTS leads_client_request_id_idx ON leads (client_request_id);
     `));
   }
   await schemaReadyPromise;
@@ -181,6 +184,8 @@ function mapLead(row) {
 
   return {
     id: row.id,
+    clientRequestId: row.client_request_id ?? row.clientRequestId ?? null,
+    client_request_id: row.client_request_id ?? row.clientRequestId ?? null,
     createdAt: toIso(row.created_at ?? row.createdAt),
     updatedAt: toIso(row.updated_at ?? row.updatedAt),
     status: row.status,
@@ -254,6 +259,8 @@ function normalizeLeadInput(data) {
 
   return {
     id: crypto.randomUUID(),
+    clientRequestId: firstValue(data.clientRequestId, data.client_request_id, null),
+    client_request_id: firstValue(data.clientRequestId, data.client_request_id, null),
     status: LEAD_STATUSES.includes(data.status) ? data.status : "Novo",
     name: data.name,
     phone: data.phone,
@@ -334,42 +341,86 @@ export async function getLead(id) {
   return mapLead(result.rows[0]);
 }
 
+async function findDuplicateLead(pool, lead) {
+  if (lead.client_request_id) {
+    const byRequest = await pool.query(
+      "SELECT * FROM leads WHERE client_request_id = $1",
+      [lead.client_request_id]
+    );
+    if (byRequest.rows[0]) return mapLead(byRequest.rows[0]);
+  }
+
+  const recentDuplicate = await pool.query(
+    `SELECT *
+     FROM leads
+     WHERE created_at >= NOW() - INTERVAL '30 seconds'
+       AND (
+         ($1::text IS NOT NULL AND lower(email) = lower($1::text))
+         OR ($2::text IS NOT NULL AND phone = $2::text)
+       )
+     ORDER BY created_at DESC
+     LIMIT 1`,
+    [lead.email, lead.phone]
+  );
+  return mapLead(recentDuplicate.rows[0]);
+}
+
 export async function createLead(data) {
   assertDatabase();
   const lead = normalizeLeadInput(data);
 
   await ensureSchema();
   const pool = await getPool();
-  await pool.query(
-    `INSERT INTO leads (
-      id, status, name, phone, email, locality, source, property_type, grid_type, roof_type,
-      ground_floor, difficult_tile, consumption_period, monthly_bill_eur, monthly_consumption_kwh,
-      distance_pv_to_inverter_m, distance_inverter_to_panel_m, distance_to_maceira_km,
-      wants_battery, battery_capacity_kwh, wants_ev_charger,
-      fatura_mensal_eur, consumo_mensal_kwh, perfil_consumo, objetivo, escolha_cliente,
-      rede, tipo_telhado, panel_preference, telha_lusa_dificil, tipo_estrutura,
-      distancia_paineis_inversor_m, distancia_inversor_quadro_m, distancia_maceira_km,
-      pretende_ev, backup, pretende_bateria, preferencia_bateria, capacidade_bateria_desejada_kwh,
-      notes
-    ) VALUES (
-      $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
-      $11, $12, $13, $14, $15, $16, $17, $18, $19, $20,
-      $21, $22, $23, $24, $25, $26, $27, $28, $29, $30,
-      $31, $32, $33, $34, $35, $36, $37, $38, $39, $40
-    )`,
-    [
-      lead.id, lead.status, lead.name, lead.phone, lead.email, lead.locality, lead.source,
-      lead.propertyType, lead.gridType, lead.roofType, lead.groundFloor, lead.difficultTile,
-      lead.consumptionPeriod, lead.monthlyBillEur, lead.monthlyConsumptionKwh,
-      lead.distancePvToInverterM, lead.distanceInverterToPanelM, lead.distanceToMaceiraKm,
-      lead.wantsBattery, lead.batteryCapacityKwh, lead.wantsEvCharger,
-      lead.fatura_mensal_eur, lead.consumo_mensal_kwh, lead.perfil_consumo, lead.objetivo,
-      lead.escolha_cliente, lead.rede, lead.tipo_telhado, lead.panel_preference,
-      lead.telha_lusa_dificil, lead.tipo_estrutura, lead.distancia_paineis_inversor_m, lead.distancia_inversor_quadro_m,
-      lead.distancia_maceira_km, lead.pretende_EV, lead.backup, lead.pretende_bateria,
-      lead.preferencia_bateria, lead.capacidade_bateria_desejada_kwh, lead.notes
-    ]
-  );
+
+  const duplicate = await findDuplicateLead(pool, lead);
+  if (duplicate) {
+    return { ...duplicate, duplicateExisting: true };
+  }
+
+  try {
+    await pool.query(
+      `INSERT INTO leads (
+        id, client_request_id, status, name, phone, email, locality, source, property_type, grid_type, roof_type,
+        ground_floor, difficult_tile, consumption_period, monthly_bill_eur, monthly_consumption_kwh,
+        distance_pv_to_inverter_m, distance_inverter_to_panel_m, distance_to_maceira_km,
+        wants_battery, battery_capacity_kwh, wants_ev_charger,
+        fatura_mensal_eur, consumo_mensal_kwh, perfil_consumo, objetivo, escolha_cliente,
+        rede, tipo_telhado, panel_preference, telha_lusa_dificil, tipo_estrutura,
+        distancia_paineis_inversor_m, distancia_inversor_quadro_m, distancia_maceira_km,
+        pretende_ev, backup, pretende_bateria, preferencia_bateria, capacidade_bateria_desejada_kwh,
+        notes
+      ) VALUES (
+        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
+        $11, $12, $13, $14, $15, $16, $17, $18, $19, $20,
+        $21, $22, $23, $24, $25, $26, $27, $28, $29, $30,
+        $31, $32, $33, $34, $35, $36, $37, $38, $39, $40,
+        $41
+      )`,
+      [
+        lead.id, lead.client_request_id, lead.status, lead.name, lead.phone, lead.email, lead.locality, lead.source,
+        lead.propertyType, lead.gridType, lead.roofType, lead.groundFloor, lead.difficultTile,
+        lead.consumptionPeriod, lead.monthlyBillEur, lead.monthlyConsumptionKwh,
+        lead.distancePvToInverterM, lead.distanceInverterToPanelM, lead.distanceToMaceiraKm,
+        lead.wantsBattery, lead.batteryCapacityKwh, lead.wantsEvCharger,
+        lead.fatura_mensal_eur, lead.consumo_mensal_kwh, lead.perfil_consumo, lead.objetivo,
+        lead.escolha_cliente, lead.rede, lead.tipo_telhado, lead.panel_preference,
+        lead.telha_lusa_dificil, lead.tipo_estrutura, lead.distancia_paineis_inversor_m, lead.distancia_inversor_quadro_m,
+        lead.distancia_maceira_km, lead.pretende_EV, lead.backup, lead.pretende_bateria,
+        lead.preferencia_bateria, lead.capacidade_bateria_desejada_kwh, lead.notes
+      ]
+    );
+  } catch (error) {
+    if (error.code === "23505" && lead.client_request_id) {
+      const existing = await findDuplicateLead(pool, lead);
+      if (existing) return { ...existing, duplicateExisting: true };
+    }
+    throw error;
+  }
+
+  const duplicateAfterConflict = await findDuplicateLead(pool, lead);
+  if (duplicateAfterConflict && duplicateAfterConflict.id !== lead.id) {
+    return { ...duplicateAfterConflict, duplicateExisting: true };
+  }
 
   await addFollowUp({ leadId: lead.id, days: 1, reason: "24h apos contacto sem resposta" });
   return getLead(lead.id);

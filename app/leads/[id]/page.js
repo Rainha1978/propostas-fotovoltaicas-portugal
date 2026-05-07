@@ -153,7 +153,7 @@ export default async function LeadDetailPage({ params }) {
                 <strong>{eur(section.total)}</strong>
               </header>
               {section.items.length === 0 ? (
-                <p className="muted">Nao aplicavel neste lead.</p>
+                <p className="muted">Não aplicável nesta simulação.</p>
               ) : (
                 <table className="cost-table">
                   <tbody>

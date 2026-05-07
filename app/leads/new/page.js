@@ -43,19 +43,38 @@ async function createLeadAction(formData) {
   "use server";
   const data = Object.fromEntries(formData.entries());
   if (!Number(data.fatura_mensal_eur || 0) && !Number(data.consumo_mensal_kwh || 0)) {
-    throw new Error("Indique pelo menos a fatura mensal ou o consumo mensal em kWh.");
+    redirect("/leads/new?error=1");
   }
-  const lead = await createLead(data);
-  const emailStatus = await buildAndSendProposalEmail(lead);
+  let lead;
+  let emailStatus;
+  try {
+    lead = await createLead(data);
+    emailStatus = lead.duplicateExisting ? "sent" : await buildAndSendProposalEmail(lead);
+  } catch (error) {
+    console.error("Erro ao criar simulacao:", error);
+    redirect("/leads/new?error=1");
+  }
   redirect(`/leads/${lead.id}/success?email=${emailStatus}`);
 }
-export default function NewLeadPage() {
+export default async function NewLeadPage({ searchParams }) {
+  const query = await searchParams;
+  const hasError = query?.error === "1";
+
   return (
     <>
       <div className="page-title">
-        <h1>Nova lead</h1>
+        <div>
+          <h1>Nova simulação</h1>
+          <p className="muted">Preencha os seus dados para calcularmos a melhor solução para si.</p>
+        </div>
       </div>
-      <form action={createLeadAction} className="panel grid">
+      <form action={createLeadAction} className="panel grid" id="simulation-form">
+        <input type="hidden" name="clientRequestId" id="client_request_id" />
+        {hasError ? (
+          <div className="field full">
+            <p className="form-error">Não foi possível gerar a simulação. Tente novamente.</p>
+          </div>
+        ) : null}
         <div className="field"><label>Nome</label><input name="name" required /></div>
         <div className="field"><label>Telefone</label><input name="phone" required /></div>
         <div className="field"><label>Email</label><input name="email" type="email" /></div>
@@ -95,7 +114,10 @@ export default function NewLeadPage() {
         <div className="field"><label>Preferencia bateria</label><select name="preferencia_bateria"><option value="ambas">Ambas</option><option value="economica">Economica</option><option value="premium">Premium</option></select></div>
         <div className="field"><label>Capacidade bateria kWh</label><input name="capacidade_bateria_desejada_kwh" type="number" step="0.1" /></div>
         <div className="field full"><label>Observacoes</label><textarea name="notes" /></div>
-        <div className="full"><button className="button" type="submit">Guardar lead</button></div>
+        <div className="full">
+          <button className="button" type="submit" id="simulation-submit">Gerar simulação</button>
+          <p className="muted" id="simulation-feedback" hidden>Por favor aguarde. Estamos a gerar a sua simulação...</p>
+        </div>
       </form>
       <script
         dangerouslySetInnerHTML={{
@@ -105,6 +127,47 @@ export default function NewLeadPage() {
               const structure = document.getElementById("tipo_estrutura");
               const field = document.getElementById("tipo_estrutura_field");
               const help = document.getElementById("estrutura_terreo_help");
+              const form = document.getElementById("simulation-form");
+              const submit = document.getElementById("simulation-submit");
+              const feedback = document.getElementById("simulation-feedback");
+              const requestId = document.getElementById("client_request_id");
+              if (requestId && !requestId.value) {
+                requestId.value = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + Math.random().toString(16).slice(2);
+              }
+              let isSubmitting = false;
+              const resetSubmit = () => {
+                isSubmitting = false;
+                if (submit) {
+                  submit.disabled = false;
+                  submit.textContent = "Gerar simulação";
+                }
+                if (feedback) feedback.hidden = true;
+              };
+              if (form && submit && feedback) {
+                form.addEventListener("submit", (event) => {
+                  if (isSubmitting) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                    return;
+                  }
+                  isSubmitting = true;
+                  submit.disabled = true;
+                  submit.textContent = "Estamos a gerar a sua simulação...";
+                  feedback.hidden = false;
+                });
+                form.addEventListener("keydown", (event) => {
+                  if (isSubmitting && event.key === "Enter") {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                  }
+                });
+                window.addEventListener("pageshow", resetSubmit);
+                window.addEventListener("offline", () => {
+                  resetSubmit();
+                  feedback.textContent = "Não foi possível gerar a simulação. Tente novamente.";
+                  feedback.hidden = false;
+                });
+              }
               if (!roof || !structure || !field || !help) return;
               const syncStructure = () => {
                 const isGround = roof.value === "terreo";

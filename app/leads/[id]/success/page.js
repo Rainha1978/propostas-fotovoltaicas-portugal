@@ -2,12 +2,12 @@ const WHATSAPP_URL = "https://wa.me/351969880053?text=Ol%C3%A1,%20acabei%20de%20
 
 function emailMessage(status) {
   if (status === "failed") {
-    return "A simulacao foi criada. Se nao receber o email, pode descarregar o PDF ou falar connosco no WhatsApp.";
+    return "A sua proposta fotovoltaica foi gerada com base nos dados fornecidos. Se não receber o email, fale connosco no WhatsApp.";
   }
   if (status === "skipped") {
-    return "A simulacao foi criada. Como nao foi indicado email, pode descarregar o PDF ou falar connosco no WhatsApp.";
+    return "A sua proposta fotovoltaica foi gerada com base nos dados fornecidos. Como não foi indicado email, pode falar connosco no WhatsApp.";
   }
-  return "Enviamos a proposta para o seu email. Se nao encontrar, verifique tambem a pasta de spam.";
+  return "Enviámos a simulação para o seu email. Se não encontrar, verifique também a pasta de spam.";
 }
 
 export default async function LeadSuccessPage({ searchParams }) {
@@ -16,10 +16,10 @@ export default async function LeadSuccessPage({ searchParams }) {
   return (
     <section className="success-shell">
       <article className="success-card">
-        <div className="success-badge">Simulacao pronta</div>
-        <h1>Simulacao criada com sucesso!</h1>
+        <div className="success-badge">Simulação pronta</div>
+        <h1>Simulação criada com sucesso!</h1>
         <p className="success-intro">
-          A sua simulacao fotovoltaica foi gerada com base nos dados fornecidos.
+          A sua proposta fotovoltaica foi gerada com base nos dados fornecidos.
         </p>
         <p className="success-email-note">
           {emailMessage(query?.email)}
@@ -30,13 +30,13 @@ export default async function LeadSuccessPage({ searchParams }) {
             Falar no WhatsApp
           </a>
           <a className="success-back-link" href="/leads/new">
-            Voltar ao simulador
+            Nova simulação
           </a>
         </div>
 
         <p className="success-final-note">
-          A proposta apresentada e uma simulacao inicial. O valor final pode variar conforme consumo real,
-          orientacao do telhado, sombras e condicoes da instalacao.
+          A proposta apresentada é uma simulação indicativa.
+          O valor final poderá variar após análise técnica no local.
         </p>
       </article>
     </section>

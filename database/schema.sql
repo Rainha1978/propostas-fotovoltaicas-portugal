@@ -1,5 +1,6 @@
 ﻿CREATE TABLE IF NOT EXISTS leads (
   id TEXT PRIMARY KEY,
+  client_request_id TEXT UNIQUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   status TEXT NOT NULL DEFAULT 'Novo',
@@ -45,6 +46,7 @@
   notes TEXT
 );
 
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS client_request_id TEXT;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS fatura_mensal_eur DOUBLE PRECISION NOT NULL DEFAULT 0;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS consumo_mensal_kwh DOUBLE PRECISION;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS perfil_consumo TEXT NOT NULL DEFAULT 'equilibrado';
@@ -83,3 +85,9 @@ CREATE TABLE IF NOT EXISTS follow_ups (
   reason TEXT NOT NULL,
   completed_at TIMESTAMPTZ
 );
+
+ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.proposals ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.follow_ups ENABLE ROW LEVEL SECURITY;
+
+CREATE UNIQUE INDEX IF NOT EXISTS leads_client_request_id_idx ON leads (client_request_id);

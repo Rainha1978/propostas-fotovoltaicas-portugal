@@ -8,12 +8,12 @@ export default async function LeadsPage() {
   return (
     <>
       <div className="page-title">
-        <h1>Leads</h1>
-        <a className="button" href="/leads/new">Nova lead</a>
+        <h1>Simulações</h1>
+        <a className="button" href="/leads/new">Nova simulação</a>
       </div>
       <section className="lead-list">
         {leads.length === 0 ? (
-          <div className="panel">Ainda nao existem leads.</div>
+          <div className="panel">Ainda não existem simulações.</div>
         ) : leads.map((lead) => (
           <a className="lead-row" href={`/leads/${lead.id}`} key={lead.id}>
             <strong>{lead.name}</strong>
