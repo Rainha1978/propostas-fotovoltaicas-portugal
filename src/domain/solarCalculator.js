@@ -17,9 +17,9 @@ export const LEAD_STATUSES = [
 ];
 
 const NIGHT_CONSUMPTION_RATIO = {
-  dia: 0.3,
-  equilibrado: 0.5,
-  noite: 0.7
+  dia: 0.2,
+  equilibrado: 0.4,
+  noite: 0.6
 };
 
 const ON_GRID_SELF_CONSUMPTION_RATE = {
@@ -335,8 +335,9 @@ export function estimarConsumoNoturno(input) {
 }
 
 function chooseGoodWeLvCapacity(targetKwh) {
-  const options = PRICE_DATABASE.batteries.goodweLynxUG3.typicalCapacitiesKwh;
-  return options.find((capacity) => capacity >= targetKwh) ?? options.at(-1);
+  if (targetKwh <= 6.5) return 5.12;
+  if (targetKwh <= 11.5) return 10.24;
+  return 15.36;
 }
 
 function chooseGslLvCapacity(targetKwh) {

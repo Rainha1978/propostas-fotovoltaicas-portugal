@@ -178,6 +178,24 @@ test("calcula bateria GoodWe LV premium a 1320 EUR por modulo", () => {
   assert.equal(proposal.internalCosts.battery, 1320);
 });
 
+test("450 kWh equilibrado monofasico com GoodWe premium recomenda 5.12kWh", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    monthlyBillEur: 0,
+    monthlyConsumptionKwh: 450,
+    perfil_consumo: "equilibrado",
+    consumptionPeriod: "equilibrado",
+    gridType: "monofasico",
+    rede: "monofasico",
+    wantsBattery: true,
+    pretende_bateria: true,
+    preferencia_bateria: "premium"
+  });
+
+  assert.equal(proposal.equipment.battery.brand, "GoodWe");
+  assert.equal(proposal.equipment.battery.capacityKwh, 5.12);
+});
+
 test("usa inversores GoodWe ES em hibrido monofasico", () => {
   const proposal = calculateProposal({
     ...baseLead,
