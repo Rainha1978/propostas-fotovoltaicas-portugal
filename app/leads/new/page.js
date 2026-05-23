@@ -18,8 +18,8 @@ async function buildAndSendProposalEmail(lead) {
       forceMode: "hibrido",
       wantsBattery: true,
       pretende_bateria: true,
-      batteryCapacityKwh: lead.batteryCapacityKwh || lead.capacidade_bateria_desejada_kwh || 10,
-      capacidade_bateria_desejada_kwh: lead.capacidade_bateria_desejada_kwh || lead.batteryCapacityKwh || 10
+      batteryCapacityKwh: lead.batteryCapacityKwh || lead.capacidade_bateria_desejada_kwh || null,
+      capacidade_bateria_desejada_kwh: lead.capacidade_bateria_desejada_kwh || lead.batteryCapacityKwh || null
     });
     await saveProposal({ leadId: lead.id, calculation });
     const pdf = buildProposalPdf({

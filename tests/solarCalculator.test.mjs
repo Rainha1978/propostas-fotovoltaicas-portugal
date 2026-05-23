@@ -196,6 +196,29 @@ test("450 kWh equilibrado monofasico com GoodWe premium recomenda 5.12kWh", () =
   assert.equal(proposal.equipment.battery.capacityKwh, 5.12);
 });
 
+test("opcao premium da comparacao respeita GoodWe 5.12kWh recomendado", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    monthlyBillEur: 0,
+    monthlyConsumptionKwh: 246,
+    perfil_consumo: "noite",
+    consumptionPeriod: "noite",
+    gridType: "monofasico",
+    rede: "monofasico",
+    forceMode: "hibrido",
+    wantsBattery: true,
+    pretende_bateria: true,
+    preferencia_bateria: "premium",
+    batteryCapacityKwh: null,
+    capacidade_bateria_desejada_kwh: null
+  });
+  const premium = proposal.advice.pricedOptions.find((option) => option.key === "premium");
+
+  assert.equal(proposal.equipment.battery.capacityKwh, 5.12);
+  assert.equal(premium.battery.capacityKwh, 5.12);
+  assert.equal(premium.costs.battery, proposal.internalCosts.battery);
+});
+
 test("usa inversores GoodWe ES em hibrido monofasico", () => {
   const proposal = calculateProposal({
     ...baseLead,
