@@ -123,6 +123,18 @@ function getInverterPrice(inverter) {
   return inverter.tablePrice ?? inverter.preco_tabela;
 }
 
+function allInverters() {
+  return [
+    ...PRICE_DATABASE.inverters.goodwe,
+    ...PRICE_DATABASE.inverters.deye
+  ];
+}
+
+function findManualInverter(model) {
+  if (!model) return null;
+  return allInverters().find((inverter) => inverter.model === model) ?? null;
+}
+
 function hasConfirmedPrice(value) {
   return value != null && Number.isFinite(Number(value));
 }
@@ -361,10 +373,18 @@ function chooseBydHvsCapacity(targetKwh) {
   };
 }
 
+function batteryPreferenceFromCapacity(preference, requestedCapacityKwh) {
+  if (requestedCapacityKwh <= 0) return preference;
+  if ([5, 10, 15].includes(Math.round(requestedCapacityKwh))) return "premium";
+  if ([16, 32, 48].includes(Math.round(requestedCapacityKwh))) return "economica";
+  return preference;
+}
+
 export function escolherBaterias(input) {
   const gridType = normalizeGridType(input);
-  const preference = input.preferencia_bateria ?? input.batteryPreference ?? "ambas";
+  const rawPreference = input.preferencia_bateria ?? input.batteryPreference ?? "ambas";
   const requested = numberOrZero(input.capacidade_bateria_desejada_kwh ?? input.batteryCapacityKwh);
+  const preference = batteryPreferenceFromCapacity(rawPreference, requested);
   const night = estimarConsumoNoturno(input);
   const targetKwh = requested > 0 ? requested : night.nightDailyKwh;
   const options = [];
@@ -463,6 +483,28 @@ export function escolherInversor(input) {
   const batteryOption = input.batteryOption;
   const phase = gridType === "trifasico" ? "trifasico" : "monofasico";
   const notes = [];
+  const manualModel = input.inversor_manual_model ?? input.manualInverterModel;
+  const manualInverter = findManualInverter(manualModel);
+
+  if (manualInverter) {
+    return {
+      label: `${manualInverter.brand} ${manualInverter.model}`,
+      brand: manualInverter.brand,
+      model: manualInverter.model,
+      price: getInverterPrice(manualInverter) ?? 0,
+      powerKw: manualInverter.powerKw,
+      phase: manualInverter.phase ?? phase,
+      mode: manualInverter.type === "ongrid" ? "on-grid" : "hibrido",
+      type: manualInverter.type,
+      status: manualInverter.status ?? "ok",
+      alternatives: [],
+      notes: ["Inversor escolhido manualmente."]
+    };
+  }
+
+  if (manualModel) {
+    notes.push("Inversor manual nao encontrado na base de dados.");
+  }
 
   if (phase === "trifasico" && system !== "ongrid") {
     if (batteryOption?.key === "economica") {
@@ -847,9 +889,11 @@ export function calculateProposal(input) {
   const system = systemAdvice.system;
   const sizing = dimensionarSistema({ monthlyConsumptionKwh: consumption.monthlyConsumptionKwh, objective, perfilConsumo: profile });
   const panel = escolherPainel(input);
-  const panelCount = panel.powerW === PRICE_DATABASE.panels.standard460w.powerW
+  const automaticPanelCount = panel.powerW === PRICE_DATABASE.panels.standard460w.powerW
     ? sizing.adjustedPanelCount
     : Math.ceil(sizing.targetKwp / (panel.powerW / 1000));
+  const manualPanelCount = Math.round(numberOrZero(input.numero_paineis_manual ?? input.manualPanelCount ?? input.panelCountManual));
+  const panelCount = manualPanelCount > 0 ? manualPanelCount : automaticPanelCount;
   const actualPanelPowerKwp = roundTwo(panelCount * panel.powerW / 1000);
   const annualProductionKwh = actualPanelPowerKwp * ANNUAL_PRODUCTION_KWH_PER_KWP;
   const needsBattery = system !== "ongrid";
@@ -864,7 +908,7 @@ export function calculateProposal(input) {
     ...input,
     gridType,
     system,
-    targetKwp: sizing.targetKwp,
+    targetKwp: actualPanelPowerKwp,
     batteryOption: batterySelection.selected
   });
   const structure = calcularEstrutura({ ...input, panelCount });
@@ -914,7 +958,7 @@ export function calculateProposal(input) {
       panelCount,
       gridType,
       system,
-      sizing,
+      sizing: { ...sizing, targetKwp: actualPanelPowerKwp },
       structure,
       electrical,
       consumption,
@@ -927,6 +971,7 @@ export function calculateProposal(input) {
     ...systemAdvice.notes,
     ...sizing.notes,
     ...panel.notes,
+    manualPanelCount > 0 ? `Quantidade de paineis definida manualmente: ${panelCount}.` : null,
     ...batterySelection.notes,
     ...inverter.notes,
     ...structure.notes,

@@ -113,6 +113,33 @@ test("usa 460W por defeito em terreo e 595W apenas com escolha explicita", () =>
   assert.equal(largeProposal.equipment.panel.preference, "large_595");
 });
 
+test("respeita quantidade manual de paineis no calculo final", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    monthlyBillEur: 0,
+    monthlyConsumptionKwh: 400,
+    numero_paineis_manual: 10
+  });
+
+  assert.equal(proposal.sizing.adjustedPanelCount, 7);
+  assert.equal(proposal.equipment.panelCount, 10);
+  assert.equal(proposal.sizing.actualPanelPowerKwp, 4.6);
+  assert.ok(proposal.recommendation.notes.some((note) => note.includes("Quantidade de paineis definida manualmente")));
+});
+
+test("respeita inversor manual escolhido na base de dados", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    monthlyBillEur: 0,
+    monthlyConsumptionKwh: 400,
+    inversor_manual_model: "GW6000-ES-20-G2"
+  });
+
+  assert.equal(proposal.equipment.inverter.model, "GW6000-ES-20-G2");
+  assert.equal(proposal.equipment.inverter.price, 1115);
+  assert.ok(proposal.recommendation.notes.some((note) => note.includes("Inversor escolhido manualmente")));
+});
+
 test("calcula proposta on-grid com preco total composto e IVA", () => {
   const proposal = calculateProposal(baseLead);
   const breakdownTotal = proposal.price.breakdown.reduce((total, section) => total + section.total, 0);
@@ -176,6 +203,45 @@ test("calcula bateria GoodWe LV premium a 1300 EUR por modulo", () => {
   assert.equal(proposal.equipment.battery.brand, "GoodWe");
   assert.equal(proposal.equipment.battery.capacityKwh, 5.12);
   assert.equal(proposal.internalCosts.battery, 1300);
+});
+
+test("capacidade 10kWh com preferencia ambas escolhe GoodWe Lynx", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    wantsBattery: true,
+    pretende_bateria: true,
+    preferencia_bateria: "ambas",
+    capacidade_bateria_desejada_kwh: 10
+  });
+
+  assert.equal(proposal.equipment.battery.brand, "GoodWe");
+  assert.equal(proposal.equipment.battery.capacityKwh, 10.24);
+});
+
+test("capacidade 16kWh com preferencia ambas escolhe GSL", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    wantsBattery: true,
+    pretende_bateria: true,
+    preferencia_bateria: "ambas",
+    capacidade_bateria_desejada_kwh: 16
+  });
+
+  assert.equal(proposal.equipment.battery.brand, "GSL");
+  assert.equal(proposal.equipment.battery.capacityKwh, 16);
+});
+
+test("capacidade escolhida manda na familia da bateria mesmo com preferencia diferente", () => {
+  const proposal = calculateProposal({
+    ...baseLead,
+    wantsBattery: true,
+    pretende_bateria: true,
+    preferencia_bateria: "premium",
+    capacidade_bateria_desejada_kwh: 32
+  });
+
+  assert.equal(proposal.equipment.battery.brand, "GSL");
+  assert.equal(proposal.equipment.battery.capacityKwh, 32);
 });
 
 test("450 kWh equilibrado monofasico com GoodWe premium recomenda 5.12kWh", () => {
@@ -264,7 +330,7 @@ test("calcula bateria GSL LV economica 16kWh a 2600 EUR", () => {
     ...baseLead,
     consumptionPeriod: "noite",
     wantsBattery: true,
-    batteryCapacityKwh: 10,
+    batteryCapacityKwh: 16,
     preferencia_bateria: "economica"
   });
 

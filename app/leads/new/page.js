@@ -1,9 +1,17 @@
 import { redirect } from "next/navigation";
 import { calculateProposal } from "../../../src/domain/solarCalculator.js";
+import { PRICE_DATABASE } from "../../../src/domain/priceCalibration.js";
 import { createLead, saveProposal } from "../../../src/lib/leadRepository.js";
 import { buildProposalDocx } from "../../../src/lib/proposalDocx.js";
 import { buildProposalPdf } from "../../../src/lib/proposalPdf.js";
 import { sendEmail } from "../../../src/lib/sendEmail.js";
+
+const INVERTER_OPTIONS = [
+  ...PRICE_DATABASE.inverters.goodwe,
+  ...PRICE_DATABASE.inverters.deye
+];
+
+const PANEL_COUNT_OPTIONS = Array.from({ length: 36 }, (_, index) => index + 1);
 
 async function buildAndSendProposalEmail(lead) {
   try {
@@ -105,6 +113,28 @@ export default async function NewLeadPage({ searchParams }) {
           </select>
           <small>Painel 595W disponivel por escolha do cliente; em telha lusa fica sujeito a avaliacao tecnica.</small>
         </div>
+        <div className="field">
+          <label>Quantidade de paineis</label>
+          <select name="numero_paineis_manual" defaultValue="">
+            <option value="">Automatico</option>
+            {PANEL_COUNT_OPTIONS.map((count) => (
+              <option key={count} value={count}>{count} paineis</option>
+            ))}
+          </select>
+          <small>Opcional. Se escolher, a simulacao usa esta quantidade.</small>
+        </div>
+        <div className="field">
+          <label>Inversor manual</label>
+          <select name="inversor_manual_model" defaultValue="">
+            <option value="">Automatico</option>
+            {INVERTER_OPTIONS.map((inverter) => (
+              <option key={`${inverter.brand}-${inverter.model}`} value={inverter.model}>
+                {inverter.brand} {inverter.model} - {inverter.phase} - {inverter.type}{inverter.powerKw ? ` - ${inverter.powerKw}kW` : ""}
+              </option>
+            ))}
+          </select>
+          <small>Opcional. Mostra todos os inversores da base de dados.</small>
+        </div>
         <div className="field" id="tipo_estrutura_field">
           <label>Tipo de estrutura</label>
           <select id="tipo_estrutura" name="tipo_estrutura">
@@ -120,8 +150,24 @@ export default async function NewLeadPage({ searchParams }) {
         <div className="field"><label>Pretende EV</label><select name="pretende_EV"><option value="">Nao</option><option value="sim">Sim</option></select></div>
         <div className="field"><label>Backup</label><select name="backup"><option value="sem_backup">Sem backup</option><option value="backup_manual">Backup manual</option><option value="backup_automatico">Backup automatico</option></select></div>
         <div className="field"><label>Pretende bateria</label><select name="pretende_bateria"><option value="">Nao</option><option value="sim">Sim</option></select></div>
-        <div className="field"><label>Preferencia bateria</label><select name="preferencia_bateria"><option value="ambas">Ambas</option><option value="economica">Economica</option><option value="premium">Premium</option></select></div>
-        <div className="field"><label>Capacidade bateria kWh</label><input name="capacidade_bateria_desejada_kwh" type="number" step="0.1" /></div>
+        <div className="field"><label>Preferencia bateria</label><select name="preferencia_bateria" id="preferencia_bateria"><option value="ambas">Ambas</option><option value="economica">Economica</option><option value="premium">Premium</option></select></div>
+        <div className="field">
+          <label>Capacidade bateria</label>
+          <select name="capacidade_bateria_desejada_kwh" id="capacidade_bateria_desejada_kwh" defaultValue="">
+            <option value="">Automatica</option>
+            <optgroup label="GoodWe Lynx">
+              <option value="5">5kWh</option>
+              <option value="10">10kWh</option>
+              <option value="15">15kWh</option>
+            </optgroup>
+            <optgroup label="GSL">
+              <option value="16">16kWh</option>
+              <option value="32">32kWh</option>
+              <option value="48">48kWh</option>
+            </optgroup>
+          </select>
+          <small>5/10/15kWh usam GoodWe Lynx. 16/32/48kWh usam GSL.</small>
+        </div>
         <div className="field full"><label>Observacoes</label><textarea name="notes" /></div>
         <div className="full">
           <button className="button" type="submit" id="simulation-submit">Gerar simulação</button>
@@ -140,6 +186,8 @@ export default async function NewLeadPage({ searchParams }) {
               const submit = document.getElementById("simulation-submit");
               const feedback = document.getElementById("simulation-feedback");
               const requestId = document.getElementById("client_request_id");
+              const batteryCapacity = document.getElementById("capacidade_bateria_desejada_kwh");
+              const batteryPreference = document.getElementById("preferencia_bateria");
               if (requestId && !requestId.value) {
                 requestId.value = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + "-" + Math.random().toString(16).slice(2);
               }
@@ -178,6 +226,15 @@ export default async function NewLeadPage({ searchParams }) {
                 });
               }
               if (!roof || !structure || !field || !help) return;
+              const syncBatteryPreference = () => {
+                if (!batteryCapacity || !batteryPreference || !batteryCapacity.value) return;
+                if (["5", "10", "15"].includes(batteryCapacity.value)) batteryPreference.value = "premium";
+                if (["16", "32", "48"].includes(batteryCapacity.value)) batteryPreference.value = "economica";
+              };
+              if (batteryCapacity) {
+                batteryCapacity.addEventListener("change", syncBatteryPreference);
+                syncBatteryPreference();
+              }
               const syncStructure = () => {
                 const isGround = roof.value === "terreo";
                 structure.value = isGround ? "nao_aplicavel" : (structure.value === "nao_aplicavel" ? "coplanar" : structure.value);
