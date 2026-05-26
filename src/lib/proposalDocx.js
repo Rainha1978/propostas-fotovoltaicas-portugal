@@ -33,34 +33,159 @@ function p(value, style = null) {
   return `<w:p>${styleXml}<w:r><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r></w:p>`;
 }
 
-function cell(value) {
-  return `<w:tc><w:tcPr><w:tcW w:w="4500" w:type="dxa"/></w:tcPr>${p(value)}</w:tc>`;
+function pageBreak() {
+  return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
 }
 
-function row(label, value) {
-  return `<w:tr>${cell(label)}${cell(value)}</w:tr>`;
+function cell(value, { width = 4500, shade = null, bold = false } = {}) {
+  const shadeXml = shade ? `<w:shd w:fill="${shade}"/>` : "";
+  const boldXml = bold ? "<w:b/>" : "";
+  return `
+    <w:tc>
+      <w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shadeXml}</w:tcPr>
+      <w:p><w:r><w:rPr>${boldXml}</w:rPr><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r></w:p>
+    </w:tc>
+  `;
 }
 
-function table(rows) {
+function row(...cells) {
+  return `<w:tr>${cells.join("")}</w:tr>`;
+}
+
+function keyValueRow(label, value) {
+  return row(
+    cell(label, { width: 3300, shade: "F1F5F9", bold: true }),
+    cell(value, { width: 6300 })
+  );
+}
+
+function table(rows, width = 9630) {
   return `
     <w:tbl>
       <w:tblPr>
         <w:tblStyle w:val="TableGrid"/>
-        <w:tblW w:w="0" w:type="auto"/>
+        <w:tblW w:w="${width}" w:type="dxa"/>
       </w:tblPr>
       ${rows.join("")}
     </w:tbl>
   `;
 }
 
-function optionSummary(option) {
+function sectionTitle(value) {
+  return p(value, "Heading1");
+}
+
+function subTitle(value) {
+  return p(value, "Heading2");
+}
+
+function kwh(value) {
+  if (value === undefined || value === null || value === "") return "-";
+  return `${Number(value || 0).toFixed(1)} kWh`;
+}
+
+function kwp(value) {
+  if (value === undefined || value === null || value === "") return "-";
+  return `${Number(value || 0).toFixed(2)} kWp`;
+}
+
+function years(value) {
+  return value ? `${value} anos` : "-";
+}
+
+function optionTitle(option) {
   if (!option) return "-";
+  if (option.key === "economica") return "Opcao economica";
+  if (option.key === "premium") return "Opcao premium";
+  return option.recommendation?.mode === "on-grid" ? "Opcao on-grid" : "Opcao hibrida";
+}
+
+function optionInverter(option) {
+  return option?.inverter?.label ?? option?.equipment?.inverter?.label ?? "-";
+}
+
+function optionBattery(option) {
+  const battery = option?.battery ?? option?.equipment?.battery;
+  if (!battery || !battery.capacityKwh) return "Sem bateria";
+  return battery.label ?? battery.model ?? "Bateria";
+}
+
+function optionBatteryCapacity(option) {
+  const battery = option?.battery ?? option?.equipment?.battery;
+  return battery?.capacityKwh ? `${battery.capacityKwh} kWh` : "-";
+}
+
+function optionPrice(option) {
+  return option?.price ?? { net: 0, vat: 0, gross: 0 };
+}
+
+function optionRoi(option) {
+  return option?.roi ?? {};
+}
+
+function costValue(option, key) {
+  return option?.internalCosts?.[key] ?? option?.costs?.[key] ?? 0;
+}
+
+function sectionTotal(option, key) {
+  return option?.price?.breakdown?.find((section) => section.key === key)?.total ?? 0;
+}
+
+function optionRows(option) {
+  const price = optionPrice(option);
+  const roi = optionRoi(option);
   return [
-    option.recommendation?.mode ?? option.key ?? "Opcao",
-    option.sizing?.actualPanelPowerKwp ? `${option.sizing.actualPanelPowerKwp} kWp reais` : null,
-    option.equipment?.panelCount ? `${option.equipment.panelCount} paineis` : null,
-    option.price?.gross ? money(option.price.gross) : null
-  ].filter(Boolean).join(" | ");
+    keyValueRow("Solucao", optionTitle(option)),
+    keyValueRow("Inversor", optionInverter(option)),
+    keyValueRow("Bateria", optionBattery(option)),
+    keyValueRow("Capacidade", optionBatteryCapacity(option)),
+    keyValueRow("Preco sem IVA", money(price.net)),
+    keyValueRow("IVA", money(price.vat)),
+    keyValueRow("Preco com IVA", money(price.gross)),
+    keyValueRow("Poupanca mensal", money(roi.monthlySavingsEur)),
+    keyValueRow("Poupanca anual", money(roi.annualSavingsEur)),
+    keyValueRow("ROI", years(roi.roiYears))
+  ];
+}
+
+function costRows(option) {
+  const structureNeedsVisit = (option?.flags ?? []).some((flag) => flag.area === "estrutura" && flag.type === "visita_tecnica");
+  const rows = [
+    ["Paineis", costValue(option, "panels")],
+    ["Inversor", costValue(option, "inverter")],
+    ["Bateria", costValue(option, "battery")],
+    ["Estrutura", structureNeedsVisit ? "valor a definir apos visita tecnica" : costValue(option, "structure")],
+    ["Mao de obra", costValue(option, "labor") + costValue(option, "batteryLabor")],
+    ["Protecoes/eletrica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual")],
+    ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors")],
+    ["Contador", costValue(option, "realTimeMeter")],
+    ["EV", costValue(option, "evCharger") + costValue(option, "evProtections")],
+    ["Deslocacao", costValue(option, "travel")],
+    ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat]
+  ];
+
+  return rows.map(([label, value]) => keyValueRow(label, typeof value === "string" ? value : money(value)));
+}
+
+function notesFor(calculation) {
+  return [
+    "Proposta indicativa sujeita a validacao tecnica no local.",
+    "Precos sujeitos a atualizacao de mercado.",
+    "Nao inclui trabalhos de construcao civil ou alteracoes eletricas nao previstas.",
+    "Painel 460W usado por defeito. Painel 595W disponivel para telhado sanduiche ou instalacao terrea quando escolhido/validado tecnicamente.",
+    calculation.sizing?.needsTechnicalAnalysis ? "Consumo acima de 800 kWh/mes: recomenda-se analise tecnica." : null,
+    ...(calculation.advice?.technicalFlags ?? []).map((flag) => flag.message),
+    ...(calculation.recommendation?.notes ?? [])
+  ].filter(Boolean);
+}
+
+function headerTable() {
+  return table([
+    row(
+      cell("PROPOSTA FOTOVOLTAICA\nINDICATIVA\nDimensionamento e estimativa financeira", { width: 6500, shade: "0B3828", bold: true }),
+      cell(`Data: ${new Date().toLocaleDateString("pt-PT")}\nValidade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias\nPrecos sujeitos a atualizacao`, { width: 3130, shade: "166534", bold: true })
+    )
+  ]);
 }
 
 function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
@@ -70,59 +195,95 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
   const roi = calculation.roi ?? {};
   const recommendation = calculation.recommendation ?? {};
   const battery = equipment.battery ?? {};
+  const consumption = calculation.consumption ?? sizing;
+  const hybridPriceOptions = calculation.advice?.pricedOptions ?? [];
+  const recommended = calculation;
 
   const leadRows = [
-    row("Nome", lead.name || "-"),
-    row("Email", lead.email || "-"),
-    row("Telefone", lead.phone || "-"),
-    row("Localidade", lead.locality || "-"),
-    row("Tipo de telhado", lead.tipo_telhado || lead.roofType || "-"),
-    row("Tipo de rede", lead.rede || lead.gridType || "-"),
-    row("Perfil de consumo", lead.perfil_consumo || lead.consumptionPeriod || "-"),
-    row("Observacoes", lead.notes || "-")
+    keyValueRow("Nome", lead.name || "-"),
+    keyValueRow("Email", lead.email || "-"),
+    keyValueRow("Telefone", lead.phone || "-"),
+    keyValueRow("Localidade", lead.locality || "-")
+  ];
+
+  const consumptionRows = [
+    keyValueRow("Fatura mensal", money(consumption.monthlyBillEur)),
+    keyValueRow("Consumo mensal", kwh(consumption.monthlyConsumptionKwh)),
+    keyValueRow("Custo anual atual", money(consumption.annualCurrentCostEur)),
+    keyValueRow("Perfil", recommendation.profile || lead.perfil_consumo || lead.consumptionPeriod || "-")
   ];
 
   const proposalRows = [
-    row("Solucao recomendada", recommendation.text || recommendation.mode || "-"),
-    row("Potencia recomendada", sizing.targetKwp ? `${sizing.targetKwp} kWp` : "-"),
-    row("Potencia real em paineis", sizing.actualPanelPowerKwp ? `${sizing.actualPanelPowerKwp} kWp` : "-"),
-    row("Paineis", equipment.panelCount && equipment.panel ? `${equipment.panelCount} x ${equipment.panel.label}` : "-"),
-    row("Inversor", equipment.inverter?.label || equipment.inverter?.model || "-"),
-    row("Bateria", battery.capacityKwh ? battery.label : "Sem bateria"),
-    row("Preco sem IVA", money(price.net)),
-    row("IVA", money(price.vat)),
-    row("Preco com IVA", money(price.gross)),
-    row("Poupanca anual estimada", money(roi.annualSavingsEur)),
-    row("ROI estimado", roi.roiYears ? `${roi.roiYears} anos` : "-")
+    keyValueRow("Sistema", recommendation.text || recommendation.mode || "-"),
+    keyValueRow("Potencia alvo", kwp(sizing.targetKwp)),
+    keyValueRow("Potencia real em paineis", kwp(sizing.actualPanelPowerKwp)),
+    keyValueRow("Paineis", equipment.panelCount && equipment.panel ? `${equipment.panelCount} x ${equipment.panel.label}` : "-"),
+    keyValueRow("Motivo", recommendation.source === "cliente" ? "Escolha indicada pelo cliente respeitada." : "Recomendacao baseada no consumo, perfil horario e objetivo.")
   ];
 
-  const optionRows = [
-    row("Opcao on-grid", optionSummary(options.onGrid)),
-    row("Opcao hibrida", optionSummary(options.hybrid))
+  const financialRows = [
+    keyValueRow("Preco sem IVA", money(price.net)),
+    keyValueRow("IVA", money(price.vat)),
+    keyValueRow("Preco com IVA", money(price.gross)),
+    keyValueRow("Poupanca mensal estimada", money(roi.monthlySavingsEur)),
+    keyValueRow("Poupanca anual estimada", money(roi.annualSavingsEur)),
+    keyValueRow("ROI estimado", years(roi.roiYears))
   ];
 
-  const notes = [
-    ...(recommendation.notes ?? []),
-    ...(calculation.advice?.technicalFlags ?? []).map((flag) => flag.message)
+  const equipmentRows = [
+    keyValueRow("Inversor", equipment.inverter?.label || equipment.inverter?.model || "-"),
+    keyValueRow("Bateria", battery.capacityKwh ? battery.label : "Sem bateria"),
+    keyValueRow("Capacidade", battery.capacityKwh ? `${battery.capacityKwh} kWh` : "-"),
+    keyValueRow("Preco final", money(price.gross)),
+    keyValueRow("ROI", years(roi.roiYears))
+  ];
+
+  const contextItems = [
+    hybridPriceOptions.find((option) => option.key === "premium") ? "A opcao premium pode ter ROI mais longo, mas privilegia marca, compatibilidade e uma solucao orientada para autonomia/backup." : null,
+    hybridPriceOptions.find((option) => option.key === "economica") ? "A opcao economica tende a privilegiar capacidade/preco e pode apresentar melhor retorno financeiro quando a bateria tem peso relevante." : null,
+    "As opcoes nao sao boas ou mas por si: devem ser comparadas com o objetivo do cliente, o perfil de consumo e a visita tecnica."
+  ].filter(Boolean);
+
+  const freeRows = [
+    keyValueRow("Ajustes comerciais", ""),
+    keyValueRow("Condicoes especiais", ""),
+    keyValueRow("Observacoes para visita tecnica", "")
   ];
 
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
       <w:body>
-        ${p("Proposta Fotovoltaica SolexR - Documento editavel", "Title")}
-        ${p("Documento interno gerado automaticamente para edicao comercial.")}
-        ${p("Cliente", "Heading1")}
+        ${headerTable()}
+        ${p("Documento editavel interno - estrutura alinhada com o PDF enviado ao cliente.")}
+        ${sectionTitle("Cliente")}
         ${table(leadRows)}
-        ${p("Resumo da proposta", "Heading1")}
+        ${sectionTitle("Consumo atual")}
+        ${table(consumptionRows)}
+        ${sectionTitle("Sistema recomendado")}
         ${table(proposalRows)}
-        ${p("Comparacao de solucoes", "Heading1")}
-        ${table(optionRows)}
-        ${p("Notas para validacao/edicao", "Heading1")}
-        ${(notes.length ? notes : ["Sem notas adicionais."]).map((note) => p(`- ${note}`)).join("")}
-        ${p("Campos livres para edicao", "Heading1")}
-        ${p("Ajustes comerciais:")}
-        ${p("Condicoes especiais:")}
-        ${p("Observacoes para visita tecnica:")}
+        ${sectionTitle("Beneficio financeiro")}
+        ${table(financialRows)}
+        ${pageBreak()}
+        ${sectionTitle("Comparacao de solucoes")}
+        ${subTitle("Opcao on-grid")}
+        ${table(optionRows(options.onGrid))}
+        ${subTitle("Opcao hibrida")}
+        ${table(optionRows(options.hybrid))}
+        ${sectionTitle("Enquadramento")}
+        ${contextItems.map((item) => p(`- ${item}`)).join("")}
+        ${hybridPriceOptions.length ? pageBreak() : ""}
+        ${hybridPriceOptions.length ? sectionTitle("Opcoes de bateria") : ""}
+        ${hybridPriceOptions.slice(0, 2).map((option) => `${subTitle(optionTitle(option))}${table(optionRows(option))}`).join("")}
+        ${pageBreak()}
+        ${sectionTitle("Detalhe tecnico e financeiro")}
+        ${subTitle("Detalhe de custos")}
+        ${table(costRows(recommended))}
+        ${subTitle("Equipamentos")}
+        ${table(equipmentRows)}
+        ${sectionTitle("Notas")}
+        ${[...new Set(notesFor(calculation))].slice(0, 12).map((note) => p(`- ${note}`)).join("")}
+        ${sectionTitle("Campos livres para edicao")}
+        ${table(freeRows)}
         <w:sectPr>
           <w:pgSz w:w="11906" w:h="16838"/>
           <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/>
