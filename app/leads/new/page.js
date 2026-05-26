@@ -103,7 +103,7 @@ export default async function NewLeadPage({ searchParams }) {
             <option value="standard_460">Standard 460W</option>
             <option value="large_595">Grande 595W</option>
           </select>
-          <small>Painel 595W apenas disponivel para telhado sanduiche ou instalacao terrea, sujeito a validacao tecnica.</small>
+          <small>Painel 595W disponivel por escolha do cliente; em telha lusa fica sujeito a avaliacao tecnica.</small>
         </div>
         <div className="field" id="tipo_estrutura_field">
           <label>Tipo de estrutura</label>

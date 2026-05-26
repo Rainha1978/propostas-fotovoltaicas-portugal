@@ -62,7 +62,7 @@ test("120 EUR mensais com perfil noite reduz para 7 paineis", () => {
   assert.equal(proposal.equipment.panelCount, 7);
 });
 
-test("usa 460W em telha lusa mesmo com preferencia 595W", () => {
+test("usa 595W em telha lusa quando escolhido pelo cliente e deixa ressalva tecnica", () => {
   const proposal = calculateProposal({
     ...baseLead,
     tipo_telhado: "telha_lusa",
@@ -70,9 +70,9 @@ test("usa 460W em telha lusa mesmo com preferencia 595W", () => {
     panel_preference: "large_595"
   });
 
-  assert.equal(proposal.equipment.panel.powerW, 460);
-  assert.equal(proposal.equipment.panel.preference, "standard_460");
-  assert.ok(proposal.recommendation.notes.some((note) => note.includes("Telha lusa usa sempre painel 460W")));
+  assert.equal(proposal.equipment.panel.powerW, 595);
+  assert.equal(proposal.equipment.panel.preference, "large_595");
+  assert.ok(proposal.recommendation.notes.some((note) => note.includes("595W em telha lusa a avaliar")));
 });
 
 test("usa 460W por defeito em sanduiche e 595W apenas com escolha explicita", () => {

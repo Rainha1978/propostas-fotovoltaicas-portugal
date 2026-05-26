@@ -246,7 +246,7 @@ export function dimensionSystem(monthlyConsumptionKwh, profile = "equilibrado") 
 export function escolherPainel(input) {
   const roofType = normalizeRoofType(input);
   const panelPreference = input.panel_preference ?? input.panelPreference ?? "standard_460";
-  const canUseLargePanel = panelPreference === "large_595" && (roofType === "sanduiche" || roofType === "terreo");
+  const canUseLargePanel = panelPreference === "large_595";
   const panel = canUseLargePanel ? PRICE_DATABASE.panels.large595w : PRICE_DATABASE.panels.standard460w;
 
   return {
@@ -258,9 +258,9 @@ export function escolherPainel(input) {
     notes: [
       canUseLargePanel
         ? "Painel 595W usado por escolha explicita/validacao tecnica."
-        : "Painel 460W usado por defeito. Painel 595W disponivel para telhado sanduiche ou instalacao terrea quando escolhido/validado tecnicamente.",
-      panelPreference === "large_595" && roofType === "telha_lusa"
-        ? "Telha lusa usa sempre painel 460W; pedido de 595W ignorado por regra tecnica."
+        : "Painel 460W usado por defeito. Painel 595W disponivel quando escolhido/validado tecnicamente.",
+      canUseLargePanel && roofType === "telha_lusa"
+        ? "Uso de paineis de 595W em telha lusa a avaliar em visita tecnica."
         : null
     ].filter(Boolean)
   };

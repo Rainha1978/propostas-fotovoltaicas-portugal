@@ -8,13 +8,13 @@ export const PRICE_DATABASE = {
       label: "Painel standard 460W",
       powerW: 460,
       unitPrice: 72,
-      useWhen: "Regra geral para telha lusa, estrutura triangular, terreo ou instalacoes sem condicao simples para painel grande."
+      useWhen: "Regra geral quando o cliente nao escolhe painel grande."
     },
     large595w: {
       label: "Painel grande 595W",
       powerW: 595,
       unitPrice: 93,
-      useWhen: "Apenas em telhado sanduiche com instalacao simples/res do chao."
+      useWhen: "Disponivel por escolha do cliente, sujeito a validacao tecnica em telha lusa."
     }
   },
   inverters: {
