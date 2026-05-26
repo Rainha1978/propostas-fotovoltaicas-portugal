@@ -28,22 +28,32 @@ function money(value) {
   return `${Number(value || 0).toFixed(2)} EUR`;
 }
 
-function p(value, style = null) {
-  const styleXml = style ? `<w:pPr><w:pStyle w:val="${style}"/></w:pPr>` : "";
-  return `<w:p>${styleXml}<w:r><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r></w:p>`;
+function p(value, style = null, { justify = false, bold = false, color = null } = {}) {
+  const styleXml = style ? `<w:pStyle w:val="${style}"/>` : "";
+  const justifyXml = justify ? '<w:jc w:val="both"/>' : "";
+  const colorXml = color ? `<w:color w:val="${color}"/>` : "";
+  const boldXml = bold ? "<w:b/>" : "";
+  return `
+    <w:p>
+      <w:pPr>${styleXml}${justifyXml}</w:pPr>
+      <w:r><w:rPr>${boldXml}${colorXml}</w:rPr><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r>
+    </w:p>
+  `;
 }
 
 function pageBreak() {
   return '<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
 }
 
-function cell(value, { width = 4500, shade = null, bold = false } = {}) {
+function cell(value, { width = 4500, shade = null, bold = false, color = null, align = "left", height = null } = {}) {
   const shadeXml = shade ? `<w:shd w:fill="${shade}"/>` : "";
+  const heightXml = height ? `<w:trHeight w:val="${height}" w:hRule="atLeast"/>` : "";
   const boldXml = bold ? "<w:b/>" : "";
+  const colorXml = color ? `<w:color w:val="${color}"/>` : "";
   return `
     <w:tc>
-      <w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shadeXml}</w:tcPr>
-      <w:p><w:r><w:rPr>${boldXml}</w:rPr><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r></w:p>
+      <w:tcPr><w:tcW w:w="${width}" w:type="dxa"/>${shadeXml}${heightXml}<w:tcMar><w:top w:w="90" w:type="dxa"/><w:left w:w="110" w:type="dxa"/><w:bottom w:w="90" w:type="dxa"/><w:right w:w="110" w:type="dxa"/></w:tcMar></w:tcPr>
+      <w:p><w:pPr><w:jc w:val="${align}"/></w:pPr><w:r><w:rPr>${boldXml}${colorXml}</w:rPr><w:t xml:space="preserve">${escapeXml(value)}</w:t></w:r></w:p>
     </w:tc>
   `;
 }
@@ -54,17 +64,19 @@ function row(...cells) {
 
 function keyValueRow(label, value) {
   return row(
-    cell(label, { width: 3300, shade: "F1F5F9", bold: true }),
+    cell(label, { width: 3300, shade: "EEF3F0", bold: true, color: "0B3828" }),
     cell(value, { width: 6300 })
   );
 }
 
-function table(rows, width = 9630) {
+function table(rows, width = 9630, { shade = "FFFFFF" } = {}) {
   return `
     <w:tbl>
       <w:tblPr>
         <w:tblStyle w:val="TableGrid"/>
         <w:tblW w:w="${width}" w:type="dxa"/>
+        <w:tblCellMar><w:top w:w="80" w:type="dxa"/><w:left w:w="80" w:type="dxa"/><w:bottom w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar>
+        <w:shd w:fill="${shade}"/>
       </w:tblPr>
       ${rows.join("")}
     </w:tbl>
@@ -77,6 +89,10 @@ function sectionTitle(value) {
 
 function subTitle(value) {
   return p(value, "Heading2");
+}
+
+function spacer() {
+  return '<w:p><w:r><w:t> </w:t></w:r></w:p>';
 }
 
 function kwh(value) {
@@ -135,6 +151,7 @@ function optionRows(option) {
   const price = optionPrice(option);
   const roi = optionRoi(option);
   return [
+    row(cell(optionTitle(option), { width: 9630, shade: "0B3828", bold: true, color: "FFFFFF" })),
     keyValueRow("Solucao", optionTitle(option)),
     keyValueRow("Inversor", optionInverter(option)),
     keyValueRow("Bateria", optionBattery(option)),
@@ -164,7 +181,16 @@ function costRows(option) {
     ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat]
   ];
 
-  return rows.map(([label, value]) => keyValueRow(label, typeof value === "string" ? value : money(value)));
+  return [
+    row(
+      cell("Componente", { width: 4300, shade: "0B3828", bold: true, color: "FFFFFF" }),
+      cell("Valor", { width: 5330, shade: "0B3828", bold: true, color: "FFFFFF", align: "right" })
+    ),
+    ...rows.map(([label, value], index) => row(
+      cell(label, { width: 4300, shade: index % 2 ? "FFFFFF" : "F8FAFC", bold: true }),
+      cell(typeof value === "string" ? value : money(value), { width: 5330, shade: index % 2 ? "FFFFFF" : "F8FAFC", align: "right" })
+    ))
+  ];
 }
 
 function notesFor(calculation) {
@@ -182,10 +208,24 @@ function notesFor(calculation) {
 function headerTable() {
   return table([
     row(
-      cell("PROPOSTA FOTOVOLTAICA\nINDICATIVA\nDimensionamento e estimativa financeira", { width: 6500, shade: "0B3828", bold: true }),
-      cell(`Data: ${new Date().toLocaleDateString("pt-PT")}\nValidade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias\nPrecos sujeitos a atualizacao`, { width: 3130, shade: "166534", bold: true })
+      cell("PROPOSTA FOTOVOLTAICA\nINDICATIVA\nDimensionamento e estimativa financeira", { width: 6500, shade: "0B3828", bold: true, color: "FFFFFF" }),
+      cell(`Data: ${new Date().toLocaleDateString("pt-PT")}\nValidade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias\nPrecos sujeitos a atualizacao`, { width: 3130, shade: "166534", bold: true, color: "FFFFFF" })
     )
   ]);
+}
+
+function highlightTable(rows) {
+  return table(rows.map(([label, value], index) => row(
+    cell(label, { width: 3600, shade: index === rows.length - 1 ? "166534" : "EEF3F0", bold: true, color: index === rows.length - 1 ? "FFFFFF" : "0B3828" }),
+    cell(value, { width: 6030, shade: index === rows.length - 1 ? "DFF3E6" : "FFFFFF", bold: index === rows.length - 1, color: "0B3828", align: "right" })
+  )));
+}
+
+function freeEditRow(label) {
+  return row(
+    cell(label, { width: 3000, shade: "EEF3F0", bold: true, color: "0B3828", height: 900 }),
+    cell("", { width: 6630, height: 900 })
+  );
 }
 
 function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
@@ -222,12 +262,12 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
   ];
 
   const financialRows = [
-    keyValueRow("Preco sem IVA", money(price.net)),
-    keyValueRow("IVA", money(price.vat)),
-    keyValueRow("Preco com IVA", money(price.gross)),
-    keyValueRow("Poupanca mensal estimada", money(roi.monthlySavingsEur)),
-    keyValueRow("Poupanca anual estimada", money(roi.annualSavingsEur)),
-    keyValueRow("ROI estimado", years(roi.roiYears))
+    ["Preco sem IVA", money(price.net)],
+    ["IVA", money(price.vat)],
+    ["Preco com IVA", money(price.gross)],
+    ["Poupanca mensal estimada", money(roi.monthlySavingsEur)],
+    ["Poupanca anual estimada", money(roi.annualSavingsEur)],
+    ["ROI estimado", years(roi.roiYears)]
   ];
 
   const equipmentRows = [
@@ -245,16 +285,17 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
   ].filter(Boolean);
 
   const freeRows = [
-    keyValueRow("Ajustes comerciais", ""),
-    keyValueRow("Condicoes especiais", ""),
-    keyValueRow("Observacoes para visita tecnica", "")
+    freeEditRow("Ajustes comerciais"),
+    freeEditRow("Condicoes especiais"),
+    freeEditRow("Observacoes para visita tecnica")
   ];
 
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
       <w:body>
         ${headerTable()}
-        ${p("Documento editavel interno - estrutura alinhada com o PDF enviado ao cliente.")}
+        ${p("Documento editavel interno - estrutura alinhada com o PDF enviado ao cliente.", null, { justify: true })}
+        ${spacer()}
         ${sectionTitle("Cliente")}
         ${table(leadRows)}
         ${sectionTitle("Consumo atual")}
@@ -262,7 +303,7 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
         ${sectionTitle("Sistema recomendado")}
         ${table(proposalRows)}
         ${sectionTitle("Beneficio financeiro")}
-        ${table(financialRows)}
+        ${highlightTable(financialRows)}
         ${pageBreak()}
         ${sectionTitle("Comparacao de solucoes")}
         ${subTitle("Opcao on-grid")}
@@ -270,7 +311,7 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
         ${subTitle("Opcao hibrida")}
         ${table(optionRows(options.hybrid))}
         ${sectionTitle("Enquadramento")}
-        ${contextItems.map((item) => p(`- ${item}`)).join("")}
+        ${contextItems.map((item) => p(`- ${item}`, null, { justify: true })).join("")}
         ${hybridPriceOptions.length ? pageBreak() : ""}
         ${hybridPriceOptions.length ? sectionTitle("Opcoes de bateria") : ""}
         ${hybridPriceOptions.slice(0, 2).map((option) => `${subTitle(optionTitle(option))}${table(optionRows(option))}`).join("")}
@@ -281,7 +322,7 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
         ${subTitle("Equipamentos")}
         ${table(equipmentRows)}
         ${sectionTitle("Notas")}
-        ${[...new Set(notesFor(calculation))].slice(0, 12).map((note) => p(`- ${note}`)).join("")}
+        ${[...new Set(notesFor(calculation))].slice(0, 12).map((note) => p(`- ${note}`, null, { justify: true })).join("")}
         ${sectionTitle("Campos livres para edicao")}
         ${table(freeRows)}
         <w:sectPr>
@@ -295,24 +336,48 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
 function stylesXml() {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+      <w:docDefaults>
+        <w:rPrDefault>
+          <w:rPr>
+            <w:rFonts w:ascii="Aptos" w:hAnsi="Aptos" w:cs="Aptos"/>
+            <w:sz w:val="22"/>
+            <w:color w:val="1F2933"/>
+          </w:rPr>
+        </w:rPrDefault>
+        <w:pPrDefault>
+          <w:pPr>
+            <w:spacing w:after="120" w:line="276" w:lineRule="auto"/>
+          </w:pPr>
+        </w:pPrDefault>
+      </w:docDefaults>
       <w:style w:type="paragraph" w:styleId="Title">
         <w:name w:val="Title"/>
-        <w:rPr><w:b/><w:sz w:val="34"/></w:rPr>
+        <w:pPr><w:spacing w:after="180"/></w:pPr>
+        <w:rPr><w:rFonts w:ascii="Aptos Display" w:hAnsi="Aptos Display"/><w:b/><w:color w:val="0B3828"/><w:sz w:val="34"/></w:rPr>
       </w:style>
       <w:style w:type="paragraph" w:styleId="Heading1">
         <w:name w:val="heading 1"/>
-        <w:rPr><w:b/><w:sz w:val="26"/></w:rPr>
+        <w:pPr><w:spacing w:before="260" w:after="120"/><w:keepNext/></w:pPr>
+        <w:rPr><w:rFonts w:ascii="Aptos Display" w:hAnsi="Aptos Display"/><w:b/><w:color w:val="0B3828"/><w:sz w:val="28"/></w:rPr>
+      </w:style>
+      <w:style w:type="paragraph" w:styleId="Heading2">
+        <w:name w:val="heading 2"/>
+        <w:pPr><w:spacing w:before="180" w:after="80"/><w:keepNext/></w:pPr>
+        <w:rPr><w:rFonts w:ascii="Aptos Display" w:hAnsi="Aptos Display"/><w:b/><w:color w:val="166534"/><w:sz w:val="23"/></w:rPr>
       </w:style>
       <w:style w:type="table" w:styleId="TableGrid">
         <w:name w:val="Table Grid"/>
-        <w:tblPr><w:tblBorders>
-          <w:top w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-          <w:left w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-          <w:bottom w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-          <w:right w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-          <w:insideH w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-          <w:insideV w:val="single" w:sz="4" w:space="0" w:color="D9E2EC"/>
-        </w:tblBorders></w:tblPr>
+        <w:tblPr>
+          <w:tblCellMar><w:top w:w="90" w:type="dxa"/><w:left w:w="110" w:type="dxa"/><w:bottom w:w="90" w:type="dxa"/><w:right w:w="110" w:type="dxa"/></w:tblCellMar>
+          <w:tblBorders>
+            <w:top w:val="single" w:sz="6" w:space="0" w:color="D9E2EC"/>
+            <w:left w:val="single" w:sz="6" w:space="0" w:color="D9E2EC"/>
+            <w:bottom w:val="single" w:sz="6" w:space="0" w:color="D9E2EC"/>
+            <w:right w:val="single" w:sz="6" w:space="0" w:color="D9E2EC"/>
+            <w:insideH w:val="single" w:sz="4" w:space="0" w:color="E5EAF0"/>
+            <w:insideV w:val="single" w:sz="4" w:space="0" w:color="E5EAF0"/>
+          </w:tblBorders>
+        </w:tblPr>
       </w:style>
     </w:styles>`;
 }
