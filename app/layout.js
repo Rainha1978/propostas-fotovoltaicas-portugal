@@ -2,8 +2,8 @@ import "./styles.css";
 import { isAdminAuthenticated } from "../src/lib/adminAuth.js";
 
 export const metadata = {
-  title: "Propostas Fotovoltaicas",
-  description: "Simulador de propostas fotovoltaicas"
+  title: "Proposta Fotovoltaica SolexR",
+  description: "Simulador de proposta fotovoltaica SolexR"
 };
 
 export default async function RootLayout({ children }) {
@@ -13,10 +13,13 @@ export default async function RootLayout({ children }) {
     <html lang="pt">
       <body>
         <header className="topbar">
-          <a href="/" className="brand">Propostas FV</a>
+          <a href="/" className="brand">
+            <img src="/logo-solexr-header.png" alt="SolexR Energias Renovaveis" />
+            <span>Proposta Fotovoltaica</span>
+          </a>
           <nav>
-            <a href="/leads/new">Nova simulação</a>
-            {isAdmin ? <a href="/leads">Simulações</a> : null}
+            <a href="/leads/new">Nova simulacao</a>
+            {isAdmin ? <a href="/leads">Simulacoes</a> : null}
             {isAdmin ? <a href="/admin/logout">Sair</a> : <a href="/admin/login">Admin</a>}
           </nav>
         </header>
