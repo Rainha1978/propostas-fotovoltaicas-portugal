@@ -49,7 +49,7 @@ function buildInternalEmailHtml({ lead = {}, calculation = {} }) {
   `;
 }
 
-export async function sendEmail({ lead = {}, pdfBuffer, calculation = {} } = {}) {
+export async function sendEmail({ lead = {}, pdfBuffer, docxBuffer = null, calculation = {} } = {}) {
   const clienteEmail = lead.email || null;
   const results = { cliente: "skipped", simulador: "skipped" };
 
@@ -116,8 +116,13 @@ export async function sendEmail({ lead = {}, pdfBuffer, calculation = {} } = {})
           filename: "simulacao-fotovoltaica-solexr.pdf",
           content: pdfBuffer,
           contentType: "application/pdf"
-        }
-      ]
+        },
+        docxBuffer ? {
+          filename: "simulacao-fotovoltaica-solexr-editavel.docx",
+          content: docxBuffer,
+          contentType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        } : null
+      ].filter(Boolean)
     });
     console.log("Email simulador enviado");
     results.simulador = "sent";

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { calculateProposal } from "../../../src/domain/solarCalculator.js";
 import { createLead, saveProposal } from "../../../src/lib/leadRepository.js";
+import { buildProposalDocx } from "../../../src/lib/proposalDocx.js";
 import { buildProposalPdf } from "../../../src/lib/proposalPdf.js";
 import { sendEmail } from "../../../src/lib/sendEmail.js";
 
@@ -30,8 +31,16 @@ async function buildAndSendProposalEmail(lead) {
         hybrid: hybridOption
       }
     });
+    const docx = buildProposalDocx({
+      lead,
+      calculation,
+      options: {
+        onGrid: onGridOption,
+        hybrid: hybridOption
+      }
+    });
 
-    const emailResult = await sendEmail({ lead, pdfBuffer: pdf, calculation });
+    const emailResult = await sendEmail({ lead, pdfBuffer: pdf, docxBuffer: docx, calculation });
     return emailResult.cliente;
   } catch (error) {
     console.error("Erro ao enviar email:", error);
