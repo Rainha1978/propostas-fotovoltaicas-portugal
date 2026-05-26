@@ -164,7 +164,7 @@ test("aplica acrescimo automatico de telha lusa na mao de obra", () => {
   assert.ok(proposal.recommendation.notes.some((note) => note.includes("Acrescimo telha lusa incluido")));
 });
 
-test("calcula bateria GoodWe LV premium a 1320 EUR por modulo", () => {
+test("calcula bateria GoodWe LV premium a 1300 EUR por modulo", () => {
   const proposal = calculateProposal({
     ...baseLead,
     consumptionPeriod: "noite",
@@ -175,7 +175,7 @@ test("calcula bateria GoodWe LV premium a 1320 EUR por modulo", () => {
 
   assert.equal(proposal.equipment.battery.brand, "GoodWe");
   assert.equal(proposal.equipment.battery.capacityKwh, 5.12);
-  assert.equal(proposal.internalCosts.battery, 1320);
+  assert.equal(proposal.internalCosts.battery, 1300);
 });
 
 test("450 kWh equilibrado monofasico com GoodWe premium recomenda 5.12kWh", () => {
@@ -232,7 +232,7 @@ test("usa inversores GoodWe ES em hibrido monofasico", () => {
   });
 
   assert.equal(proposal.equipment.inverter.model, "GW5000-ES-20-G2");
-  assert.equal(proposal.equipment.inverter.price, 1349.03);
+  assert.equal(proposal.equipment.inverter.price, 1069);
 });
 
 test("usa preco manual do inversor quando existir", () => {
