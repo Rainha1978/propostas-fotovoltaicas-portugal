@@ -309,48 +309,87 @@ function optionRoi(option) {
 }
 
 function costValue(option, key) {
-  return option?.internalCosts?.[key] ?? option?.costs?.[key] ?? 0;
+  const direct = option?.internalCosts?.[key] ?? option?.costs?.[key];
+  if (direct !== undefined && direct !== null) return direct;
+
+  const sections = option?.price?.breakdown ?? [];
+  const labelsByKey = {
+    panels: ["painel", "paineis", "painéis", "fotovoltaico"],
+    inverter: ["inversor"],
+    battery: ["bateria"],
+    structure: ["estrutura"],
+    labor: ["instalacao", "instalação", "mao de obra", "mão de obra"],
+    batteryLabor: ["bateria"],
+    baseProtections: ["base"],
+    hybridProtections: ["hibrid", "híbrid"],
+    backupManual: ["backup"],
+    dcCables: ["cabo dc"],
+    acCables: ["cabo ac"],
+    connectors: ["conector"],
+    realTimeMeter: ["contador"],
+    evCharger: ["carregador"],
+    evProtections: ["protec", "proteç"],
+    travel: ["desloc"]
+  };
+  const labels = labelsByKey[key] ?? [];
+  let total = 0;
+
+  for (const section of sections) {
+    for (const item of section.items ?? []) {
+      const label = normalizeText(item.label ?? "").toLowerCase();
+      if (key === "evProtections" && !(label.includes("ev") && (label.includes("protec") || label.includes("proteç")))) {
+        continue;
+      }
+      if (labels.some((token) => label.includes(token))) {
+        total += Number(item.amount || 0);
+      }
+    }
+  }
+
+  return total;
 }
 
 function sectionTotal(option, key) {
   return option?.price?.breakdown?.find((section) => section.key === key)?.total ?? 0;
 }
 
-function optionRows(option) {
-  const price = optionPrice(option);
-  const roi = optionRoi(option);
-  return [
-    row(cell(optionTitle(option), { width: 9630, shade: "0B3828", bold: true, color: "FFFFFF" })),
-    keyValueRow("SoluÃƒÂ§ÃƒÂ£o", optionTitle(option)),
-    keyValueRow("Inversor", optionInverter(option)),
-    keyValueRow("Bateria", optionBattery(option)),
-    keyValueRow("Capacidade", optionBatteryCapacity(option)),
-    keyValueRow("PreÃƒÂ§o sem IVA", money(price.net)),
-    keyValueRow("IVA", money(price.vat)),
-    keyValueRow("PreÃƒÂ§o com IVA", money(price.gross)),
-    keyValueRow("PoupanÃƒÂ§a mensal", money(roi.monthlySavingsEur)),
-    keyValueRow("PoupanÃƒÂ§a anual", money(roi.annualSavingsEur)),
-    keyValueRow("ROI", years(roi.roiYears))
+function hasSelectedBattery(option) {
+  const battery = option?.equipment?.battery ?? option?.battery;
+  return Boolean(battery?.capacityKwh);
+}
+
+function hasPositiveAmount(value) {
+  return typeof value === "number" && Math.abs(value) >= 0.005;
+}
+
+function costEntries(option) {
+  const structureNeedsVisit = (option?.flags ?? []).some((flag) => flag.area === "estrutura" && flag.type === "visita_tecnica");
+  const batterySelected = hasSelectedBattery(option);
+  const rows = [
+    ["Painéis", costValue(option, "panels"), true],
+    ["Inversor", costValue(option, "inverter"), true],
+    ["Bateria", batterySelected ? costValue(option, "battery") : 0, false],
+    ["Estrutura", structureNeedsVisit ? "valor a definir apos visita tecnica" : costValue(option, "structure"), true],
+    ["Mão de obra", costValue(option, "labor") + (batterySelected ? costValue(option, "batteryLabor") : 0), true],
+    ["Proteções/elétrica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual"), true],
+    ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors"), true],
+    ["Contador", costValue(option, "realTimeMeter"), false],
+    ["EV", costValue(option, "evCharger") + costValue(option, "evProtections"), false],
+    ["Deslocação", costValue(option, "travel"), false],
+    ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat, true],
+    ["Total final", optionPrice(option).gross, true]
   ];
+
+  return rows.filter(([label, value, required]) => {
+    if (label === "IVA" || label === "Total final") return true;
+    if (typeof value === "string") return value.trim() !== "";
+    if (required) return hasPositiveAmount(value);
+    return hasPositiveAmount(value);
+  });
 }
 
 function costRows(option) {
-  const structureNeedsVisit = (option?.flags ?? []).some((flag) => flag.area === "estrutura" && flag.type === "visita_tecnica");
-  const rows = [
-    ["PainÃƒÂ©is", costValue(option, "panels")],
-    ["Inversor", costValue(option, "inverter")],
-    ["Bateria", costValue(option, "battery")],
-    ["Estrutura", structureNeedsVisit ? "valor a definir apos visita tecnica" : costValue(option, "structure")],
-    ["MÃƒÂ£o de obra", costValue(option, "labor") + costValue(option, "batteryLabor")],
-    ["ProteÃƒÂ§ÃƒÂµes/elÃƒÂ©trica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual")],
-    ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors")],
-    ["Contador", costValue(option, "realTimeMeter")],
-    ["EV", costValue(option, "evCharger") + costValue(option, "evProtections")],
-    ["DeslocaÃƒÂ§ÃƒÂ£o", costValue(option, "travel")],
-    ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat],
-    ["Total final", optionPrice(option).gross]
-  ];
-
+  const rows = costEntries(option);
   return [
     row(
       cell("Componente", { width: 4300, shade: "0B3828", bold: true, color: "FFFFFF", padY: 110, padX: 150 }),
@@ -484,6 +523,69 @@ function friendlySystemType({ recommendation = {}, lead = {} } = {}) {
   return recommendation.mode || "-";
 }
 
+
+function recommendationCopy({ recommendation = {}, equipment = {}, battery = {}, lead = {} } = {}) {
+  const mode = String(recommendation.mode || "").toLowerCase();
+  const systemType = friendlySystemType({ recommendation, lead }).toLowerCase();
+  const batterySelected = Boolean(battery?.capacityKwh ?? equipment?.battery?.capacityKwh);
+  const backupRequested = systemType.includes("backup") || String(lead.objetivo || lead.goal || "").toLowerCase().includes("backup");
+
+  if (mode.includes("on")) {
+    return {
+      text: "A solução on-grid permite aproveitar diretamente a energia produzida durante o dia, reduzindo a dependência da rede sem incluir armazenamento.",
+      recommendationItems: [
+        "Menor investimento inicial",
+        "Redução direta da fatura elétrica",
+        "Aproveitamento da produção solar durante o dia",
+        "Solução simples e eficiente para autoconsumo",
+        "Boa relação entre custo, potência instalada e retorno"
+      ],
+      benefitItems: [
+        "Redução significativa da fatura elétrica",
+        "Aproveitamento direto da produção solar",
+        "Menor investimento inicial",
+        "Sistema simples e eficiente para autoconsumo"
+      ]
+    };
+  }
+
+  if (batterySelected) {
+    return {
+      text: "A solução híbrida com armazenamento permite aumentar o aproveitamento da energia produzida durante o dia, armazenando excedentes para utilização em períodos de maior consumo ou menor produção solar.",
+      recommendationItems: [
+        "Maior autonomia energética",
+        "Melhor aproveitamento da produção solar",
+        "Redução da dependência da rede",
+        backupRequested ? "Solução preparada para backup" : "Armazenamento para consumo fora das horas solares",
+        "Excelente equilíbrio entre investimento, capacidade e retorno"
+      ],
+      benefitItems: [
+        "Redução significativa da fatura elétrica",
+        "Maior aproveitamento da produção solar",
+        "Armazenamento para consumo fora das horas solares",
+        backupRequested ? "Sistema preparado para backup e expansão futura" : "Sistema preparado para expansão futura"
+      ]
+    };
+  }
+
+  return {
+    text: "A solução híbrida permite preparar a instalação para armazenamento futuro, mantendo flexibilidade para evolução conforme as necessidades de consumo.",
+    recommendationItems: [
+      "Preparada para armazenamento futuro",
+      "Redução da dependência da rede",
+      "Melhor gestão da produção solar",
+      "Possibilidade de expansão para bateria",
+      "Equilíbrio entre investimento e flexibilidade"
+    ],
+    benefitItems: [
+      "Redução significativa da fatura elétrica",
+      "Maior aproveitamento da produção solar",
+      "Preparado para integração futura de bateria",
+      "Flexibilidade para evolução do sistema"
+    ]
+  };
+}
+
 function heroMetric(label, value, { accent = false } = {}) {
   return cell(`${label}\n${value}`, {
     width: 3210,
@@ -584,15 +686,9 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
     detailKeyValueRow("Preço final", money(price.gross), 3),
     detailKeyValueRow("ROI", years(roi.roiYears), 4)
   ];
-  const recommendationItems = [
-    "Maior autonomia energÃƒÂ©tica",
-    "Melhor aproveitamento da produÃƒÂ§ÃƒÂ£o solar",
-    "ReduÃƒÂ§ÃƒÂ£o da dependÃƒÂªncia da rede",
-    "SoluÃƒÂ§ÃƒÂ£o preparada para backup",
-    "Excelente equilÃƒÂ­brio entre investimento, capacidade e retorno"
-  ];
-
-  const recommendationText = "A soluÃƒÂ§ÃƒÂ£o hÃƒÂ­brida permite aumentar o aproveitamento da energia produzida durante o dia, armazenando excedentes para utilizaÃƒÂ§ÃƒÂ£o em perÃƒÂ­odos de maior consumo ou menor produÃƒÂ§ÃƒÂ£o solar.";
+  const copy = recommendationCopy({ recommendation, equipment, battery, lead });
+  const recommendationItems = copy.recommendationItems;
+  const recommendationText = copy.text;
 
   const includedItems = [
     "Fornecimento de equipamentos principais",
@@ -632,12 +728,7 @@ function buildDocumentXml({ lead = {}, calculation = {}, options = {} }) {
         ${configurationTable({ recommendation, sizing, equipment, battery, lead })}
         ${coverSystemBlock({ recommendation, sizing, equipment, battery, price, roi })}
         ${sectionTitle("Benef\u00edcios da solu\u00e7\u00e3o")}
-        ${[
-          "Redu\u00e7\u00e3o significativa da fatura el\u00e9trica",
-          "Maior aproveitamento da produ\u00e7\u00e3o solar",
-          "Armazenamento para consumo fora das horas solares",
-          "Sistema preparado para backup e expans\u00e3o futura"
-        ].map((item) => bullet(item)).join("")}
+        ${copy.benefitItems.map((item) => bullet(item)).join("")}
         ${pageBreak()}
         ${chapterTitle("Porque recomendamos esta solu\u00e7\u00e3o")}
         ${p(recommendationText, null, { justify: true, color: "39463F", size: 21, after: 120 })}
@@ -851,6 +942,65 @@ function replaceXmlTextSequential(xml, oldValue, newValues) {
   });
 }
 
+function escapeRegex(value) {
+  return String(value ?? "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function rawTextVariants(value) {
+  return [...new Set([String(value ?? ""), normalizeText(value)])].filter(Boolean);
+}
+
+function replaceXmlTextRaw(xml, oldValue, newValue) {
+  let output = xml;
+  for (const variant of rawTextVariants(oldValue)) {
+    const pattern = new RegExp(`(<w:t(?:\\s[^>]*)?>)${escapeRegex(variant)}(<\\/w:t>)`, "g");
+    output = output.replace(pattern, `$1${escapeXml(newValue)}$2`);
+  }
+  return output;
+}
+
+function replaceXmlTextRawSequential(xml, oldValue, newValues) {
+  let output = xml;
+  for (const variant of rawTextVariants(oldValue)) {
+    let index = 0;
+    const pattern = new RegExp(`(<w:t(?:\\s[^>]*)?>)${escapeRegex(variant)}(<\\/w:t>)`, "g");
+    output = output.replace(pattern, (match, start, end) => {
+      const value = newValues[index] ?? newValues.at(-1) ?? oldValue;
+      index += 1;
+      return `${start}${escapeXml(value)}${end}`;
+    });
+  }
+  return output;
+}
+
+function removeTableRowByLabelInSection(xml, sectionTitle, nextTitle, label) {
+  const sectionMarkers = rawTextVariants(sectionTitle).map((value) => `>${value}<`);
+  const nextMarkers = rawTextVariants(nextTitle).map((value) => `>${value}<`);
+  const start = sectionMarkers
+    .map((marker) => xml.indexOf(marker))
+    .filter((index) => index >= 0)
+    .sort((a, b) => a - b)[0];
+  if (start === undefined) return xml;
+
+  const end = nextMarkers
+    .map((marker) => xml.indexOf(marker, start + 1))
+    .filter((index) => index > start)
+    .sort((a, b) => a - b)[0];
+
+  const before = xml.slice(0, start);
+  const middle = xml.slice(start, end ?? xml.length);
+  const after = end ? xml.slice(end) : "";
+  let cleaned = middle;
+
+  for (const variant of rawTextVariants(label)) {
+    const labelXml = escapeRegex(variant);
+    const rowPattern = new RegExp(`<w:tr(?:(?!<\\/w:tr>)[\\s\\S])*?<w:t(?:\\s[^>]*)?>${labelXml}<\\/w:t>(?:(?!<\\/w:tr>)[\\s\\S])*?<\\/w:tr>`, "g");
+    cleaned = cleaned.replace(rowPattern, "");
+  }
+
+  return before + cleaned + after;
+}
+
 function fillTemplateDocumentXml(xml, { lead = {}, calculation = {} }) {
   const price = calculation.price ?? {};
   const sizing = calculation.sizing ?? {};
@@ -863,26 +1013,14 @@ function fillTemplateDocumentXml(xml, { lead = {}, calculation = {} }) {
   const batteryText = battery.capacityKwh ? battery.label : "Sem bateria";
   const systemName = mainSystemName({ recommendation, equipment, battery });
   const systemType = friendlySystemType({ recommendation, lead });
-  const currentCostRows = costRows(calculation);
-  const costMap = new Map([
-    ["Painéis", currentCostRows[1]],
-    ["Inversor", currentCostRows[2]],
-    ["Bateria", currentCostRows[3]],
-    ["Estrutura", currentCostRows[4]],
-    ["Mão de obra", currentCostRows[5]],
-    ["Proteções/elétrica", currentCostRows[6]],
-    ["Cabos/conectores", currentCostRows[7]],
-    ["Contador", currentCostRows[8]],
-    ["EV", currentCostRows[9]],
-    ["Deslocação", currentCostRows[10]],
-    ["IVA", currentCostRows[11]],
-    ["Total final", currentCostRows[12]]
-  ]);
+  const currentCostEntries = costEntries(calculation);
+  const costMap = new Map(currentCostEntries.map(([label, value]) => [normalizeText(label), value]));
   const costValueFromRow = (label) => {
-    const rowXml = costMap.get(label) ?? "";
-    const matches = [...rowXml.matchAll(/<w:t(?:\s[^>]*)?>(.*?)<\/w:t>/g)].map((match) => match[1]);
-    return matches.at(-1) ?? "-";
+    if (!costMap.has(label)) return null;
+    const value = costMap.get(label);
+    return typeof value === "string" ? normalizeText(value) : money(value);
   };
+  const copy = recommendationCopy({ recommendation, equipment, battery, lead });
 
   const values = [
     ["Data: 29/05/2026 Validade: 15 dias Contacto: 969 880 053", `Data: ${new Date().toLocaleDateString("pt-PT")} Validade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias Contacto: 969 880 053`],
@@ -918,14 +1056,35 @@ function fillTemplateDocumentXml(xml, { lead = {}, calculation = {} }) {
   ];
 
   let output = xml;
+  for (const label of [
+    "Painéis",
+    "Inversor",
+    "Bateria",
+    "Estrutura",
+    "Mão de obra",
+    "Proteções/elétrica",
+    "Cabos/conectores",
+    "Contador",
+    "EV",
+    "Deslocação"
+  ]) {
+    if (!costMap.has(normalizeText(label))) {
+      output = removeTableRowByLabelInSection(output, "DETALHE TÉCNICO E FINANCEIRO", "EQUIPAMENTOS", label);
+    }
+  }
   for (const [oldValue, newValue] of values) {
     output = replaceXmlText(output, oldValue, normalizeText(newValue));
   }
-  output = replaceXmlTextSequential(output, "0,00 €", [
-    costValueFromRow("Contador"),
-    costValueFromRow("EV"),
-    costValueFromRow("Deslocação")
-  ]);
+  output = replaceXmlTextRawSequential(output, "0,00 €", ["Contador", "EV", "Deslocação"].filter((label) => costMap.has(normalizeText(label))).map((label) => costValueFromRow(normalizeText(label))));
+  output = replaceXmlTextRaw(output, "A solução híbrida permite aumentar o aproveitamento da energia produzida durante o dia, armazenando excedentes para utilização em períodos de maior consumo ou menor produção solar.", copy.text);
+  output = replaceXmlTextRawSequential(output, "✓ Redução significativa da fatura elétrica", [`✓ ${copy.benefitItems[0]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Maior aproveitamento da produção solar", [`✓ ${copy.benefitItems[1]}`, `✓ ${copy.recommendationItems[1]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Armazenamento para consumo fora das horas solares", [`✓ ${copy.benefitItems[2]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Sistema preparado para backup e expansão futura", [`✓ ${copy.benefitItems[3]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Maior autonomia energética", [`✓ ${copy.recommendationItems[0]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Redução da dependência da rede", [`✓ ${copy.recommendationItems[2]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Solução preparada para backup", [`✓ ${copy.recommendationItems[3]}`]);
+  output = replaceXmlTextRawSequential(output, "✓ Excelente equilíbrio entre investimento, capacidade e retorno", [`✓ ${copy.recommendationItems[4]}`]);
   return output;
 }
 
