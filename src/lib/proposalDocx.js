@@ -812,13 +812,12 @@ function docxEntriesFromTemplate({ lead, calculation, options }) {
 
   const entries = unzip(template);
   const logo = logoBuffer();
+  const templateDocument = entries.find((entry) => entry.name === "word/document.xml")?.content.toString("utf8");
   const replacements = new Map([
-    ["word/document.xml", buildDocumentXml({ lead, calculation, options })],
-    ["word/_rels/document.xml.rels", documentRelsXml()]
+    ["word/document.xml", templateDocument ? fillTemplateDocumentXml(templateDocument, { lead, calculation, options }) : buildDocumentXml({ lead, calculation, options })]
   ]);
 
   if (logo) {
-    replacements.set("word/media/logo-solexr-header.png", logo);
     replacements.set("word/media/image1.png", logo);
   }
 
@@ -834,6 +833,100 @@ function docxEntriesFromTemplate({ lead, calculation, options }) {
   }
 
   return merged;
+}
+
+function replaceXmlText(xml, oldValue, newValue) {
+  const escapedOld = escapeXml(oldValue);
+  const escapedNew = escapeXml(newValue);
+  return xml.split(`>${escapedOld}<`).join(`>${escapedNew}<`);
+}
+
+function replaceXmlTextSequential(xml, oldValue, newValues) {
+  const escapedOld = escapeXml(oldValue);
+  let index = 0;
+  return xml.replaceAll(`>${escapedOld}<`, () => {
+    const value = newValues[index] ?? newValues.at(-1) ?? oldValue;
+    index += 1;
+    return `>${escapeXml(value)}<`;
+  });
+}
+
+function fillTemplateDocumentXml(xml, { lead = {}, calculation = {} }) {
+  const price = calculation.price ?? {};
+  const sizing = calculation.sizing ?? {};
+  const equipment = calculation.equipment ?? {};
+  const roi = calculation.roi ?? {};
+  const recommendation = calculation.recommendation ?? {};
+  const battery = equipment.battery ?? {};
+  const consumption = calculation.consumption ?? sizing;
+  const panelText = equipment.panelCount && equipment.panel ? `${equipment.panelCount} x ${equipment.panel.label}` : "-";
+  const batteryText = battery.capacityKwh ? battery.label : "Sem bateria";
+  const systemName = mainSystemName({ recommendation, equipment, battery });
+  const systemType = friendlySystemType({ recommendation, lead });
+  const currentCostRows = costRows(calculation);
+  const costMap = new Map([
+    ["Painéis", currentCostRows[1]],
+    ["Inversor", currentCostRows[2]],
+    ["Bateria", currentCostRows[3]],
+    ["Estrutura", currentCostRows[4]],
+    ["Mão de obra", currentCostRows[5]],
+    ["Proteções/elétrica", currentCostRows[6]],
+    ["Cabos/conectores", currentCostRows[7]],
+    ["Contador", currentCostRows[8]],
+    ["EV", currentCostRows[9]],
+    ["Deslocação", currentCostRows[10]],
+    ["IVA", currentCostRows[11]],
+    ["Total final", currentCostRows[12]]
+  ]);
+  const costValueFromRow = (label) => {
+    const rowXml = costMap.get(label) ?? "";
+    const matches = [...rowXml.matchAll(/<w:t(?:\s[^>]*)?>(.*?)<\/w:t>/g)].map((match) => match[1]);
+    return matches.at(-1) ?? "-";
+  };
+
+  const values = [
+    ["Data: 29/05/2026 Validade: 15 dias Contacto: 969 880 053", `Data: ${new Date().toLocaleDateString("pt-PT")} Validade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias Contacto: 969 880 053`],
+    ["Cliente: Cliente Teste Localidade: Leiria", `Cliente: ${lead.name || "-"} Localidade: ${lead.locality || "-"}`],
+    ["3.22 kWp", kwp(sizing.actualPanelPowerKwp || sizing.targetKwp)],
+    ["7 x Painel standard 460W", panelText],
+    ["GoodWe monofásico híbrido", friendlyInverterName({ recommendation, equipment })],
+    ["Lynx U G3 / LX U5.0-30 5.12kWh", batteryText],
+    ["Híbrido com backup", systemType],
+    ["GoodWe monofásico híbrido + Lynx U G3 / LX U5.0-30 5.12kWh", systemName],
+    ["INVESTIMENTO TOTAL 4785 €", `INVESTIMENTO TOTAL ${moneyShort(price.gross)}`],
+    ["POUPANÇA ANUAL ESTIMADA 934 €", `POUPANÇA ANUAL ESTIMADA ${moneyShort(roi.annualSavingsEur)}`],
+    ["RETORNO ESTIMADO 5.1 anos", `RETORNO ESTIMADO ${years(roi.roiYears)}`],
+    ["Cliente Teste", lead.name || "-"],
+    ["cliente@teste.pt", lead.email || "-"],
+    ["900000000", lead.phone || "-"],
+    ["Leiria", lead.locality || "-"],
+    ["180,00 €", money(consumption.monthlyBillEur)],
+    ["450.0 kWh", kwh(consumption.monthlyConsumptionKwh)],
+    ["2160,00 €", money(consumption.annualCurrentCostEur)],
+    ["equilibrado", recommendation.profile || lead.perfil_consumo || lead.consumptionPeriod || "-"],
+    ["504,00 €", costValueFromRow("Painéis")],
+    ["999,00 €", costValueFromRow("Inversor")],
+    ["1300,00 €", costValueFromRow("Bateria")],
+    ["280,00 €", costValueFromRow("Estrutura")],
+    ["580,00 €", costValueFromRow("Mão de obra")],
+    ["225,00 €", costValueFromRow("Proteções/elétrica")],
+    ["2,60 €", costValueFromRow("Cabos/conectores")],
+    ["894,84 €", costValueFromRow("IVA")],
+    ["4785,44 €", money(price.gross)],
+    ["5.12 kWh", battery.capacityKwh ? `${battery.capacityKwh} kWh` : "-"],
+    ["5.1 anos", years(roi.roiYears)]
+  ];
+
+  let output = xml;
+  for (const [oldValue, newValue] of values) {
+    output = replaceXmlText(output, oldValue, normalizeText(newValue));
+  }
+  output = replaceXmlTextSequential(output, "0,00 €", [
+    costValueFromRow("Contador"),
+    costValueFromRow("EV"),
+    costValueFromRow("Deslocação")
+  ]);
+  return output;
 }
 
 function zip(entries) {
