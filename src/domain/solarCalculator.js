@@ -221,7 +221,7 @@ export function dimensionarSistema(input) {
       : 1;
   const basePanelCount = tier.basePanelCount;
   const adjustedPanelCount = Math.max(5, Math.round(basePanelCount * profileFactor));
-  const targetKwp = roundTwo(adjustedPanelCount * PRICE_DATABASE.panels.standard460w.powerW / 1000);
+  const targetKwp = roundTwo(adjustedPanelCount * PRICE_DATABASE.panels.standard470w.powerW / 1000);
   const needsTechnicalAnalysis = tierIndex < 0 || sizingStep === SIZING_PANEL_TIERS.length;
 
   const notes = [];
@@ -257,22 +257,22 @@ export function dimensionSystem(monthlyConsumptionKwh, profile = "equilibrado") 
 
 export function escolherPainel(input) {
   const roofType = normalizeRoofType(input);
-  const panelPreference = input.panel_preference ?? input.panelPreference ?? "standard_460";
-  const canUseLargePanel = panelPreference === "large_595";
-  const panel = canUseLargePanel ? PRICE_DATABASE.panels.large595w : PRICE_DATABASE.panels.standard460w;
+  const panelPreference = input.panel_preference ?? input.panelPreference ?? "standard_470";
+  const canUseLargePanel = ["large_600", "large_595"].includes(panelPreference);
+  const panel = canUseLargePanel ? PRICE_DATABASE.panels.large600w : PRICE_DATABASE.panels.standard470w;
 
   return {
     powerW: panel.powerW,
     unitPrice: panel.unitPrice,
     label: panel.label,
-    sourceKey: canUseLargePanel ? "large595w" : "standard460w",
-    preference: canUseLargePanel ? "large_595" : "standard_460",
+    sourceKey: canUseLargePanel ? "large600w" : "standard470w",
+    preference: canUseLargePanel ? "large_600" : "standard_470",
     notes: [
       canUseLargePanel
-        ? "Painel 595W usado por escolha explicita/validacao tecnica."
-        : "Painel 460W usado por defeito. Painel 595W disponivel quando escolhido/validado tecnicamente.",
+        ? "Painel 600W usado por escolha explicita/validacao tecnica."
+        : "Painel 470W usado por defeito. Painel 600W disponivel quando escolhido/validado tecnicamente.",
       canUseLargePanel && roofType === "telha_lusa"
-        ? "Uso de paineis de 595W em telha lusa a avaliar em visita tecnica."
+        ? "Uso de paineis de 600W em telha lusa a avaliar em visita tecnica."
         : null
     ].filter(Boolean)
   };
@@ -352,16 +352,9 @@ function chooseGoodWeLvCapacity(targetKwh) {
   return 15.36;
 }
 
-function chooseGslLvCapacity(targetKwh) {
-  const options = PRICE_DATABASE.batteries.gslLv16.typicalCapacitiesKwh;
+function chooseDynessLvCapacity(targetKwh) {
+  const options = PRICE_DATABASE.batteries.dynessPowerBrick16.typicalCapacitiesKwh;
   return options.find((capacity) => capacity >= targetKwh) ?? options.at(-1);
-}
-
-function chooseGslHvCapacity(targetKwh) {
-  const battery = PRICE_DATABASE.batteries.gslHv;
-  const modules = Math.max(2, Math.ceil(targetKwh / battery.capacityPerModuleKwh));
-  const capacityKwh = Math.min(battery.maxCapacityKwh, modules * battery.capacityPerModuleKwh);
-  return { modules: capacityKwh / battery.capacityPerModuleKwh, capacityKwh };
 }
 
 function chooseBydHvsCapacity(targetKwh) {
@@ -405,19 +398,20 @@ export function escolherBaterias(input) {
       laborMode: "hv-system"
     });
 
-    const economicCapacity = chooseGslHvCapacity(Math.max(10, targetKwh));
-    const economic = PRICE_DATABASE.batteries.gslHv;
+    const economicCapacity = chooseDynessLvCapacity(Math.max(16, targetKwh));
+    const economic = PRICE_DATABASE.batteries.dynessPowerBrick16;
+    const economicUnits = Math.ceil(economicCapacity / economic.capacityPerUnitKwh);
     options.push({
       key: "economica",
-      label: `DEYE + GSL HV ${economicCapacity.capacityKwh}kWh`,
-      brand: "DEYE/GSL",
-      model: "DEYE + GSL HV",
-      type: "HV",
+      label: `DEYE + ${economic.model} ${economicCapacity}kWh`,
+      brand: "DEYE/Dyness",
+      model: `DEYE + ${economic.model}`,
+      type: "LV",
       positioning: "economica",
-      capacityKwh: economicCapacity.capacityKwh,
-      modules: economicCapacity.modules,
-      equipmentCost: roundMoney(economic.baseAndBmsPrice + economicCapacity.modules * economic.modulePrice),
-      laborMode: "hv-system"
+      capacityKwh: economicCapacity,
+      count: economicUnits,
+      equipmentCost: roundMoney(economicUnits * economic.unitPrice),
+      laborMode: "lv-per-battery"
     });
   } else {
     const goodweCapacity = chooseGoodWeLvCapacity(Math.max(5.12, targetKwh));
@@ -436,19 +430,19 @@ export function escolherBaterias(input) {
       laborMode: "lv-per-battery"
     });
 
-    const gslCapacity = chooseGslLvCapacity(Math.max(16, targetKwh));
-    const gsl = PRICE_DATABASE.batteries.gslLv16;
-    const gslUnits = Math.ceil(gslCapacity / gsl.capacityPerUnitKwh);
+    const dynessCapacity = chooseDynessLvCapacity(Math.max(16, targetKwh));
+    const dyness = PRICE_DATABASE.batteries.dynessPowerBrick16;
+    const dynessUnits = Math.ceil(dynessCapacity / dyness.capacityPerUnitKwh);
     options.push({
       key: "economica",
-      label: `${gsl.model} ${gslCapacity}kWh`,
-      brand: gsl.brand,
-      model: gsl.model,
+      label: `${dyness.model} ${dynessCapacity}kWh`,
+      brand: dyness.brand,
+      model: dyness.model,
       type: "LV",
-      positioning: gsl.positioning,
-      capacityKwh: gslCapacity,
-      count: gslUnits,
-      equipmentCost: roundMoney(gslUnits * gsl.unitPrice),
+      positioning: dyness.positioning,
+      capacityKwh: dynessCapacity,
+      count: dynessUnits,
+      equipmentCost: roundMoney(dynessUnits * dyness.unitPrice),
       laborMode: "lv-per-battery"
     });
   }
@@ -520,7 +514,7 @@ export function escolherInversor(input) {
         type: "hibrido",
         status: inverter.status ?? "ok",
         alternatives: ["GoodWe trifasico premium + BYD/GoodWe compativel"],
-        notes: ["Opcao economica trifasica: DEYE + GSL HV."]
+        notes: ["Opcao economica trifasica: DEYE + Dyness PowerBrick 16K."]
       };
     }
 
@@ -538,7 +532,7 @@ export function escolherInversor(input) {
       mode: "hibrido",
       type: "hibrido",
       status: inverter.status ?? "ok",
-      alternatives: ["DEYE + GSL HV economica"],
+      alternatives: ["DEYE + Dyness PowerBrick 16K economica"],
       notes: []
     };
   }
@@ -889,7 +883,7 @@ export function calculateProposal(input) {
   const system = systemAdvice.system;
   const sizing = dimensionarSistema({ monthlyConsumptionKwh: consumption.monthlyConsumptionKwh, objective, perfilConsumo: profile });
   const panel = escolherPainel(input);
-  const automaticPanelCount = panel.powerW === PRICE_DATABASE.panels.standard460w.powerW
+  const automaticPanelCount = panel.powerW === PRICE_DATABASE.panels.standard470w.powerW
     ? sizing.adjustedPanelCount
     : Math.ceil(sizing.targetKwp / (panel.powerW / 1000));
   const manualPanelCount = Math.round(numberOrZero(input.numero_paineis_manual ?? input.manualPanelCount ?? input.panelCountManual));

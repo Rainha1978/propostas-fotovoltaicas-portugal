@@ -16,7 +16,7 @@ function yesNo(value) {
 }
 
 function panelPreferenceLabel(value) {
-  return value === "large_595" ? "Grande 595W" : "Standard 460W";
+  return ["large_600", "large_595"].includes(value) ? "Grande 600W" : "Standard 470W";
 }
 
 export default async function LeadDetailPage({ params }) {

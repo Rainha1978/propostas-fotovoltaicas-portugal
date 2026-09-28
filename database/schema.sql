@@ -1,4 +1,4 @@
-﻿CREATE TABLE IF NOT EXISTS leads (
+CREATE TABLE IF NOT EXISTS leads (
   id TEXT PRIMARY KEY,
   client_request_id TEXT UNIQUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -12,7 +12,6 @@
   property_type TEXT,
   grid_type TEXT NOT NULL,
   roof_type TEXT NOT NULL,
-  panel_preference TEXT NOT NULL DEFAULT 'standard_460',
   structure_type TEXT NOT NULL DEFAULT 'coplanar',
   ground_floor BOOLEAN NOT NULL DEFAULT FALSE,
   difficult_tile BOOLEAN NOT NULL DEFAULT FALSE,
@@ -32,7 +31,7 @@
   escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei',
   rede TEXT NOT NULL DEFAULT 'monofasico',
   tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa',
-  panel_preference TEXT NOT NULL DEFAULT 'standard_460',
+  panel_preference TEXT NOT NULL DEFAULT 'standard_470',
   numero_paineis_manual INTEGER,
   inversor_manual_model TEXT,
   telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE,
@@ -56,7 +55,8 @@ ALTER TABLE leads ADD COLUMN IF NOT EXISTS objetivo TEXT NOT NULL DEFAULT 'poupa
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS rede TEXT NOT NULL DEFAULT 'monofasico';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa';
-ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_460';
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_470';
+ALTER TABLE leads ALTER COLUMN panel_preference SET DEFAULT 'standard_470';
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS numero_paineis_manual INTEGER;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS inversor_manual_model TEXT;
 ALTER TABLE leads ADD COLUMN IF NOT EXISTS telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE;

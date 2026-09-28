@@ -373,7 +373,7 @@ function costEntries(option) {
     ["Mão de obra", costValue(option, "labor") + (batterySelected ? costValue(option, "batteryLabor") : 0), true],
     ["Proteções/elétrica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual"), true],
     ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors"), true],
-    ["Contador", costValue(option, "realTimeMeter"), false],
+    ["Contador Honeywell", costValue(option, "realTimeMeter"), false],
     ["EV", costValue(option, "evCharger") + costValue(option, "evProtections"), false],
     ["Deslocação", costValue(option, "travel"), false],
     ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat, true],
@@ -413,7 +413,7 @@ function detailKeyValueRow(label, value, index = 0) {
 }
 
 function notesFor(calculation) {
-  const preferredPanelNote = "Painel 460W usado por defeito. Painel 595W disponÃƒÆ’Ã‚Â­vel para telhado sanduÃƒÆ’Ã‚Â­che ou instalaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o tÃƒÆ’Ã‚Â©rrea quando escolhido/validado tecnicamente.";
+  const preferredPanelNote = "Painel 470W usado por defeito. Painel 600W disponÃƒÆ’Ã‚Â­vel para telhado sanduÃƒÆ’Ã‚Â­che ou instalaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o tÃƒÆ’Ã‚Â©rrea quando escolhido/validado tecnicamente.";
   const notes = [
     "Proposta sujeita a validaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o tÃƒÆ’Ã‚Â©cnica no local.",
     "PreÃƒÆ’Ã‚Â§os sujeitos a atualizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de mercado.",
@@ -427,7 +427,7 @@ function notesFor(calculation) {
   let panelNoteAdded = false;
   return notes.filter((note) => {
     const normalized = normalizeText(note).toLowerCase();
-    const isPanelNote = normalized.includes("painel 460w") || normalized.includes("painel 595w") || normalized.includes("595w disponÃ­vel") || normalized.includes("595w disponivel");
+    const isPanelNote = normalized.includes("painel 470w") || normalized.includes("painel 600w") || normalized.includes("painel 460w") || normalized.includes("painel 595w") || normalized.includes("600w disponÃ­vel") || normalized.includes("600w disponivel") || normalized.includes("595w disponÃ­vel") || normalized.includes("595w disponivel");
     if (!isPanelNote) return true;
     if (panelNoteAdded) return false;
     panelNoteAdded = true;
@@ -1026,7 +1026,7 @@ function fillTemplateDocumentXml(xml, { lead = {}, calculation = {} }) {
     ["Data: 29/05/2026 Validade: 15 dias Contacto: 969 880 053", `Data: ${new Date().toLocaleDateString("pt-PT")} Validade: ${process.env.PROPOSAL_VALID_DAYS || "15"} dias Contacto: 969 880 053`],
     ["Cliente: Cliente Teste Localidade: Leiria", `Cliente: ${lead.name || "-"} Localidade: ${lead.locality || "-"}`],
     ["3.22 kWp", kwp(sizing.actualPanelPowerKwp || sizing.targetKwp)],
-    ["7 x Painel standard 460W", panelText],
+    ["7 x Painel standard 470W", panelText],
     ["GoodWe monofásico híbrido", friendlyInverterName({ recommendation, equipment })],
     ["Lynx U G3 / LX U5.0-30 5.12kWh", batteryText],
     ["Híbrido com backup", systemType],

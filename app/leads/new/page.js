@@ -107,11 +107,11 @@ export default async function NewLeadPage({ searchParams }) {
         <div className="field"><label>Tipo de telhado</label><select id="tipo_telhado" name="tipo_telhado"><option value="telha_lusa">Telha lusa</option><option value="sanduiche">Sanduiche</option><option value="terreo">Terreo</option></select></div>
         <div className="field">
           <label>Preferencia de painel</label>
-          <select name="panel_preference" defaultValue="standard_460">
-            <option value="standard_460">Standard 460W</option>
-            <option value="large_595">Grande 595W</option>
+          <select name="panel_preference" defaultValue="standard_470">
+            <option value="standard_470">Standard 470W</option>
+            <option value="large_600">Grande 600W</option>
           </select>
-          <small>Painel 595W disponivel por escolha do cliente; em telha lusa fica sujeito a avaliacao tecnica.</small>
+          <small>Painel 600W disponivel por escolha do cliente; em telha lusa fica sujeito a avaliacao tecnica.</small>
         </div>
         <div className="field">
           <label>Quantidade de paineis</label>
@@ -160,13 +160,13 @@ export default async function NewLeadPage({ searchParams }) {
               <option value="10">10kWh</option>
               <option value="15">15kWh</option>
             </optgroup>
-            <optgroup label="GSL">
+            <optgroup label="Dyness PowerBrick 16K">
               <option value="16">16kWh</option>
               <option value="32">32kWh</option>
               <option value="48">48kWh</option>
             </optgroup>
           </select>
-          <small>5/10/15kWh usam GoodWe Lynx. 16/32/48kWh usam GSL.</small>
+          <small>5/10/15kWh usam GoodWe Lynx. 16/32/48kWh usam Dyness PowerBrick 16K.</small>
         </div>
         <div className="field full"><label>Observacoes</label><textarea name="notes" /></div>
         <div className="full">

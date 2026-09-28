@@ -12,7 +12,7 @@ const baseLead = {
   monthlyBillEur: 80,
   roofType: "telha-lusa",
   tipo_telhado: "telha_lusa",
-  panel_preference: "standard_460",
+  panel_preference: "standard_470",
   gridType: "monofasico",
   consumptionPeriod: "equilibrado",
   distancePvToInverterM: 12,
@@ -27,24 +27,24 @@ test("converte fatura mensal para consumo removendo IVA e custos fixos", () => {
 });
 
 test("dimensiona perfil equilibrado mantendo paineis base", () => {
-  assert.deepEqual(dimensionSystem(250, "equilibrado"), { targetKwp: 2.3, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(251, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(350, "equilibrado"), { targetKwp: 2.76, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(351, "equilibrado"), { targetKwp: 3.22, basePanelCount: 7, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(1150, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
-  assert.deepEqual(dimensionSystem(1151, "equilibrado"), { targetKwp: 6.44, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
+  assert.deepEqual(dimensionSystem(250, "equilibrado"), { targetKwp: 2.35, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(251, "equilibrado"), { targetKwp: 2.82, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(350, "equilibrado"), { targetKwp: 2.82, basePanelCount: 6, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(351, "equilibrado"), { targetKwp: 3.29, basePanelCount: 7, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1150, "equilibrado"), { targetKwp: 6.58, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
+  assert.deepEqual(dimensionSystem(1151, "equilibrado"), { targetKwp: 6.58, basePanelCount: 14, adjustedPanelCount: 14, needsTechnicalAnalysis: true });
 });
 
 test("dimensiona perfil dia aumentando paineis por escalao", () => {
-  assert.deepEqual(dimensionSystem(250, "dia"), { targetKwp: 2.76, basePanelCount: 5, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(300, "dia"), { targetKwp: 3.22, basePanelCount: 6, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(600, "dia"), { targetKwp: 4.6, basePanelCount: 9, adjustedPanelCount: 10, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(250, "dia"), { targetKwp: 2.82, basePanelCount: 5, adjustedPanelCount: 6, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(300, "dia"), { targetKwp: 3.29, basePanelCount: 6, adjustedPanelCount: 7, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(600, "dia"), { targetKwp: 4.7, basePanelCount: 9, adjustedPanelCount: 10, needsTechnicalAnalysis: false });
 });
 
 test("dimensiona perfil noite reduzindo paineis sem baixar de 5", () => {
-  assert.deepEqual(dimensionSystem(250, "noite"), { targetKwp: 2.3, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(600, "noite"), { targetKwp: 3.68, basePanelCount: 9, adjustedPanelCount: 8, needsTechnicalAnalysis: false });
-  assert.deepEqual(dimensionSystem(1000, "noite"), { targetKwp: 5.06, basePanelCount: 13, adjustedPanelCount: 11, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(250, "noite"), { targetKwp: 2.35, basePanelCount: 5, adjustedPanelCount: 5, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(600, "noite"), { targetKwp: 3.76, basePanelCount: 9, adjustedPanelCount: 8, needsTechnicalAnalysis: false });
+  assert.deepEqual(dimensionSystem(1000, "noite"), { targetKwp: 5.17, basePanelCount: 13, adjustedPanelCount: 11, needsTechnicalAnalysis: false });
 });
 
 test("120 EUR mensais com perfil noite reduz para 7 paineis", () => {
@@ -62,20 +62,20 @@ test("120 EUR mensais com perfil noite reduz para 7 paineis", () => {
   assert.equal(proposal.equipment.panelCount, 7);
 });
 
-test("usa 595W em telha lusa quando escolhido pelo cliente e deixa ressalva tecnica", () => {
+test("usa 600W em telha lusa quando escolhido pelo cliente e deixa ressalva tecnica", () => {
   const proposal = calculateProposal({
     ...baseLead,
     tipo_telhado: "telha_lusa",
     roofType: "telha-lusa",
-    panel_preference: "large_595"
+    panel_preference: "large_600"
   });
 
-  assert.equal(proposal.equipment.panel.powerW, 595);
-  assert.equal(proposal.equipment.panel.preference, "large_595");
-  assert.ok(proposal.recommendation.notes.some((note) => note.includes("595W em telha lusa a avaliar")));
+  assert.equal(proposal.equipment.panel.powerW, 600);
+  assert.equal(proposal.equipment.panel.preference, "large_600");
+  assert.ok(proposal.recommendation.notes.some((note) => note.includes("600W em telha lusa a avaliar")));
 });
 
-test("usa 460W por defeito em sanduiche e 595W apenas com escolha explicita", () => {
+test("usa 470W por defeito em sanduiche e 600W apenas com escolha explicita", () => {
   const defaultProposal = calculateProposal({
     ...baseLead,
     tipo_telhado: "sanduiche",
@@ -86,16 +86,16 @@ test("usa 460W por defeito em sanduiche e 595W apenas com escolha explicita", ()
     ...baseLead,
     tipo_telhado: "sanduiche",
     roofType: "sanduiche",
-    panel_preference: "large_595"
+    panel_preference: "large_600"
   });
 
-  assert.equal(defaultProposal.equipment.panel.powerW, 460);
-  assert.equal(defaultProposal.equipment.panel.preference, "standard_460");
-  assert.equal(largeProposal.equipment.panel.powerW, 595);
-  assert.equal(largeProposal.equipment.panel.preference, "large_595");
+  assert.equal(defaultProposal.equipment.panel.powerW, 470);
+  assert.equal(defaultProposal.equipment.panel.preference, "standard_470");
+  assert.equal(largeProposal.equipment.panel.powerW, 600);
+  assert.equal(largeProposal.equipment.panel.preference, "large_600");
 });
 
-test("usa 460W por defeito em terreo e 595W apenas com escolha explicita", () => {
+test("usa 470W por defeito em terreo e 600W apenas com escolha explicita", () => {
   const defaultProposal = calculateProposal({
     ...baseLead,
     tipo_telhado: "terreo",
@@ -104,13 +104,13 @@ test("usa 460W por defeito em terreo e 595W apenas com escolha explicita", () =>
   const largeProposal = calculateProposal({
     ...baseLead,
     tipo_telhado: "terreo",
-    panel_preference: "large_595"
+    panel_preference: "large_600"
   });
 
-  assert.equal(defaultProposal.equipment.panel.powerW, 460);
-  assert.equal(defaultProposal.equipment.panel.preference, "standard_460");
-  assert.equal(largeProposal.equipment.panel.powerW, 595);
-  assert.equal(largeProposal.equipment.panel.preference, "large_595");
+  assert.equal(defaultProposal.equipment.panel.powerW, 470);
+  assert.equal(defaultProposal.equipment.panel.preference, "standard_470");
+  assert.equal(largeProposal.equipment.panel.powerW, 600);
+  assert.equal(largeProposal.equipment.panel.preference, "large_600");
 });
 
 test("respeita quantidade manual de paineis no calculo final", () => {
@@ -123,7 +123,7 @@ test("respeita quantidade manual de paineis no calculo final", () => {
 
   assert.equal(proposal.sizing.adjustedPanelCount, 7);
   assert.equal(proposal.equipment.panelCount, 10);
-  assert.equal(proposal.sizing.actualPanelPowerKwp, 4.6);
+  assert.equal(proposal.sizing.actualPanelPowerKwp, 4.7);
   assert.ok(proposal.recommendation.notes.some((note) => note.includes("Quantidade de paineis definida manualmente")));
 });
 
@@ -145,7 +145,7 @@ test("calcula proposta on-grid com preco total composto e IVA", () => {
   const breakdownTotal = proposal.price.breakdown.reduce((total, section) => total + section.total, 0);
 
   assert.equal(proposal.recommendation.mode, "on-grid");
-  assert.equal(proposal.equipment.panel.powerW, 460);
+  assert.equal(proposal.equipment.panel.powerW, 470);
   assert.equal(proposal.price.gross, Number((proposal.price.net * (1 + VAT_RATE)).toFixed(2)));
   assert.equal(Number(breakdownTotal.toFixed(2)), proposal.price.gross);
   assert.deepEqual(
@@ -218,7 +218,7 @@ test("capacidade 10kWh com preferencia ambas escolhe GoodWe Lynx", () => {
   assert.equal(proposal.equipment.battery.capacityKwh, 10.24);
 });
 
-test("capacidade 16kWh com preferencia ambas escolhe GSL", () => {
+test("capacidade 16kWh com preferencia ambas escolhe Dyness PowerBrick", () => {
   const proposal = calculateProposal({
     ...baseLead,
     wantsBattery: true,
@@ -227,7 +227,7 @@ test("capacidade 16kWh com preferencia ambas escolhe GSL", () => {
     capacidade_bateria_desejada_kwh: 16
   });
 
-  assert.equal(proposal.equipment.battery.brand, "GSL");
+  assert.equal(proposal.equipment.battery.brand, "Dyness");
   assert.equal(proposal.equipment.battery.capacityKwh, 16);
 });
 
@@ -240,8 +240,10 @@ test("capacidade escolhida manda na familia da bateria mesmo com preferencia dif
     capacidade_bateria_desejada_kwh: 32
   });
 
-  assert.equal(proposal.equipment.battery.brand, "GSL");
+  assert.equal(proposal.equipment.battery.brand, "Dyness");
   assert.equal(proposal.equipment.battery.capacityKwh, 32);
+  assert.equal(proposal.equipment.battery.count, 2);
+  assert.equal(proposal.internalCosts.battery, 4300);
 });
 
 test("450 kWh equilibrado monofasico com GoodWe premium recomenda 5.12kWh", () => {
@@ -299,6 +301,7 @@ test("usa inversores GoodWe ES em hibrido monofasico", () => {
 
   assert.equal(proposal.equipment.inverter.model, "GW5000-ES-20-G2");
   assert.equal(proposal.equipment.inverter.price, 1069);
+  assert.equal(proposal.internalCosts.realTimeMeter, 500);
 });
 
 test("usa preco manual do inversor quando existir", () => {
@@ -325,7 +328,7 @@ test("usa preco manual do inversor quando existir", () => {
   }
 });
 
-test("calcula bateria GSL LV economica 16kWh a 2600 EUR", () => {
+test("calcula bateria Dyness PowerBrick 16K economica a 2150 EUR", () => {
   const proposal = calculateProposal({
     ...baseLead,
     consumptionPeriod: "noite",
@@ -334,12 +337,13 @@ test("calcula bateria GSL LV economica 16kWh a 2600 EUR", () => {
     preferencia_bateria: "economica"
   });
 
-  assert.equal(proposal.equipment.battery.brand, "GSL");
+  assert.equal(proposal.equipment.battery.brand, "Dyness");
+  assert.equal(proposal.equipment.battery.model, "Dyness PowerBrick 16K");
   assert.equal(proposal.equipment.battery.capacityKwh, 16);
-  assert.equal(proposal.internalCosts.battery, 2600);
+  assert.equal(proposal.internalCosts.battery, 2150);
 });
 
-test("em trifasico hibrido usa GoodWe premium como principal e DEYE/GSL como economica", () => {
+test("em trifasico hibrido usa GoodWe premium como principal e DEYE/Dyness como economica", () => {
   const proposal = calculateProposal({
     ...baseLead,
     gridType: "trifasico",
@@ -355,6 +359,6 @@ test("em trifasico hibrido usa GoodWe premium como principal e DEYE/GSL como eco
   assert.equal(proposal.equipment.battery.brand, "GoodWe/BYD");
   assert.ok(proposal.equipment.battery.model.includes("BYD HVS"));
   assert.equal(economic.inverter.brand, "DEYE");
-  assert.equal(economic.battery.brand, "DEYE/GSL");
-  assert.equal(economic.battery.equipmentCost, 600 + economic.battery.modules * 625);
+  assert.equal(economic.battery.brand, "DEYE/Dyness");
+  assert.equal(economic.battery.equipmentCost, 2150);
 });

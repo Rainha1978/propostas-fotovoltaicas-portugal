@@ -389,7 +389,7 @@ function drawCostDetail(option, x, y) {
     ["Mao de obra", costValue(option, "labor") + costValue(option, "batteryLabor")],
     ["Protecoes/eletrica", costValue(option, "baseProtections") + costValue(option, "hybridProtections") + costValue(option, "backupManual")],
     ["Cabos/conectores", costValue(option, "dcCables") + costValue(option, "acCables") + costValue(option, "connectors")],
-    ["Contador", costValue(option, "realTimeMeter")],
+    ["Contador Honeywell", costValue(option, "realTimeMeter")],
     ["EV", costValue(option, "evCharger") + costValue(option, "evProtections")],
     ["Deslocacao", costValue(option, "travel")],
     ["IVA", sectionTotal(option, "vat") || optionPrice(option).vat]
@@ -420,7 +420,7 @@ function drawNotes(calculation, x, y) {
     "Proposta indicativa sujeita a validacao tecnica no local.",
     "Precos sujeitos a atualizacao de mercado.",
     "Nao inclui trabalhos de construcao civil ou alteracoes eletricas nao previstas.",
-    "Painel 460W usado por defeito. Painel 595W disponivel por escolha do cliente, sujeito a validacao tecnica.",
+    "Painel 470W usado por defeito. Painel 600W disponivel por escolha do cliente, sujeito a validacao tecnica.",
     calculation.sizing?.needsTechnicalAnalysis ? "Consumo acima de 800 kWh/mes: recomenda-se analise tecnica." : null,
     ...(calculation.advice?.technicalFlags ?? []).map((flag) => flag.message),
     ...(calculation.recommendation?.notes ?? [])

@@ -4,15 +4,15 @@ export const PRICE_DATABASE = {
     rate: 0.23
   },
   panels: {
-    standard460w: {
-      label: "Painel standard 460W",
-      powerW: 460,
+    standard470w: {
+      label: "Painel standard 470W",
+      powerW: 470,
       unitPrice: 72,
       useWhen: "Regra geral quando o cliente nao escolhe painel grande."
     },
-    large595w: {
-      label: "Painel grande 595W",
-      powerW: 595,
+    large600w: {
+      label: "Painel grande 600W",
+      powerW: 600,
       unitPrice: 93,
       useWhen: "Disponivel por escolha do cliente, sujeito a validacao tecnica em telha lusa."
     }
@@ -56,12 +56,12 @@ export const PRICE_DATABASE = {
       use: "monofasico premium",
       typicalCapacitiesKwh: [5.12, 10.24, 15.36]
     },
-    gslLv16: {
-      brand: "GSL",
-      model: "GSL 16kWh",
+    dynessPowerBrick16: {
+      brand: "Dyness",
+      model: "Dyness PowerBrick 16K",
       type: "LV",
       capacityPerUnitKwh: 16,
-      unitPrice: 2600,
+      unitPrice: 2150,
       positioning: "economico, grande capacidade",
       maxParallelUnits: 6,
       typicalCapacitiesKwh: [16, 32, 48, 64, 80, 96]
@@ -77,17 +77,6 @@ export const PRICE_DATABASE = {
       minimumRecommendedModules: 2,
       positioning: "premium GoodWe",
       notes: ["Nao existe BMS separado.", "Nunca recomendar 1 modulo isolado."]
-    },
-    gslHv: {
-      brand: "GSL",
-      model: "GSL HV",
-      type: "HV modular",
-      use: "DEYE trifasico",
-      baseAndBmsPrice: 600,
-      capacityPerModuleKwh: 5,
-      modulePrice: 625,
-      minCapacityKwh: 10,
-      maxCapacityKwh: 60
     },
     bydHvs: {
       brand: "BYD",
@@ -175,7 +164,8 @@ export const PRICE_DATABASE = {
     ]
   },
   extras: {
-    realTimeMeter: 560,
+    realTimeMeter: 500,
+    realTimeMeterModel: "Honeywell",
     realTimeMeterRule: "Adicionar se inversor > 4kW.",
     evCharger: 550,
     evProtection: 135,
@@ -189,8 +179,8 @@ export const PRICE_CALIBRATION = {
   vatRate: PRICE_DATABASE.vat.rate,
   historicalVatRate: 0.06,
   panels: {
-    smallWattUnitPrice: PRICE_DATABASE.panels.standard460w.unitPrice,
-    largeWattUnitPrice: PRICE_DATABASE.panels.large595w.unitPrice
+    smallWattUnitPrice: PRICE_DATABASE.panels.standard470w.unitPrice,
+    largeWattUnitPrice: PRICE_DATABASE.panels.large600w.unitPrice
   },
   structure: {
     telhaLusaPerPair: PRICE_DATABASE.structures.coplanarPerTwoPanels,
@@ -239,9 +229,7 @@ export const PRICE_CALIBRATION = {
   batteries: {
     lynxG3FiveKwh: PRICE_DATABASE.batteries.goodweLynxUG3.unitPrice,
     lynxDFiveKwhHv: PRICE_DATABASE.batteries.goodweHvLynxD.modulePrice + PRICE_DATABASE.batteries.goodweHvLynxD.basePrice,
-    gslHvBase: PRICE_DATABASE.batteries.gslHv.baseAndBmsPrice,
-    gslHvModule: PRICE_DATABASE.batteries.gslHv.modulePrice,
-    largeLowVoltage16Kwh: PRICE_DATABASE.batteries.gslLv16.unitPrice
+    largeLowVoltage16Kwh: PRICE_DATABASE.batteries.dynessPowerBrick16.unitPrice
   },
   benchmarksHistoricalGrossPerKwp: {
     onGridMedian: 713,

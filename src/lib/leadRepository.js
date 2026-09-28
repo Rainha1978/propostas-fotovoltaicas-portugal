@@ -1,4 +1,4 @@
-﻿import { LEAD_STATUSES } from "../domain/solarCalculator.js";
+import { LEAD_STATUSES } from "../domain/solarCalculator.js";
 
 let poolPromise;
 let schemaReadyPromise;
@@ -59,7 +59,7 @@ async function ensureSchema() {
         escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei',
         rede TEXT NOT NULL DEFAULT 'monofasico',
         tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa',
-        panel_preference TEXT NOT NULL DEFAULT 'standard_460',
+        panel_preference TEXT NOT NULL DEFAULT 'standard_470',
         numero_paineis_manual INTEGER,
         inversor_manual_model TEXT,
         telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE,
@@ -83,7 +83,8 @@ async function ensureSchema() {
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS escolha_cliente TEXT NOT NULL DEFAULT 'ainda_nao_sei';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS rede TEXT NOT NULL DEFAULT 'monofasico';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS tipo_telhado TEXT NOT NULL DEFAULT 'telha_lusa';
-      ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_460';
+      ALTER TABLE leads ADD COLUMN IF NOT EXISTS panel_preference TEXT NOT NULL DEFAULT 'standard_470';
+      ALTER TABLE leads ALTER COLUMN panel_preference SET DEFAULT 'standard_470';
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS numero_paineis_manual INTEGER;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS inversor_manual_model TEXT;
       ALTER TABLE leads ADD COLUMN IF NOT EXISTS telha_lusa_dificil BOOLEAN NOT NULL DEFAULT FALSE;
@@ -160,6 +161,11 @@ function normalizeGrid(value) {
   return "monofasico";
 }
 
+function normalizePanelPreference(value) {
+  if (["large_600", "large_595"].includes(value)) return "large_600";
+  return "standard_470";
+}
+
 function toIso(value) {
   if (!value) return null;
   return value instanceof Date ? value.toISOString() : new Date(value).toISOString();
@@ -174,7 +180,7 @@ function mapLead(row) {
   const escolhaCliente = enumValue(firstValue(row.escolha_cliente, row.clientChoice, "ainda_nao_sei"), ["ongrid", "hibrido", "hibrido_backup", "ainda_nao_sei"], "ainda_nao_sei");
   const rede = normalizeGrid(firstValue(row.grid_type, row.gridType, row.rede, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(row.roof_type, row.roofType, row.tipo_telhado, row.tipoTelhado, "telha_lusa"));
-  const panelPreference = enumValue(firstValue(row.panel_preference, row.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
+  const panelPreference = normalizePanelPreference(firstValue(row.panel_preference, row.panelPreference, "standard_470"));
   const numeroPaineisManual = firstValue(row.numero_paineis_manual, row.manualPanelCount, row.panelCountManual, null);
   const inversorManualModel = firstValue(row.inversor_manual_model, row.manualInverterModel, null);
   const telhaLusaDificil = false;
@@ -254,7 +260,7 @@ function normalizeLeadInput(data) {
   const escolhaCliente = enumValue(firstValue(data.escolha_cliente, data.clientChoice, backup !== "sem_backup" ? "hibrido_backup" : "ainda_nao_sei"), ["ongrid", "hibrido", "hibrido_backup", "ainda_nao_sei"], "ainda_nao_sei");
   const rede = normalizeGrid(firstValue(data.rede, data.gridType, "monofasico"));
   const tipoTelhado = normalizeRoof(firstValue(data.tipo_telhado, data.roofType, "telha_lusa"));
-  const panelPreference = enumValue(firstValue(data.panel_preference, data.panelPreference, "standard_460"), ["standard_460", "large_595"], "standard_460");
+  const panelPreference = normalizePanelPreference(firstValue(data.panel_preference, data.panelPreference, "standard_470"));
   const numeroPaineisManual = optionalNumberValue(data.numero_paineis_manual, data.manualPanelCount, data.panelCountManual);
   const inversorManualModel = firstValue(data.inversor_manual_model, data.manualInverterModel, null) || null;
   const telhaLusaDificil = false;
